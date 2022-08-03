@@ -39,6 +39,7 @@ Table of Contents
 
 .. toctree::
 
+   overview
    architecture
    fhir
    mdi
