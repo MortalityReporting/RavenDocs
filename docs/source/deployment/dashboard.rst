@@ -1,4 +1,4 @@
-Step 5 - Deploy the Raven Dashboard
+Step 4 - Deploy the Raven Dashboard
 ===================================
 
 First, navigate to the /raven-dashboard subdirectory under
