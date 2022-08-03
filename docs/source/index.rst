@@ -40,12 +40,6 @@ Table of Contents
 .. toctree::
 
    overview
-   architecture
-   fhir
-   mdi
-   userManual
-   deployment
-
 
 Raven is released under the `Apache License
 2.0 <https://github.com/MortalityReporting/raven-platform/blob/main/LICENSE>`__.
