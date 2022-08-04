@@ -1,10 +1,11 @@
+.. _mdi-csv:
+
 Medicolegal Death Investigation (MDI) CSV Data
 ==============================================
 
 In order for user data to be imported into the Raven FHIR Server and
 accessed by the Raven Platform, it must be available as FHIR VRDR
-Resources. (For more information on FHIR VRDR, please visit the `FHIR
-VRDR <FHIR-and-FHIR-VRDR>`__ page in this wiki.) However, as it is still
+Resources. (For more information on FHIR VRDR, please visit the :ref:`fhir` page in this wiki.) However, as it is still
 an emerging technology most systems cannot natively provide their data
 as FHIR resources. In order to facilitate non-FHIR enabled systems in
 using the Raven Platform, the MDI CSV format is provided. The Raven
@@ -18,7 +19,7 @@ MDI CSV, each row represents a full death investigation case file.
 
 You can find an example of MDI CSV data in the Raven Platform repository
 at
-[[https://github.com/MortalityReporting/raven-platform/blob/main/testing-documents/ConnectathonTestCases.csv]].
+https://github.com/MortalityReporting/raven-platform/blob/main/testing-documents/ConnectathonTestCases.csv.
 
 Using MDI CSV
 -------------
@@ -26,8 +27,7 @@ Using MDI CSV
 This section discusses general concerns regarding mapping to MDI CSV
 from your own data. For a complete tutorial on using the Raven Dashboard
 to assist in the mapping of your external data to the MDI CSV format,
-please see the `Importing Data section of the User
-Manual <User-Manual-Importing>`__.
+please see the :ref:`import-data` section.
 
 Non-mappable Fields
 ~~~~~~~~~~~~~~~~~~~

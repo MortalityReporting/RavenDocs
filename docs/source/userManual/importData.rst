@@ -1,3 +1,5 @@
+.. _import-data:
+
 Importing Data
 ==============
 
@@ -6,8 +8,7 @@ Overview
 
 Raven allows users to import their own CSVs containing MDI case data,
 which are then mapped into FHIR and stored on the Raven FHIR Server
-database. To facilitate this process, Raven uses a curated `MDI
-CSV <MDI-CSV-Data>`__ schema which acts as a go between user data and
+database. To facilitate this process, Raven uses a curated :ref:`mdi-csv` schema which acts as a go between user data and
 FHIR. This simplifies readying user data for conversion into FHIR and
 gives users ultimate control over ensuring the meanings of their fields
 are properly represented.
@@ -18,7 +19,7 @@ applications will have an option to either save as or export to CSV.
 
 You must also be able to provide both a System ID and a system unique
 Case ID as part of your data. For more information on these fields and
-why they are required please see the `MDI CSV page <MDI-CSV-Data>`__.
+why they are required please see the :ref:`mdi-csv` page.
 
 Submitting a CSV
 ----------------
@@ -27,19 +28,17 @@ You can begin the import process by selecting the “Import CSV” button,
 which can be found at the top of the browse cases list or in the top
 left corner of the case details screen.
 
-.. figure:: https://github.com/MortalityReporting/raven-platform/blob/main/screenshots/import_csv_button.jpeg
+.. image::
+   ../images/import_csv_button.jpeg
    :alt: Submit CSV Button
-
-   Submit CSV Button
 
 Clicking this will take you to the import page. At the top of the import
 page you should see the “Choose File” button, which will open a file
 browser dialogue, allowing you to selected your CSV.
 
-.. figure:: https://github.com/MortalityReporting/raven-platform/blob/main/screenshots/choose_file_button.jpeg
+.. image::
+   ../images/choose_file_button.jpeg
    :alt: Choose File Button
-
-   Choose File Button
 
 Once you have chosen your file, the Raven MDI CSV mapping interface will
 be shown.
@@ -67,10 +66,9 @@ works for continued iterations of the Raven Dashboard.)*
 CSV without selecting a field mapping for those elements will provide an
 error message to the user and indicate the issue.**
 
-.. figure:: https://github.com/MortalityReporting/raven-platform/blob/main/screenshots/mapping_external_csv_to_mdi_csv.jpeg
+.. image::
+   ../images/mapping_external_csv_to_mdi_csv.jpeg
    :alt: Mapping User CSV to Raven MDI CSV Screenshot
-
-   Mapping User CSV to Raven MDI CSV Screenshot
 
 Once you have completed your mapping, pressing the “Submit” button at
 the bottom of the page will attempt to send your CSV to the Raven

@@ -2,6 +2,8 @@
    :format: latex
 ..
 
+.. _database:
+
 Step 1 - Getting Started and FHIR Database
 ==========================================
 
@@ -40,7 +42,7 @@ Step 1c) Setup a Fhirbase Database
 
 For storing FHIR Resources, you will use Fhirbase. Fhirbase is a
 Postgres based database toolkit for FHIR, which you can read more about
-at [[https://www.health-samurai.io/fhirbase]].
+at https://www.health-samurai.io/fhirbase.
 
 Deploy Fhirbase
 ~~~~~~~~~~~~~~~
@@ -48,7 +50,7 @@ Deploy Fhirbase
 First, you will pull the latest Fhirbase image from Docker Hub. (Docker
 Hub is a central repository for registered Docker images from which you
 can run a container. For more information, please visit
-[[https://hub.docker.com/]].) To pull the image, run the following
+https://hub.docker.com/.) To pull the image, run the following
 command:
 
 ::
@@ -65,7 +67,7 @@ can startup a container based on that image using the command:
 This will start the container, mapping the ports from the container to
 ports on your localhost. In this case, the ports are kept the same. You
 can test that the container is running by going to
-[[http://localhost:3000]] in a web browser. This should load the
+http://localhost:3000 in a web browser. This should load the
 Fhirbase query UI. (Note: We will not be using this as part of the Raven
 Platform. This is entirely to ensure functionality.)
 
@@ -116,14 +118,11 @@ execute the command:
 This will list the databases available. You should see your newly
 created database here.
 
-.. figure:: https://github.com/MortalityReporting/raven-platform/blob/main/screenshots/postgres-database-list.png
+.. image::
+   ../images/postgres-database-list.png
    :alt: Creating a Database and Viewing a list of Databases in PSQL
 
-   Creating a Database and Viewing a list of Databases in PSQL
-
 Once you confirm your database is created, you can exit psql with
-“:raw-latex:`\q`”.
-
 ::
 
    \q
@@ -145,5 +144,4 @@ You may now exit out of your container using just the command “exit”.
    exit
 
 Your Fhirbase database is now setup and you are ready to move on to the
-next step! \__\_ `Continue to Step 2 - Raven FHIR
-Server <Local-Demo-Step-2-Raven-FHIR-Server>`__
+next step! Continue to :ref:`server`.

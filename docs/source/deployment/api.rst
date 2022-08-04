@@ -1,3 +1,5 @@
+.. _api:
+
 Step 3 - Deploy the Raven Import and Submission API
 ===================================================
 
@@ -62,9 +64,11 @@ Health Check
 At this point in the process it is advised to perform a health check on
 the system backend components. You should be able to access an import
 test endpoint for the Import and Submission API component at
-[[http://localhost:8081/raven-import-and-submit-api]].
+http://localhost:8081/raven-import-and-submit-api.
 
-.. image:: https://github.com/MortalityReporting/raven-platform/blob/main/screenshots/Screen%20Shot%202020-12-16%20at%203.42.24%20PM.png
+.. image::
+   ../images/Screen_Shot_2020-12-16_at_3.42.24_PM.png
+   :alt: Health check
 
 You may use this interface to import sample data, which is available in
 the current directory, in the file “ConnectathonTestCase122221.csv”.
@@ -82,6 +86,6 @@ process, it is recommended that you double check any environment
 variables you may have changed in earlier steps and rebuild those
 components as needed. If something is not working and you did follow the
 tutorial precisely, please file an issue on `our GitHub Issues
-page <https://github.com/MortalityReporting/raven-platform/issues>`__.
-\__\_ `Continue to Step 4 - Raven
-Dashboard <Local-Demo-Step-4-Raven-Dashboard>`__
+page <https://github.com/MortalityReporting/raven-platform/issues>`_.
+
+Continue to :ref:`dashboard`.

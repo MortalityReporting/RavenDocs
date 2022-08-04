@@ -1,3 +1,5 @@
+.. _server:
+
 Step 2 - Deploy the Raven FHIR Server
 =====================================
 
@@ -61,11 +63,12 @@ Once you have built your image, you can run the container with:
    sudo docker run -d --restart unless-stopped --publish 8080:8080 --name raven-fhir-server --network=raven-platform raven-fhir-server
 
 The Raven FHIR Server should now be accessible at
-[[http://localhost:8080/raven-fhir-server]]. While the server will be
+http://localhost:8080/raven-fhir-server. While the server will be
 empty for the moment, you should see the FHIR Server UI as in the
 screenshot below.
 
-|Raven FHIR Server UI| \__\_ `Continue to Step 3 - Raven Import and
-Submission API <Local-Demo-Step-3-Raven-Import-and-Submission-API>`__
+.. image::
+   ../images/Screen_Shot_2020-12-16_at_3.35.01_PM.png
+   :alt: Raven Fhir Server UI
 
-.. |Raven FHIR Server UI| image:: https://github.com/MortalityReporting/raven-platform/blob/main/screenshots/Screen%20Shot%202020-12-16%20at%203.35.01%20PM.png
+Continue to :ref:`api`.

@@ -1,3 +1,5 @@
+.. _dashboard:
+
 Step 4 - Deploy the Raven Dashboard
 ===================================
 
@@ -38,7 +40,7 @@ container which can be built and run with the following commands.
    sudo docker run -d -p 80:80 --network=raven-platform --name raven-dashboard --restart unless-stopped raven-dashboard:latest
 
 After the container is ran, you should be able to browse to
-[[http://localhost:80/app/cases]] and see the browse cases view of the
+http://localhost:80/app/cases and see the browse cases view of the
 Raven Dashboard. If you previously loaded a case through the health
 check portion of the Raven Mapper Export component step you should see
 this case reflected here, otherwise the list will be empty.

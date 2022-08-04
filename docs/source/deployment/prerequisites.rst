@@ -10,7 +10,7 @@ Desktop and Git at a minimum.
    Platform components are provided as Docker containers to simplify
    running each component in your local environment. To learn more about
    Docker and containers, please see:
-   [[https://www.docker.com/resources/what-container]].
+   https://www.docker.com/resources/what-container.
 
 **For Windows Users:** From the Windows Store you can install the
 Windows Ubuntu terminal, giving you the ability to work from a Linux
@@ -18,7 +18,7 @@ command line environment. You may also wish to setup Windows Subsystem
 for Linux 2 (WSL2) and enable the WSL2 integration in Docker Desktop.
 This circumvents many common issues working with Docker on a Windows
 system. For more information on Docker and WSL 2, please visit
-[[https://docs.docker.com/docker-for-windows/wsl/]].
+https://docs.docker.com/docker-for-windows/wsl/.
 
 Git should be pre-installed in most environments, including the base Mac
 terminal and Windows Ubuntu terminal.
@@ -37,8 +37,7 @@ following:
 
 **For Mac Users:** Homebrew is the recommended means of installing and
 managing Maven and Git. For more on Homebrew, please visit
-[[https://brew.sh/]].
+https://brew.sh/.
 
 Once you have all of the required tools installed, you are ready to get
-started. \__\_ `Continue to Step 1 - Getting Started and FHIR
-Database <Local-Demo-Step-1-Getting-Started>`__
+started. Continue to :ref:`database`.
