@@ -11,10 +11,10 @@ intended to demonstrate a high level view of the functionality of the
 system as relates to the physical layout of components, connection to
 external end points, and the users’ scope.
 
-.. figure:: https://github.com/MortalityReporting/raven-platform/blob/main/screenshots/Raven%20Revised%20Diagram.png
-   :alt: Raven Overview Diagram
 
-   Raven Overview Diagram
+.. image:: 
+   images/RavenRevisedDiagram.png
+   :alt: Raven Overview Diagram
 
 Raven Dashboard
 ---------------
