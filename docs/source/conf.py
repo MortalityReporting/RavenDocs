@@ -3,8 +3,6 @@
 # -- Project information
 
 project = 'Raven Docs'
-copyright = '2022, GTRI'
-author = 'GTRI'
 
 release = '0.1'
 version = '0.1.0'
