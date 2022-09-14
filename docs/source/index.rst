@@ -15,7 +15,7 @@ The current Raven tooling and tests aid developers in implementing the MDI FHIR 
 
 - Workflow Simulator:
   The workflow simulator is an end-to-end framework that manages the project workstreams. Individual components under the Project Workstreams are composed 
-  in the workflow simulator.    
+  in the workflow simulator.
 - Case Importing:
   Case Importing is a Raven 2.0 feature that imports the Comma-separated Values (CSV) or spreadsheet file into the MDI FHIR server in an MDI FHIR IG 
   compliant format.  
