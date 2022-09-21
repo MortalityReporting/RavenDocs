@@ -43,5 +43,4 @@ are not included while data elements that are required in MDI are included. MDI 
 MDI community to actively participate in providing their needs, adapting the MDI IG, and testing in Raven platform.
 
 For a more detailed breakdown of MDI contents, please see the `official
-MDI Implementation Guide
- <http://build.fhir.org/ig/HL7/fhir-mdi-ig/background.html>`__.
+MDI Implementation Guide <http://build.fhir.org/ig/HL7/fhir-mdi-ig/background.html>`__.
