@@ -21,42 +21,27 @@ which most development is focused. For a complete list of FHIR R4
 Resources and their respective maturities, please see the `FHIR R4
 Resource List <https://hl7.org/fhir/R4/resourcelist.html>`__.
 
-FHIR VRDR Resources
--------------------
+FHIR MDI Resources
+------------------
 
-The `Vital Records Mortality and Morbidity Reporting (VRDR)
-Implementation Guide <http://hl7.org/fhir/us/vrdr/>`__ is a FHIR
+The `Medicolegal Death Investigation (MDI)
+Implementation Guide <http://build.fhir.org/ig/HL7/fhir-mdi-ig/>`__ is a FHIR
 implementation guide detailing the proper method of using FHIR resources
-to construct a FHIR version of a Death Certificate. The VRDR standard is
-used by Electronic Death Registrar Systems (EDRS) that reside at the
-state level, in order to report to federal standards.
+to construct a FHIR version of a Death and Toxicology Reporting. The MDI standard is
+developed to support modernization of interoperability between Coroner/Medical Examiner systems (CMS) 
+and other systems such as Electronic Death Registrar Systems (EDRS) and Toxicology Lab Information and Management System (LIMS).
 
-The Raven Platform uses the VRDR implementation for handling death
-records, allowing exporting to those same external EDRS systems. When
-possible, the Raven Platform allows users to import their own data into
-FHIR VRDR resources and store them on the Raven FHIR Server.
+The Raven Platform uses the MDI IG for handling death
+records, allowing importing MDI data and exporting to FHIR resources. 
+The Raven Platform allows users to import their own data into
+FHIR MDI resources and store them on the Raven FHIR Server.
 
-VRDR consists of 4 major domains of death data: \* Decedent Demographic
-Information - The decedent’s demographic information, such as name,
-related persons, date of birth, and other similar. \* Death
-Investigation Data - Autopsy Information, injury incident information,
-death location, and other information related to death investigations.
-\* Death Certification Data - The cause of death pathway, manner of
-death, the certifying agent, and information otherwise related to the
-actual death certification. \* Decedent Disposition Information -
-Disposition related information, such as funeral home, attending
-mortician, and disposition method.
+MDI IG is still in the draft version ann being updated based on the HL7 FHIR IG development cycles. 
+MDI IG developers are adapting VRDR data elements if data concepts are overlapped instead of creating
+new ones so that the transitions can be achieved smoothly. Data elements that exist in IJE but not needed in MDI 
+are not included while data elements that are required in MDI are included. MDI IG developer group encourages
+MDI community to actively participate in providing their needs, adapting the MDI IG, and testing in Raven platform.
 
-For a more detailed breakdown of VRDR contents, please see the `official
-VRDR data model
-guide <http://hl7.org/fhir/us/vrdr/vrdr_fhir_ig_uml_data_model.html>`__.
-
-Inclusion of Base FHIR Resources
---------------------------------
-
-There is a gap that exists with mapping the Raven MDI data to VRDR
-resources, as not all MDI fields can be properly mapped to VRDR. Raven
-addresses this gap through the use of base FHIR resources included as
-part of the FHIR Bundles alongside the VRDR Resources. The use of these
-base resources are considered temporary pending a proper FHIR MDI
-implementation guide with the necessary profiles.
+For a more detailed breakdown of MDI contents, please see the `official
+MDI Implementation Guide
+ <http://build.fhir.org/ig/HL7/fhir-mdi-ig/background.html>`__.
