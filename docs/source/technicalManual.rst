@@ -1,4 +1,4 @@
-User Manual
+Technical Manual
 ===========
 
 work-in-progress
