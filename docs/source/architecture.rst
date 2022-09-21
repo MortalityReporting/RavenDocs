@@ -19,7 +19,7 @@ external end points, and the users’ scope.
 
 Workflow Simulator
 ------------------
-The workflow simulator is an end-to-end framework that manages the project workstreams. Individual components under the Project Workstreams are composed in the workflow simulator.
+The workflow simulator is depicted in the diagram above and structured with stages. The workflow simulator is an end-to-end framework that manages the project workstreams. Individual components under the Project Workstreams are modularly composed in the workflow simulator.
 
 Case Importing
 --------------
