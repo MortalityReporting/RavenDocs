@@ -22,6 +22,7 @@ Table of Contents
 
 .. toctree::
 
+   developmentTeam
    architecture
    fhir
    mdi
