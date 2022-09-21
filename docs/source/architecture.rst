@@ -13,7 +13,7 @@ external end points, and the users’ scope.
 
 
 .. image:: 
-   images/RavenRevisedDiagram.png
+   images/Raven20Diagram.png
    :alt: Raven Overview Diagram
 
 
