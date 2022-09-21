@@ -10,11 +10,4 @@ bottom of each page.
 Contents Overview
 -----------------
 
-.. toctree::
-   
-   deployment/prerequisites
-   deployment/database
-   deployment/server
-   deployment/api
-   deployment/dashboard
-   deployment/containers
+work-in-progress
