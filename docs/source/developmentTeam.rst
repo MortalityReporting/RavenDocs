@@ -22,4 +22,4 @@ Development Team Members
    * - Andrew Stevens
      - MDI-API IG
 
-Contact Us: You can submit any questions or requests via our [GitHub Issues page](https://github.com/MortalityReporting/raven-platform/issues).
+Contact Us: You can submit any questions or requests via our `GitHub Issues page <https://github.com/MortalityReporting/raven-platform/issues>`_.
