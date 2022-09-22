@@ -5,10 +5,18 @@ The MDI Standard
 
 Overview of MDI Workflows 
 -------------------------
-## MDI to EDRS
-## Toxicology to MDI
+
+MDI to EDRS
+^^^^^^^^^^^
+
+Toxicology to MDI
+^^^^^^^^^^^^^^^^^
 
 Tooling
 -------
-## Java Library
-## .NET Library
+
+Java Library
+^^^^^^^^^^^^
+
+.NET Library
+^^^^^^^^^^^^
