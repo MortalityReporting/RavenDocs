@@ -16,7 +16,8 @@ The workflow simulator is depicted in the diagram above and structured with stag
 Use Cases/Workflows
 -------------------
 
-- CMS to EDRS
+CMS to EDRS
+^^^^^^^^^^^
   Step 1 - Import/Select Record
 
   Step 2 - Validate/Compare
