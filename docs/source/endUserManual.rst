@@ -1,5 +1,5 @@
 End User Manual
-===========
+===============
 
 .. toctree::
     userManual/mdiStandard

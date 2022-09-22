@@ -4,11 +4,11 @@ Component Overview
 Raven FHiR Server
 -----------------
 
-Raven APIs
+MDI APIs
 ----------
 
 Raven Dashboard 2
 -----------------
 
-Bluejay
--------
+Bluejay FHIR Server
+-------------------
