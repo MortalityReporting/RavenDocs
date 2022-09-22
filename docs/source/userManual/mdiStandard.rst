@@ -69,13 +69,3 @@ load the case and play with the case. Users can explore the raw FHIR data along 
 
 Toxicology-to-MDI
 ^^^^^^^^^^^^^^^^^
-
-
-Tooling
--------
-
-Java Library
-^^^^^^^^^^^^
-
-.NET Library
-^^^^^^^^^^^^
