@@ -34,7 +34,7 @@ developed to support modernization of interoperability between Coroner/Medical E
 and other systems such as Electronic Death Registrar Systems (EDRS) and Toxicology Lab Information and Management System (LIMS).
 
 The Raven Platform uses the MDI IG for handling death
-records, allowing importing MDI data and exporting to FHIR resources. 
+records, importing MDI data and exporting to FHIR resources. 
 The Raven Platform allows users to import their own data into
 FHIR MDI resources and store them on the Raven FHIR Server.
 
