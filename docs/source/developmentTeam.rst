@@ -1,3 +1,5 @@
+.. _members:
+
 Development Team Members
 ========================
 
@@ -19,3 +21,5 @@ Development Team Members
      - User Interfaces, Case Viewer, Validator
    * - Andrew Stevens
      - MDI-API IG
+
+Contact Us: You can submit any questions or requests via our [GitHub Issues page](https://github.com/MortalityReporting/raven-platform/issues).

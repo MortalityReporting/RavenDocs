@@ -36,6 +36,5 @@ Raven is released under the `Apache License
    -  Screenshots may be taken from earlier internal versions of Raven and
       may not be 100% accurate to the final release.*
 
-   If you find an error in the wiki, please go to the `contact
-   page <https://github.com/MortalityReporting/raven-platform/wiki/Development-Team>`__ and let us know!
+   If you find an error in the Raven platform and documentation, please go to the _members and let us know!
 
