@@ -8,7 +8,7 @@ system as relates to the physical layout of components, connection to
 external end points, and the users’ scope.
 
 .. image:: 
-   images/Raven20Diagram.png
+   ../images/Raven20Diagram.png
    :alt: Raven Overview Diagram
    
 The workflow simulator is depicted in the diagram above and structured with stages. The workflow simulator is an end-to-end framework that manages the project workstreams. Individual components under the Project Workstreams are modularly composed in the workflow simulator.
