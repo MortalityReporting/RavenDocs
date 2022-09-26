@@ -7,8 +7,8 @@ that a user can *play* with or even put your hands in dirt if the user wants. In
 and *play*.
 
 *Are you non-technical?*
-If you are a non-technical end user, then we recommend you to go to :ref:`mdiStqandard` first and learn about
-Medicolegal Death Investigation (MDI) workflow
+If you are a non-technical end user, then we recommend you to go to ":ref:`mdiStqandard`" page first and learn about
+Medicolegal Death Investigation (MDI) workflows
 
 .. toctree::
     userManual/mdiStandard

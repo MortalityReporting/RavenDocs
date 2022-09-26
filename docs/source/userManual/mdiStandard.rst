@@ -56,7 +56,8 @@ each participating system MUST follow and conform to the MDI IG.
 
 MDI-to-EDRS
 ^^^^^^^^^^^
-MDI-to-EDRS workflow represents the interoperability between CMS and EDRS. As it happens in most states,
+MDI-to-EDRS workflow represents the interoperability between MDI case management system (CMS) and 
+state's electronic death registration system (EDRS). As it happens in most states,
 the case is mostly created by funeral director. Thus, this workflow begins with an initial case created at 
 the EDRS. CMS first searches EDRS for a case and retrieve the case with limited decedent's demographics. 
 CMS may update the case during the journey of the death investigation. When the investigation is completed,
@@ -69,3 +70,10 @@ load the case and play with the case. Users can explore the raw FHIR data along 
 
 Toxicology-to-MDI
 ^^^^^^^^^^^^^^^^^
+Toxicology-to-MDI workflow represents the interoperability between forensic toxicology laboratory information 
+management system (LIMS) to an MDI case management system (CMS). The workflow is bidirectional. There is an
+iniital lab order sent from CMS with samples. After lab work is performed, the lab report is sent back to 
+CMS from LIMS. In this workflow, FHIR messaging is used for the data exchanges.
+
+Users can validate the Toxicology-to-MDI FHIR bundle messages and load the messages. Toxicology case viewer and 
+API operations are work-in-progress. 

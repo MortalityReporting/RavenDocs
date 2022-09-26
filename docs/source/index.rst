@@ -36,5 +36,6 @@ Raven is released under the `Apache License
    -  Screenshots may be taken from earlier internal versions of Raven and
       may not be 100% accurate to the final release.*
 
-   If you find an error in the Raven platform and documentation, please go to the members_ page and let us know!
+   If you find an error in the Raven platform and documentation, please go to the ":ref:`members`" page 
+   and let us know!
 
