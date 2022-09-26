@@ -29,6 +29,10 @@ In addition to providing a user-friendly option for viewing the data present on 
 the layout is structured from the perspective of the MDI Implementation Guide to serve as an educational 
 tool to better understand the data structure and fields which make up the MDI to EDRS and Toxicology to 
 MDI documents. 
+
+.. image:: 
+   ../images/case_viewer.png
+   :alt: Raven Case Viewer Diagram
   
 The Case Viewer also features a FHIR Resource Explorer, which allows users to select a field and 
 see the underlying FHIR Resource structure containing the related data. The FHIR Resource Explorer will 
