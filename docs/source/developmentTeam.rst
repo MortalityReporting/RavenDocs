@@ -16,10 +16,12 @@ Development Team Members
    * - Michael Riley
      - MDI FHIR Import/Mapper, Validator, MDI Java Library, Community Engagement
    * - Elizabeth Shivers
-     - Documentation, MDI-API IG, User Experience, CI
+     - Documentation Lead, DevOps/CI, User Experience and Interface (Dashboard), MDI-API IG
    * - Plamen Tassev
-     - User Interfaces, Case Viewer, Validator
+     - User Interface (Dashboard) Lead, Case Viewer, Validator
    * - Andrew Stevens
-     - MDI-API IG
+     - MDI-API IG Lead
+   * - Russell Mitchell
+     - User Interface (Dashboard)
 
 Contact Us: You can submit any questions or requests via our `GitHub Issues page <https://github.com/MortalityReporting/raven-platform/issues>`_.
