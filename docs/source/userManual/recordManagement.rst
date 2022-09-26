@@ -68,7 +68,6 @@ data are done as follows.
       to be used as reference data
     - When connectathon participants’ validated data are loaded to Raven 2.0, Comparison Tool compares the 
       loaded data with the reference data. See ":ref:`validation-comparison`" page for more information.
-^^^^^^^^^^^^
 
 Toxicology Report Viewer
 ^^^^^^^^^^^^^^^^^^^^^^^^
