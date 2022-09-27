@@ -9,7 +9,9 @@ Development Team Members
    
    * - Jon Duke
      - Product Director
-   * - Alexandra Ramirez, Julie Mittelstedt, Marla Gorges
+   * - Alexandra Ramirez, 
+       Julie Mittelstedt, 
+       Marla Gorges
      - Project Manager
    * - Myung Choi
      - Technical Lead, MDI FHIR Server, MDI-API, MDI .NET Library
