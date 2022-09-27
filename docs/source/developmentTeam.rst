@@ -4,7 +4,7 @@ Development Team Members
 ========================
 
 .. list-table::
-   :widths: 50 50
+   :widths: 25 75
    :header-rows: 0
    
    * - Jon Duke
