@@ -34,7 +34,7 @@ It’s recommended to use OAuth2 with OpenID. EDRS should provide authorization 
 authorize the CMS to access the EDRS FHIR server. Please refer to http://www.hl7.org/fhir/smart-app-launch/ 
 if EDRS wishes to implement SMART on FHIR framework. However, SMART on FHIR is not required.  
 
-.. image:: Workflow between CMS and EDRS
+.. image::
    ../images/mapi_cms_to_edrs_workflow.png
    :alt: CMS to EDRS Workflow
 
@@ -56,7 +56,8 @@ This is an idempotent operation. Both POST and GET can be used with the followin
  | GET [base]/Composition/$mdi-documents?name1=value1&name2=value2
 
 
-.. flat-table:: Extended Operation for MDI Document - In & Out Parameters
+**Extended Operation for MDI Document** - In & Out Parameters
+.. flat-table::
    :header-rows: 1
    * - Name
      - Cardinality
