@@ -57,6 +57,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 
 
 **Extended Operation for MDI Document** - In & Out Parameters
+
 .. flat-table::
    :header-rows: 1
    * - Name
