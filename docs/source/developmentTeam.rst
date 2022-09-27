@@ -11,20 +11,20 @@ Development Team Members
      - Product Director
    * - | Alexandra Ramirez,
        | Julie Mittelstedt,
-       | Marla Gorges
+       Marla Gorges
      - | Project Manager
        |
-       |
+
    * - Myung Choi
      - Technical Lead, MDI FHIR Server, MDI-API, MDI .NET Library
    * - | Michael Riley
-       |
+       
      - | MDI FHIR Import/Mapper, Validator, MDI Java Library, 
-       | Community Engagement
+       Community Engagement
    * - | Elizabeth Shivers
-       |
+       
      - | Documentation Lead, DevOps/CI, User Experience and 
-       | Interface (Dashboard), MDI-API IG
+       Interface (Dashboard), MDI-API IG
    * - Plamen Tassev
      - User Interface (Dashboard) Lead, Case Viewer, Validator
    * - Andrew Stevens
