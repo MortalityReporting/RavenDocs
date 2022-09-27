@@ -1,8 +1,8 @@
 Standard MDI API
 ================
-API for MDI Implementation Guides (IG) 
---------------------------------------
-MDI Implementation Guide is available in https://build.fhir.org/ig/HL7/fhir-mdi-ig/index.html. This guide 
+API for MDI Implementation Guide
+--------------------------------
+MDI Implementation Guide (IG) is available in https://build.fhir.org/ig/HL7/fhir-mdi-ig/index.html. This guide 
 is currently working in progress. Thus, please visit frequently for any updates.
  
 FHIR has already defined the Restful API. The FHIR Restful API document is available from 
@@ -34,9 +34,10 @@ It’s recommended to use OAuth2 with OpenID. EDRS should provide authorization 
 authorize the CMS to access the EDRS FHIR server. Please refer to http://www.hl7.org/fhir/smart-app-launch/ 
 if EDRS wishes to implement SMART on FHIR framework. However, SMART on FHIR is not required.  
 
-.. image:: 
+.. image:: Workflow between CMS and EDRS
    ../images/mapi_cms_to_edrs_workflow.png
    :alt: CMS to EDRS Workflow
+
 
 SEARCH API
 ----------
@@ -51,10 +52,9 @@ the search parameters.
 
 This is an idempotent operation. Both POST and GET can be used with the following endpoint URL pattern.
 
-```
-POST [base]/Composition/$mdi-documents
-GET [base]/Composition/$mdi-documents?name1=value1&name2=value2
-```
+ | POST [base]/Composition/$mdi-documents
+ | GET [base]/Composition/$mdi-documents?name1=value1&name2=value2
+
 
 .. flat-table:: Extended Operation for MDI Document - In & Out Parameters
    :header-rows: 1
@@ -74,4 +74,8 @@ GET [base]/Composition/$mdi-documents?name1=value1&name2=value2
    * - patient.birthdate
      - 0..1
      - date
-     - Decedent’s date of birth
+     - Decedent's date of birth
+   * - patient.family
+     - 0..1
+     - string
+     - Decedent's last name
