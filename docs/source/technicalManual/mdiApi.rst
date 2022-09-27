@@ -58,6 +58,15 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 
 **Extended Operation for MDI Document** - In & Out Parameters
 
++------+-------------+------+---------------+--------------------------+
+| Name | Cardinality | Type | Documentation                            |
++======+=============+======+===============+==========================+
+| In Parameters                                                        |
++------+-------------+------+------------------------------------------+
+| id   | 0..1        | uri  | Resource ID of Composition - MDI to EDRS |
++------+-------------+------+------------------------------------------+
+
+
 .. flat-table::
    :header-rows: 1
    * - Name
