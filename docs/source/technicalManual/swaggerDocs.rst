@@ -1,3 +1,0 @@
-Swagger Documents
-=================
-Coming Soon ...
