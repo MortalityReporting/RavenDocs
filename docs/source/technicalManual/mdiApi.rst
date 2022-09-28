@@ -1,7 +1,7 @@
 Standard MDI API
 ================
-Operation API for MDI
----------------------
+Operation APIs for MDI
+----------------------
 MDI Implementation Guide (IG) is available in https://build.fhir.org/ig/HL7/fhir-mdi-ig/index.html. This 
 guide should be used for the payload content format.
  
@@ -87,7 +87,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +------------------------+-------------+----------+---------------------------------------------------+
 
 Please note that the Search parameters related to patient are formatted with “.” (dot). In FHIR, this means 
-that the search parameters after “.” are *part* of patient parameter in Parameter resource. 
+that the search parameters after “.” are *part* of patient parameter in Parameters resource. 
 See the example below.
 
 .. code-block:: json
@@ -113,18 +113,18 @@ See the example below.
 If [id] is provided within URL path (e.g., /Composition/[id]/$mdi-documents), then the output response 
 should be an MDI document bundle as there will be only one or zero result.
 
-If *id* or *search paraemters* is provided in the URL parameter or Parameters resource in the payload 
-(e.g. [base]/Composition?name=value), then the output response should be a *searchset* bundle with 
-matching MDI documents even if there is only one result. If “OR” search parameter is needed a searching 
-parameter, then as specified in the FHIR specification (search.html), “,” should be used 
-(e.g. “valueString”: “a,b,c” for matching either a, b, or c).
+If *id* or *search paraemters* is provided in the URL parameter (e.g. [base]/Composition?name=value) 
+or Parameters resource in the payload, then the output response should be a *searchset* Bundle resource 
+with matching MDI document Bundle resources even if there is only one result. If “OR” search parameter 
+is needed in the searching parameters, then as specified in the FHIR specification 
+(https://hl7.org/fhir/R4/search.html#escaping), “,” should be used. For example, if we want to search 
+records that has death-location equals to either a, b, or c, then its search parameter in Parameters
+resource will be like below.
 
-| “name”: xyz,
-| “valueString”: “a”
+| “name”: "death-location",
+| “valueString”: “a,b,c”
 
-| “name”: xyz,
-| “valueString”: “a”
-
+Please see the examples of search Parameters resource and its response.
 
 **Request**
 
@@ -153,7 +153,6 @@ parameter, then as specified in the FHIR specification (search.html), “,” sh
 **Response**
 
 .. code-block:: json
-    GET [base]/Composition/$mdi-documents?name=Abc
     {
     "resourceType": "Bundle",
     "id": "13ab1ecf-38ce-4f47-aebb-a38396a80775",
@@ -190,13 +189,16 @@ transactions are successfully processed. 4xx or 5xx are error codes. 3xx are not
 need to be supported at the client side if redirections are required by the server. More details can 
 be found from https://en.wikipedia.org/wiki/List_of_HTTP_status_codes. 
 
-CMS must check if correct endpoint and search parameters are used if such errors are returned.
+CMS must check if correct endpoint and search parameters are used if such errors are returned. Server
+also returns error code when there are document level errors. In this case *OperationOutcome* could be
+included in the payload. CMS would want to parse the payload as it contains the source of errors. For
+more information about the *OperationOutcome*, see the following section.
 
-**MDI Document Level Errors**
+**MDI Document Level Errors with 2xx HTTP response**
 For all non 2xx status code, error(s) must be indicated in the response with a *OperationOutcome* resource. 
 
 In *OperationOutcome*, EDRS must be include information what caused the error if the error needs to be 
-fixed by CMS. If it’s EDRS that needs to fix the error, it must be indicated so that CMS user(s) can 
+fixed by CMS. If it’s the EDRS that needs to fix the error, it must be indicated so that CMS user(s) can 
 contact EDRS for the error. Below shows an example of *OperationOutcome*.
 
 .. code-block:: json
@@ -222,35 +224,43 @@ contact EDRS for the error. Below shows an example of *OperationOutcome*.
     }
 
 
-READ API (or GET A Document)
-----------------------------
+READ API
+--------
 | GET [base]/Composition/[id]/$document
 
-[id] is obtained from SEARCH API. $document is a standard FHIR operation to generate a (MDI) document.
+[id] is a Composition resource Id, which is assigned by a systems such as CMS and EDRS. If a server maintains
+the [id] for all generated FHIR Document Bundles, then this [id] can be used get the document. In this case,
+the response is a MDI document Bundle (not a *searchset* Bundle).
 
-Reference API document used as a base for this:
+If additional information is needed about the base FHIR operation that MAPI operation is extended from, 
+please refer to the following link.
 https://www.hl7.org/fhir/composition-operation-document.html
 
-Example: 
-https://apps.hdap.gatech.edu/raven-fhir-server/fhir/Composition/e4dda395-28fc-4232-bb75-1b3484fcc369/$document
 
-UPDATE APIs
------------
-General format of update and amend APIs for MDI document is as follow,
+UPDATE API
+-----------------
+During the death investigation, C/ME may need to update the case in the EDRS. This API allows CMS to update
+the active case. PUT should be used for the HTTP action method. And, Parameters resource is used to include
+the MDI document that C/MEs want to update. Since this API presumes that the case already exists in the
+EDRS, the case management system must either make sure identifier(s) is included in the MDI document or 
+provide a parameter that EDRS can use to find the case to update.
 
-| POST [base  url]/Composition/$update-mdi
+UPDATE API operations and requirement are as follows.
+
+| PUT [base url]/Composition/$update-mdi
 | Payload = Parameters resource
 
-Feature specific *operation* APIs are described in the subsections below. 
 
-Input/Output
+Input/Output Parameters
 +------------------------+-------------+----------------------------+---------------------------------+
 | Name                   | Cardinality | Type                       | Documentation                   |
 +========================+=============+============================+=================================+
 | In Parameters                                                                                       |
 +========================+=============+============================+=================================+
-| Justification defined  | 0..*        | string                     | Any required parameters for a   |
+| Jurisdiction defined   | 0..*        | string                     | Any required parameters for a   |
 | parameters             |             |                            | jurisdiction                    |
++------------------------+-------------+----------------------------+---------------------------------+
+| edrs-track-number      | 0..1        | string                     | EDRS case number if available   |
 +------------------------+-------------+----------------------------+---------------------------------+
 | mdi-document           | 0..1        | Bundle                     | MDI document bundle. The        |
 |                        |             |                            | “mdi-document” is a reserved    |
@@ -266,13 +276,13 @@ Input/Output
 |                        |             |                            | Parameters resource can be used.|
 +------------------------+-------------+----------+---------------------------------------------------+
 
-Ex. Request Body
+Ex. **Request** in the payload
 .. code-block:: json
     {    
     "resourceType": "Parameters",    
     "parameter": [
         { 
-        "name": edrs-rack-number",
+        "name": edrs-track-number",
         "valueString": "1234"
         },        
         { 
@@ -283,40 +293,40 @@ Ex. Request Body
 
         { 
         "name": "mdi-document",
-        "resource": <MDI document bundle>
+        "resource": <MDI document bundle here>
         }
         ]
     } 
 
 
-For In Parameters, jurisdictions can add their own parameters if it is needed for the update or amend 
-operation. The Jurisdiction defined params should only be used within the jurisdiction. However, if 
-parameters exist but cannot be understood, they should be ignored and NOT cause an error.
+*In Parameters* include parameters that can be used for search and MDI document that has updated information. 
+UPDATE API allows custom local search parameters. If there are local search parameters that are required
+for the case search, the local search parameters can be defined in the Parameters resource. In the table 
+above, this is labeled as "*Jurisdiction defined parameters*". It can be any name and type. However, any 
+parameter created by this method would only be supported by systems that can understand the parameter. If 
+*Jurisdiction defined parameters* exist but cannot be understood, they should be ignored and NOT cause 
+an error.
 
-The mdi-document needs to conform to MDI document profile in the MDI IG. Profile specific update and 
-amend APIs may use the profile specification to include only the data it needs to include. It is 
-possible that all information can be included in the MDI document bundle and let the servers choose 
-what they want to consume. However, this is not recommended and not safe for security.
+The MDI document in the search parameter, *mdi-document*, needs to conform to MDI IG profiles.  It is 
+not required to include all the data elements in the MDI docvument. Only data elements that need to be 
+updated can be included. At the EDRS, empty data elements or missing elments should not be understood as 
+DELETE. They should be understood as '*Not Applicable*/. Deleting cases or data elements wihtin a case 
+should be handled in a separate API (i.e. DELETE API).
 
-Case Management System (CMS) needs to include file number, work number, or case number in the EDRS. 
-This information can be specified in the Composition.identifiers. If a jurisdiction is already using 
-the Composition.identifier for another purpose, then Jurisdiction defined params can be used. 
-Currently, the following identifiers are used for the connect-a-thon testing.
+If CMS decided to use the attached MDI document to include search parameters, it is recommended to use
+identifier extension(s) in the Composistion resource located in the MDI document entry. MDI IG defines 
+tracking numbers in the extended identifiers. Thus, this can be used for searching.
 
-* NH: Six-digit death certificate ID in the Composition.identifier.
-      Work number in the URL parameter. This can use Jurisdiction defined params.
-* GA: EDRS number is used in the Compoistion.identifier
-
-The response if the UPDATE API was successful should be 200 OK. The payload is not required. If 
-EDRS or CMS needs to respond with a message, Parameters resource can be used. Jurisdiction and 
-CME office can define parameters using Parameters resource. If the submitted MDI document will 
-be included in the response body, then “mdi-document” parameter key should be used. If the API was 
+The response for a successful UPDATE API should be 200 OK. The payload is not required. If 
+EDRS or CMS needs some data with the response, Parameters resource can be used. Jurisdiction and 
+C/ME office can use the same parameters as *In Parameters* parameters. If the submitted MDI document will 
+be included in the response body, then “mdi-document” parameter key should be used. If the API operation was 
 successful, but there were some warnings that EDRS wants to send back to CMS, then parameter name 
-should be “warning”. And, “resource” should be used to include OperationOutcome resource.
+should be “warning”. And, “resource” should be used to include OperationOutcome resource. If the API 
+operations were failed, then the response should be OperationOutcome resource with a HTTP error code. 
+Please see the example of response below. 
 
-If error occurs, then OperationOutcome will be sent back to CMS. 
-
-Ex. Response Body (if the operation was successful, and EDRS wants to respond with data) 
+Ex. **Response** (if the operation was successful, and EDRS wants to respond with data) 
 
 .. code-block:: json
     {
@@ -364,56 +374,22 @@ Response Body (If error occurs)
     ]
     }
 
-Cause-Manner Update API ($cause-manner-update-mdi)
---------------------------------------------------
-Causes of death are defined after the death investigation. Thus, when the case is created, and search(es) 
-were performed, causes-of-death data elements would be likely either not available or marked as pending. 
-This API is used to update the causes of death in the working death report. 
+AMEND Certified API (after death report certification)
+-----------------------------------------------------------
+Future work - AMENDing certified death report needs MDI community discussions as amending processes are 
+somewhat different from state to state.
 
-In the cause-of-death update API, Case Management System (CMS) can focus on the cause_manner section 
-slice of MDI document as shown in 
-https://build.fhir.org/ig/HL7/fhir-mdi-ig/StructureDefinition-Composition-mdi-to-edrs.html. 
-All resource profiles that are referred to in this section should be included in the entry of the Bundle 
-document. The other sections are optional, which can be added based on the need. Please refer to the 
-following example. 
-
-| POST [base]/Composition/$cause-manner-update-mdi
-
-Payload:
-.. code-block:: json
-    {    
-    "resourceType": "Parameters",    
-    "parameter": [
-        { 
-        "name": "mid-document",
-        "resource": {
-            "resourceType": "Bundle",
-            …
-            "entry": [ {
-            "resourceType": "Composition", …
-            "section": […] // sliced section for cause_manner.
-            } …
-            ]
-        }
-    ]
-    }
-
-Additional parameters can be added to the Parameters resource if it’s required for a jurisdiction workflow. 
-Sliced sections for other profiles can also be added. However, it may violate in some jurisdiction death 
-registration systems that enforce the confidentiality during the data exchanges.
-
-Amending Certificate API (after death report is certified)
-----------------------------------------------------------
-Future work
-
-Certification API
------------------
-Future work
+CERTIFY API
+-----------
+This API is to certify the death report. This is a future work as MDI community discussions are needed. 
 
 CREATE API
 ----------
-Future work
+This API is to create a case in EDRS. This API is to be used when a case needs to be created in EDRS by
+C/MEs.
 
 DELETE API
 ----------
-Future work
+It won't be allowed to delete entire case. However, since there are cases where modifications are needed
+within a case, the DELETE API should be used to delete the elements, not the actual cases. 
+This is future work.
