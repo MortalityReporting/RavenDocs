@@ -21,7 +21,7 @@ US Core FHIR IG | https://www.hl7.org/fhir/us/core/
 All profiles are built on top of standard .NET FHIR classes (https://github.com/FirelyTeam/firely-net-sdk). 
 
 ODH, US PH, and US Core IGs are base IGs that MDI and CBS IGs are built on. Thus, only referenced 
-profiles in US PH, US Core, and ODH are implemented. Rest of profiles will be added based on the needs.
+profiles in US PH, US Core, and ODH are implemented. The rest of the profiles will be added based on the needs.
 
 MDI .NET libraries are available for download from nuget.org. Simply search by "MDI FHIR". The result will 
 show up as follow, 
