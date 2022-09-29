@@ -161,33 +161,33 @@ Please see the examples of search Parameters resource and its response.
 .. code-block:: json
 
     {
-    "resourceType": "Bundle",
-    "id": "13ab1ecf-38ce-4f47-aebb-a38396a80775",
-    "type": "searchset",
-    "total": 1,
-    "entry": [
-        {
-        "resourceType": "Bundle",
-        "id": "fd240814-5911-49bb-bb20-72066add4a18",
-        "meta": {
-            "profile": [
-            "http://hl7.org/fhir/us/mdi/StructureDefinition/Bundle-document-mdi-to-edrs"
-            ]
-        },
-        "type": "document",
-        "entry": [
-         {
-            "fullUrl": "Composition/965a0688-e6f4-4bff-a96d-639cbd7ea295",
-            "resource": {
-                "resourceType": "Composition",
-                "id": "965a0688-e6f4-4bff-a96d-639cbd7ea295",
-   
-            }
-         }
-         ]
-         }
-    ]
+       "resourceType":"Bundle",
+       "id":"13ab1ecf-38ce-4f47-aebb-a38396a80775",
+       "type":"searchset",
+       "total":1,
+       "entry":[
+          {
+             "resourceType":"Bundle",
+             "id":"fd240814-5911-49bb-bb20-72066add4a18",
+             "meta":{
+                "profile":[
+                   "http://hl7.org/fhir/us/mdi/StructureDefinition/Bundle-document-mdi-to-edrs"
+                ]
+             },
+             "type":"document",
+             "entry":[
+                {
+                   "fullUrl":"Composition/965a0688-e6f4-4bff-a96d-639cbd7ea295",
+                   "resource":{
+                      "resourceType":"Composition",
+                      "id":"965a0688-e6f4-4bff-a96d-639cbd7ea295"
+                   }
+                }
+             ]
+          }
+       ]
     }
+    
 
 Error Handling
 ^^^^^^^^^^^^^^
@@ -213,32 +213,31 @@ contact EDRS for the error. Below shows an example of *OperationOutcome*.
     :caption: HTTP/1.1 500 Internal Server Error
 
     {
-    "resourceType": "OperationOutcome",
-    "id": "searchfail",
-    "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      
-        <p>The &quot;name&quot; parameter has the modifier &quot;exact&quot; which is not supported by 
-        this server</p>\n</div>"
-    },
-    "issue": [
-        {
-        "severity": "fatal",
-        "code": "code-invalid",
-        "details": {
-            "text": "The \"name\" parameter has the modifier \"exact\" which is not supported by this server"
-        }
-        }
-    ]
+       "resourceType":"OperationOutcome",
+       "id":"searchfail",
+       "text":{
+          "status":"generated",
+          "div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      
+            <p>The &quot;name&quot; parameter has the modifier &quot;exact&quot; which is not supported by 
+            this server</p>\n</div>"
+       },
+       "issue":[
+          {
+             "severity":"fatal",
+             "code":"code-invalid",
+             "details":{
+                "text":"The \"name\" parameter has the modifier \"exact\" which is not supported by this server"
+             }
+          }
+       ]
     }
-
 
 READ API
 --------
 
 READ API URL pattern is::
 
-GET [base FHIR URL]/Composition/``id``/$document
+  GET [base FHIR URL]/Composition/``id``/$document
 
 ``id`` is a Composition resource Id, which is assigned by a systems such as CMS and EDRS. If a server maintains
 the ``id`` for all generated FHIR Document Bundles, then this [id] can be used get the document. In this case,
@@ -293,24 +292,25 @@ Ex. **Request** in the payload
 
 .. code-block:: json
 
-    {    
-    "resourceType": "Parameters",    
-    "parameter": [
-        { 
-        "name": "edrs-track-number",
-        "valueString": "1234"
-        },        
-        { 
-        "name": "jurisdiction defined key2",
-        "valueString": "value2"
-        },
-        { 
-        "name": "mdi-document",
-        "resource": { "MDI document bundle here "}
-        }
-        ]
-    } 
-
+    {
+       "resourceType":"Parameters",
+       "parameter":[
+          {
+             "name":"edrs-track-number",
+             "valueString":"1234"
+          },
+          {
+             "name":"jurisdiction defined key2",
+             "valueString":"value2"
+          },
+          {
+             "name":"mdi-document",
+             "resource":{
+                "MDI document bundle here "
+             }
+          }
+       ]
+    }
 
 *In Parameters* include parameters that can be used for search and MDI document that has updated information. 
 UPDATE API allows custom local search parameters. If there are local search parameters that are required
@@ -343,47 +343,52 @@ Ex. **Response** if the operation was successful, and EDRS wanted to respond wit
 
 .. code-block:: json
 
-    {
-        "resourceType": "Parameters",    
-        "parameter": [
-        { 
-        "name": "jurisdiction defined key1",
-        "valueString": "value1"
-        },        
-        { 
-        "name": "jurisdiction defined key2",
-        "valueString": "value2"
-        },
-        { 
-        "name": "mdi-document",
-        "resource": { "MDI document bundle" }
-        },
-        { 
-        "name": "warning",
-        "resource": { "OperationOutcome resource" }
-        }
-        ]
-    }
+   {
+      "resourceType":"Parameters",
+      "parameter":[
+         {
+            "name":"jurisdiction defined key1",
+            "valueString":"value1"
+         },
+         {
+            "name":"jurisdiction defined key2",
+            "valueString":"value2"
+         },
+         {
+            "name":"mdi-document",
+            "resource":{
+               "MDI document bundle"
+            }
+         },
+         {
+            "name":"warning",
+            "resource":{
+               "OperationOutcome resource"
+            }
+         }
+      ]
+   }
+
 
 **Response** if error occured.
 
 .. code-block:: json
 
     {
-    "resourceType": "OperationOutcome",
-    "id": "searchfail",
-    "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>The &quot;case number&quot; 1234 does not exist</p>\n    </div>"
-    },
-    "issue": [
-        {
-        "severity": "fatal",
-        "code": "case-invalid",
-        "details": {
-            "text": "The \"case number\" 1234 does not exist."
-        }
-        }
-    ]
+       "resourceType":"OperationOutcome",
+       "id":"searchfail",
+       "text":{
+          "status":"generated",
+          "div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>The &quot;case number&quot; 1234 does not exist</p>\n    </div>"
+       },
+       "issue":[
+          {
+             "severity":"fatal",
+             "code":"case-invalid",
+             "details":{
+                "text":"The \"case number\" 1234 does not exist."
+             }
+          }
+       ]
     }
 
