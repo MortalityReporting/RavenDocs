@@ -54,43 +54,43 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 
 **Search Parameters for the MDI Document Generation**
 
-+------------------------+-------------+----------+---------------+-----------------------------------+
-| Name                   | Cardinality | Type     | Documentation                                     |
-+========================+=============+==========+===============+===================================+
-| In Parameters                                                                                       |
-+========================+=============+==========+===============+===================================+
-| id                     | 0..1        | uri      | Resource ID of Composition - MDI to EDRS          |
-+------------------------+-------------+----------+---------------------------------------------------+
-| patient                | 0..*        |          | One or more decedent related search parameters    |
-+------------------------+-------------+----------+---------------------------------------------------+
-| patient.birthdate      | 0..1        | date     | Decedent's date of birth                          |
-+------------------------+-------------+----------+---------------------------------------------------+
-| patient.family         | 0..1        | string   | Decedent's last name                              |
-+------------------------+-------------+----------+---------------------------------------------------+
-| patient.given          | 0..1        | string   | Decedent's first name                             |
-+------------------------+-------------+----------+---------------------------------------------------+
-| patient.gender         | 0..1        | token    | Decedent's gender                                 |
-+------------------------+-------------+----------+---------------------------------------------------+
-| tracking-number        | 0..1        | token    | Search by identifier in Composition - MDI to EDRS |
-+------------------------+-------------+----------+---------------------------------------------------+
-| death-location         | 0..1        | string   | District of death location                        |
-+------------------------+-------------+----------+---------------------------------------------------+
-| death-date.actual      | 0..1        | date     | It should be either actual, pronounced, or all    |
-| death-date.pronounced  |             |          | if 'all' is used, then it means searching by both |
-| death-date.all         |             |          | 'actual' and 'pronounced' date of death           |
-+------------------------+-------------+----------+---------------------------------------------------+
-| Out Parameters                                                                                      |
-+========================+=============+==========+===============+===================================+
-| return                 | 0..1        | resource | Searchset Bundle that includes MDI document       |
-|                        |             |          | bundles. If [id] is supplied, then this should be |
-|                        |             |          | Bundle - Document MDI to EDRS                     |
-+------------------------+-------------+----------+---------------------------------------------------+
++--------------------------+-------------+----------+---------------------------------------------------+
+| Name                     | Cardinality | Type     | Documentation                                     |
++==========================+=============+==========+===================================================+
+| In Parameters                                                                                         |
++--------------------------+-------------+----------+---------------------------------------------------+
+| id                       | 0..1        | uri      | Resource ID of Composition - MDI to EDRS          |
++--------------------------+-------------+----------+---------------------------------------------------+
+| patient                  | 0..*        |          | One or more decedent related search parameters    |
++--------------------------+-------------+----------+---------------------------------------------------+
+| patient.birthdate        | 0..1        | date     | Decedent's date of birth                          |
++--------------------------+-------------+----------+---------------------------------------------------+
+| patient.family           | 0..1        | string   | Decedent's last name                              |
++--------------------------+-------------+----------+---------------------------------------------------+
+| patient.given            | 0..1        | string   | Decedent's first name                             |
++--------------------------+-------------+----------+---------------------------------------------------+
+| patient.gender           | 0..1        | token    | Decedent's gender                                 |
++--------------------------+-------------+----------+---------------------------------------------------+
+| tracking-number          | 0..1        | token    | Search by identifier in Composition - MDI to EDRS |
++--------------------------+-------------+----------+---------------------------------------------------+
+| death-location           | 0..1        | string   | District of death location                        |
++--------------------------+-------------+----------+---------------------------------------------------+
+| | death-date.actual      | 0..1        | date     | It should be either actual, pronounced, or all    |
+| | death-date.pronounced  |             |          | if 'all' is used, then it means searching by both |
+| | death-date.all         |             |          | 'actual' and 'pronounced' date of death           |
++--------------------------+-------------+----------+---------------------------------------------------+
+| Out Parameters                                                                                        |
++--------------------------+-------------+----------+---------------------------------------------------+
+| return                   | 0..1        | resource | Searchset Bundle that includes MDI document       |
+|                          |             |          | bundles. If [id] is supplied, then this should be |
+|                          |             |          | Bundle - Document MDI to EDRS                     |
++--------------------------+-------------+----------+---------------------------------------------------+
 
 Please note that the Search parameters related to patient are formatted with “.” (dot). In FHIR, this means 
 that the search parameters after “.” are *part* of patient parameter in Parameters resource. 
 See the example below.
 
-.. code-block:: json
+.. code-block:: json-object
     {
     "resourceType": "Parameters",
     "parameter": [
@@ -128,8 +128,8 @@ Please see the examples of search Parameters resource and its response.
 
 **Request**
 
+| POST [base]/Composition/$mdi-documents
 .. code-block:: json
-    POST [base]/Composition/$mdi-documents
     {
     "resourceType": "Parameters",
     "parameter": [
@@ -201,8 +201,8 @@ In *OperationOutcome*, EDRS must be include information what caused the error if
 fixed by CMS. If it’s the EDRS that needs to fix the error, it must be indicated so that CMS user(s) can 
 contact EDRS for the error. Below shows an example of *OperationOutcome*.
 
+| HTTP/1.1 500 Internal Server Error
 .. code-block:: json
-    HTTP/1.1 500 Internal Server Error
     {
     "resourceType": "OperationOutcome",
     "id": "searchfail",
@@ -252,11 +252,12 @@ UPDATE API operations and requirement are as follows.
 
 
 Input/Output Parameters
+
 +------------------------+-------------+----------------------------+---------------------------------+
 | Name                   | Cardinality | Type                       | Documentation                   |
 +========================+=============+============================+=================================+
 | In Parameters                                                                                       |
-+========================+=============+============================+=================================+
++------------------------+-------------+----------------------------+---------------------------------+
 | Jurisdiction defined   | 0..*        | string                     | Any required parameters for a   |
 | parameters             |             |                            | jurisdiction                    |
 +------------------------+-------------+----------------------------+---------------------------------+
@@ -269,14 +270,15 @@ Input/Output Parameters
 |                        |             |                            | profile bundle document.        |
 +------------------------+-------------+----------------------------+---------------------------------+
 | Out Parameters                                                                                      |
-+========================+=============+============================+=================================+
++------------------------+-------------+----------------------------+---------------------------------+
 | return                 | 0..1        | OperationOutcomeParameters | If an error occurs, OO resource |
 |                        |             |                            | is returned. If response data   |
 |                        |             |                            | need to be sent back,           |
 |                        |             |                            | Parameters resource can be used.|
-+------------------------+-------------+----------+---------------------------------------------------+
++------------------------+-------------+----------------------------+---------------------------------+
 
 Ex. **Request** in the payload
+
 .. code-block:: json
     {    
     "resourceType": "Parameters",    
@@ -369,7 +371,7 @@ Ex. **Response** if the operation was successful, and EDRS wanted to respond wit
         "code": "case-invalid",
         "details": {
             "text": "The \"case number\" 1234 does not exist."
-            }
+        }
         }
     ]
     }
