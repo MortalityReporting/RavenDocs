@@ -46,44 +46,47 @@ Extended Operation for MDI Document generation
 This is a resource instance type extended operation. It means that the MDI document is generated from the 
 Composition resource. And the extension is made to the extended search parameters.
 
-This is an idempotent operation. Both POST and GET can be used with the following endpoint URL pattern.
+This is an idempotent operation. Both POST and GET can be used with the following endpoint URL pattern::
 
- | POST [base FHIR Url]/Composition/$mdi-documents
- | GET  [base FHIR Url]/Composition/$mdi-documents?name1=value1&name2=value2
+  POST [base FHIR Url]/Composition/$mdi-documents
+  GET  [base FHIR Url]/Composition/$mdi-documents?name1=value1&name2=value2
 
 
 **Search Parameters for the MDI Document Generation**
 
+.. table:: Search Parameters for the MDI Document Generation Operation
+   :width: 100%
+   
 +--------------------------+-------------+----------+---------------------------------------------------+
-| Name                     | Cardinality | Type     | Documentation                                     |
+|Name                      |Cardinality  |Type      |Documentation                                      |
 +==========================+=============+==========+===================================================+
-| In Parameters                                                                                         |
+|In Parameters                                                                                          |
 +--------------------------+-------------+----------+---------------------------------------------------+
-| id                       | 0..1        | uri      | Resource ID of Composition - MDI to EDRS          |
+|id                        |0..1         |uri       |Resource ID of Composition - MDI to EDRS           |
 +--------------------------+-------------+----------+---------------------------------------------------+
-| patient                  | 0..*        |          | One or more decedent related search parameters    |
+|patient                   |0..*         |          |One or more decedent related search <br/>parameters     |
 +--------------------------+-------------+----------+---------------------------------------------------+
-| patient.birthdate        | 0..1        | date     | Decedent's date of birth                          |
+|patient.birthdate         |0..1         |date      |Decedent's date of birth                           |
 +--------------------------+-------------+----------+---------------------------------------------------+
-| patient.family           | 0..1        | string   | Decedent's last name                              |
+|patient.family            |0..1         |string    |Decedent's last name                               |
 +--------------------------+-------------+----------+---------------------------------------------------+
-| patient.given            | 0..1        | string   | Decedent's first name                             |
+|patient.given             |0..1         |string    |Decedent's first name                              |
 +--------------------------+-------------+----------+---------------------------------------------------+
-| patient.gender           | 0..1        | token    | Decedent's gender                                 |
+|patient.gender            |0..1         |token     |Decedent's gender                                  |
 +--------------------------+-------------+----------+---------------------------------------------------+
-| tracking-number          | 0..1        | token    | Search by identifier in Composition - MDI to EDRS |
+|tracking-number           |0..1         |token     |Search by identifier in Composition - MDI to EDRS  |
 +--------------------------+-------------+----------+---------------------------------------------------+
-| death-location           | 0..1        | string   | District of death location                        |
+|death-location            |0..1         |string    |District of death location                         |
 +--------------------------+-------------+----------+---------------------------------------------------+
-| | death-date.actual      | 0..1        | date     | It should be either actual, pronounced, or all    |
-| | death-date.pronounced  |             |          | if 'all' is used, then it means searching by both |
-| | death-date.all         |             |          | 'actual' and 'pronounced' date of death           |
+||death-date.actual        |0..1         |date      |It should be either actual, pronounced, or all     |
+||death-date.pronounced    |             |          |if 'all' is used, then it means searching by both  |
+||death-date.all           |             |          |'actual' and 'pronounced' date of death            |
 +--------------------------+-------------+----------+---------------------------------------------------+
-| Out Parameters                                                                                        |
+|Out Parameters                                                                                         |
 +--------------------------+-------------+----------+---------------------------------------------------+
-| return                   | 0..1        | resource | Searchset Bundle that includes MDI document       |
-|                          |             |          | bundles. If [id] is supplied, then this should be |
-|                          |             |          | Bundle - Document MDI to EDRS                     |
+|return                    |0..1         |resource  |Searchset Bundle that includes MDI document        |
+|                          |             |          |bundles. If [id] is supplied, then this should be  |
+|                          |             |          |Bundle - Document MDI to EDRS                      |
 +--------------------------+-------------+----------+---------------------------------------------------+
 
 Please note that the Search parameters related to patient are formatted with “.” (dot). In FHIR, this means 
@@ -93,23 +96,24 @@ See the example below.
 .. code-block:: json-object
 
     {
-    "resourceType": "Parameters",
-    "parameter": [
-        {
-        "name": "patient",
-        "part": [
-            { 
-            "name": "family",
-            "valueString": "Hans"
-            },
-            { 
-            "name": "given",
-            "valueString": "Kennoby"
-            }
-        ]
-        }
-    ]
+       "resourceType":"Parameters",
+       "parameter":[
+          {
+             "name":"patient",
+             "part":[
+                {
+                   "name":"family",
+                   "valueString":"Hans"
+                },
+                {
+                   "name":"given",
+                   "valueString":"Kennoby"
+                }
+             ]
+          }
+       ]
     }
+
 
 If [id] is provided within URL path (e.g., /Composition/[id]/$mdi-documents), then the output response 
 should be an MDI document bundle as there will be only one or zero result.
@@ -120,17 +124,17 @@ with matching MDI document Bundle resources even if there is only one result. If
 is needed in the searching parameters, then as specified in the FHIR specification 
 (https://hl7.org/fhir/R4/search.html#escaping), “,” should be used. For example, if we want to search 
 records that has death-location equals to either a, b, or c, then its search parameter in Parameters
-resource will be like below.
+resource will be like below::
 
- | “name”: "death-location",
- | “valueString”: “a,b,c”
+ “name”: "death-location",
+ “valueString”: “a,b,c”
 
 Please see the examples of search Parameters resource and its response.
 
 **Request**
 
 .. code-block:: json
-   :caption: POST FHIRbaseURL/Composition/$mdi-documents
+   :caption: POST [FHIRbaseURL]/Composition/$mdi-documents
     
    {
    "resourceType": "Parameters",
