@@ -91,6 +91,7 @@ that the search parameters after “.” are *part* of patient parameter in Para
 See the example below.
 
 .. code-block:: json-object
+
     {
     "resourceType": "Parameters",
     "parameter": [
