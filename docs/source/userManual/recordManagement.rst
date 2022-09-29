@@ -17,7 +17,7 @@ and persists them in the MDI FHIR server.
     **Use Case**: Mapping of any case management system data (in CSV/spreadsheet format) to MDI FHIR and 
     importing them to the Raven FHIR server
 
-For the case importing, predefined CSV or spreadsheet template is provided to users. Users populate their 
+For the case importing, a predefined CSV or spreadsheet template is provided to users. Users populate their 
 data to the provided template. The user-data will be converted to the MDI FHIR IG data and imported to 
 Raven FHIR server.
 
@@ -44,7 +44,7 @@ Coming Soon ...
 
 Case Viewer (Viewing Cases)
 ---------------------------
-The Case Viewer is a UI Component which allows the browsing and viewing of Raven FHIR Server records, 
+The Case Viewer is a UI component which allows the browsing and viewing of Raven FHIR Server records, 
 encompassing both MDI Case Documents (MDI to EDRS) and Toxicology Reports (LIMS to MDI). 
 In addition to providing a user-friendly option for viewing the data present on the FHIR Server, 
 the layout is structured from the perspective of the MDI Implementation Guide to serve as an educational 
@@ -61,7 +61,7 @@ support JSON and XML formats, as well as a human readable “narrative view”.
 
 .. note::
     **Use Case**: Human readable display of MDI FHIR IG data with a FHIR explorer. Any cases loaded in 
-    the Raven should be retrievable by Case Viewer. Users can use FHIR APIs to load
+    the Raven FHIR server should be retrievable by Case Viewer. Users can use FHIR APIs to load the data.
 
 Value
 ^^^^^
@@ -73,7 +73,7 @@ format, the MDI CSV format was designed. The Case Import feature maps the pre-de
 the MDI FHIR IG format and saves them to the MDI FHIR server.
 
 Case View provides a user-friendly option for viewing the data present on the FHIR Server. Also, the layout 
-of the Case View is structured from the perspective of the MDI Implementation Guide (IG) to server as an 
+of the Case View is structured from the perspective of the MDI Implementation Guide (IG) to serve as an 
 educational tool for users to better understand the data structure and fields which make up the MDI CMS to 
 EDRS and Toxicology documents.
 

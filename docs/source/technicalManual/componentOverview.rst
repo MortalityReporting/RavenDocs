@@ -1,19 +1,11 @@
+.. _componentOverview:
+
 Component Overview
 ==================
+Raven / Bluejay FHiR Server
+---------------------------
 Coming Soon ...
 
-Raven FHiR Server
+Raven Dashboard
 -----------------
-Coming Soon ...
-
-MDI APIs
-----------
-Coming Soon ...
-
-Raven Dashboard 2
------------------
-Coming Soon ...
-
-Bluejay FHIR Server
--------------------
 Coming Soon ...
