@@ -129,8 +129,9 @@ Please see the examples of search Parameters resource and its response.
 
 **Request**
 
-| POST [base]/Composition/$mdi-documents
 .. code-block:: json
+    :caption: POST [base]/Composition/$mdi-documents
+    
     {
     "resourceType": "Parameters",
     "parameter": [
@@ -154,6 +155,7 @@ Please see the examples of search Parameters resource and its response.
 **Response**
 
 .. code-block:: json
+
     {
     "resourceType": "Bundle",
     "id": "13ab1ecf-38ce-4f47-aebb-a38396a80775",
@@ -202,8 +204,9 @@ In *OperationOutcome*, EDRS must be include information what caused the error if
 fixed by CMS. If it’s the EDRS that needs to fix the error, it must be indicated so that CMS user(s) can 
 contact EDRS for the error. Below shows an example of *OperationOutcome*.
 
-| HTTP/1.1 500 Internal Server Error
 .. code-block:: json
+    :caption: HTTP/1.1 500 Internal Server Error
+
     {
     "resourceType": "OperationOutcome",
     "id": "searchfail",
@@ -281,6 +284,7 @@ Input/Output Parameters
 Ex. **Request** in the payload
 
 .. code-block:: json
+
     {    
     "resourceType": "Parameters",    
     "parameter": [
@@ -332,6 +336,7 @@ Please see the example of response below.
 Ex. **Response** if the operation was successful, and EDRS wanted to respond with updated data.
 
 .. code-block:: json
+
     {
         "resourceType": "Parameters",    
         "parameter": [
@@ -359,6 +364,7 @@ Ex. **Response** if the operation was successful, and EDRS wanted to respond wit
 **Response** if error occured.
 
 .. code-block:: json
+
     {
     "resourceType": "OperationOutcome",
     "id": "searchfail",
