@@ -4,9 +4,24 @@ Raven provides helper libraries for developers who develop MDI IG functionality 
 itself is using this library in order to produce and consume the MDI IG data. The libraries are available in
 Java and .NET and are also available as an open source. Details for each library are provided below.
 
-MDI Java Lib
+MDI JavaLib
 ------------
-Coming Soon ...
+This Java Library is for the following FHIR Implemtation Guides (IG)
+
+Medicolegal Death Investigation (MDI) FHIR IG | https://build.fhir.org/ig/HL7/fhir-mdi-ig/
+Occupational Data for Health (ODH) FHIR IG | http://hl7.org/fhir/us/odh/STU1.1/
+US Core FHIR IG | https://www.hl7.org/fhir/us/core/
+
+The model profiles are built with the annotation package and base model definitions from HAPI-FHIR (https://hapifhir.io/)
+
+MDI Javalib is available as a buildable source package in the MortalityReporting github organization (https://github.com/MortalityReporting/MDI_javalib)
+
+The library is built as a maven project and can be added as a dependency to existing projects (https://maven.apache.org/)
+
+User can use the MDI Javalib to
+- Deserialize JSON or XML into java objects
+- Create new resources from an internal data source
+- Serialize java objects into JSON or XML for transmission
 
 MDI .NET
 --------
