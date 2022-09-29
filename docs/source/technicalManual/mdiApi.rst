@@ -55,7 +55,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 **Search Parameters for the MDI Document Generation**
 
 .. table:: Search Parameters for the MDI Document Generation Operation
-   :width: 100%
+   :widths: auto
    
 +--------------------------+-------------+----------+---------------------------------------------------+
 |Name                      |Cardinality  |Type      |Documentation                                      |
@@ -64,7 +64,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +--------------------------+-------------+----------+---------------------------------------------------+
 |id                        |0..1         |uri       |Resource ID of Composition - MDI to EDRS           |
 +--------------------------+-------------+----------+---------------------------------------------------+
-|patient                   |0..*         |          |One or more decedent related search <br/>parameters|
+|patient                   |0..*         |          |One or more decedent related search parameters     |
 +--------------------------+-------------+----------+---------------------------------------------------+
 |patient.birthdate         |0..1         |date      |Decedent's date of birth                           |
 +--------------------------+-------------+----------+---------------------------------------------------+
@@ -78,9 +78,9 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +--------------------------+-------------+----------+---------------------------------------------------+
 |death-location            |0..1         |string    |District of death location                         |
 +--------------------------+-------------+----------+---------------------------------------------------+
-|death-date.actual         |0..1         |date      |It should be either actual, pronounced, or all     |
-|death-date.pronounced     |             |          |if 'all' is used, then it means searching by both  |
-|death-date.all            |             |          |'actual' and 'pronounced' date of death            |
+|| death-date.actual       |0..1         |date      |It should be either actual, pronounced, or all     |
+|| death-date.pronounced   |             |          |if 'all' is used, then it means searching by both  |
+|| death-date.all          |             |          |'actual' and 'pronounced' date of death            |
 +--------------------------+-------------+----------+---------------------------------------------------+
 |Out Parameters                                                                                         |
 +--------------------------+-------------+----------+---------------------------------------------------+
@@ -136,24 +136,24 @@ Please see the examples of search Parameters resource and its response.
 .. code-block:: json
    :caption: POST [FHIRbaseURL]/Composition/$mdi-documents
     
-   {
-   "resourceType": "Parameters",
-   "parameter": [
-       {
-       "name": "patient",
-       "part": [
-           { 
-           "name": "family",
-           "valueString": "Hans"
-           },
-           { 
-           "name": "given",
-           "valueString": "Kennoby"
-           }
+    {
+       "resourceType":"Parameters",
+       "parameter":[
+          {
+             "name":"patient",
+             "part":[
+                {
+                   "name":"family",
+                   "valueString":"Hans"
+                },
+                {
+                   "name":"given",
+                   "valueString":"Kennoby"
+                }
+             ]
+          }
        ]
-       }
-   ]
-   }
+    }
 
 
 **Response**
