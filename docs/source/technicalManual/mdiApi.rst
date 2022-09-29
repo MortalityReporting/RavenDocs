@@ -233,12 +233,13 @@ contact EDRS for the error. Below shows an example of *OperationOutcome*.
     }
 
 
-READ API
+READ API::
 --------
-| GET [base]/Composition/[id]/$document
 
-[id] is a Composition resource Id, which is assigned by a systems such as CMS and EDRS. If a server maintains
-the [id] for all generated FHIR Document Bundles, then this [id] can be used get the document. In this case,
+GET [base]/Composition/``id``/$document
+
+``id`` is a Composition resource Id, which is assigned by a systems such as CMS and EDRS. If a server maintains
+the ``id`` for all generated FHIR Document Bundles, then this [id] can be used get the document. In this case,
 the response is a MDI document Bundle (not a *searchset* Bundle).
 
 If additional information is needed about the base FHIR operation that MAPI operation is extended from, 
@@ -254,10 +255,10 @@ the MDI document that C/MEs want to update. Since this API presumes that the cas
 EDRS, the case management system must either make sure identifier(s) is included in the MDI document or 
 provide a parameter that EDRS can use to find the case to update.
 
-UPDATE API operations and requirement are as follows.
+UPDATE API operations and requirement are as follows.::
 
-| PUT [base url]/Composition/$update-mdi
-| Payload = Parameters resource
+PUT [base url]/Composition/$update-mdi
+Payload = Parameters resource
 
 
 Input/Output Parameters
@@ -267,8 +268,8 @@ Input/Output Parameters
 +========================+=============+============================+=================================+
 | In Parameters                                                                                       |
 +------------------------+-------------+----------------------------+---------------------------------+
-| Jurisdiction defined   | 0..*        | string                     | Any required parameters for a   |
-| parameters             |             |                            | jurisdiction                    |
+| ``Jurisdiction defined | 0..*        | string                     | Any required parameters for a   |
+| parameters``           |             |                            | jurisdiction                    |
 +------------------------+-------------+----------------------------+---------------------------------+
 | edrs-track-number      | 0..1        | string                     | EDRS case number if available   |
 +------------------------+-------------+----------------------------+---------------------------------+
@@ -312,7 +313,7 @@ Ex. **Request** in the payload
 *In Parameters* include parameters that can be used for search and MDI document that has updated information. 
 UPDATE API allows custom local search parameters. If there are local search parameters that are required
 for the case search, the local search parameters can be defined in the Parameters resource. In the table 
-above, this is labeled as "*Jurisdiction defined parameters*". It can be any name and type. However, any 
+above, this is labeled as ``Jurisdiction defined parameters``. It can be any name and type. However, any 
 parameter created by this method would only be supported by systems that can understand the parameter. If 
 *Jurisdiction defined parameters* exist but cannot be understood, they should be ignored and NOT cause 
 an error.
