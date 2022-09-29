@@ -23,8 +23,9 @@ All profiles are built on top of standard .NET FHIR classes (https://github.com/
 ODH, US PH, and US Core IGs are base IGs that MDI and CBS IGs are built on. Thus, only referenced 
 profiles in US PH, US Core, and ODH are implemented. Rest of profiles will be added based on the needs.
 
-MDI .NET libraries are available for download from nuget.org. Simply search by "MDI FHIR". The result will 
-show up as follow, 
+MDI .NET libraries are available for download from nuget.org. Simply search by "MDI FHIR" at the nuget manager
+in Visual Studio. If you want to download nuget.org, then the link will be 
+https://www.nuget.org/packages?q=MDI+FHIR. The result will show up as follow, 
 
 .. image:: 
    ../images/mdi_in_nuget.png
