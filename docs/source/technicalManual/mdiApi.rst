@@ -122,34 +122,34 @@ is needed in the searching parameters, then as specified in the FHIR specificati
 records that has death-location equals to either a, b, or c, then its search parameter in Parameters
 resource will be like below.
 
-| “name”: "death-location",
-| “valueString”: “a,b,c”
+ | “name”: "death-location",
+ | “valueString”: “a,b,c”
 
 Please see the examples of search Parameters resource and its response.
 
 **Request**
 
 .. code-block:: json
-    :caption: POST [base]/Composition/$mdi-documents
+   :caption: POST [FHIR base URL]/Composition/$mdi-documents
     
-    {
-    "resourceType": "Parameters",
-    "parameter": [
-        {
-        "name": "patient",
-        "part": [
-            { 
-            "name": "family",
-            "valueString": "Hans"
-            },
-            { 
-            "name": "given",
-            "valueString": "Kennoby"
-            }
-        ]
-        }
-    ]
-    }
+   {
+   "resourceType": "Parameters",
+   "parameter": [
+       {
+       "name": "patient",
+       "part": [
+           { 
+           "name": "family",
+           "valueString": "Hans"
+           },
+           { 
+           "name": "given",
+           "valueString": "Kennoby"
+           }
+       ]
+       }
+   ]
+   }
 
 
 **Response**
@@ -172,15 +172,16 @@ Please see the examples of search Parameters resource and its response.
         },
         "type": "document",
         "entry": [
-            {
+         {
             "fullUrl": "Composition/965a0688-e6f4-4bff-a96d-639cbd7ea295",
             "resource": {
                 "resourceType": "Composition",
                 "id": "965a0688-e6f4-4bff-a96d-639cbd7ea295",
-                \. \. \.
+   
             }
-        ]
-        }
+         }
+         ]
+         }
     ]
     }
 
@@ -289,18 +290,16 @@ Ex. **Request** in the payload
     "resourceType": "Parameters",    
     "parameter": [
         { 
-        "name": edrs-track-number",
+        "name": "edrs-track-number",
         "valueString": "1234"
         },        
         { 
         "name": "jurisdiction defined key2",
         "valueString": "value2"
         },
-        \. \. \.
-
         { 
         "name": "mdi-document",
-        "resource": \<MDI document bundle here\>
+        "resource": { "MDI document bundle here "}
         }
         ]
     } 
@@ -348,15 +347,13 @@ Ex. **Response** if the operation was successful, and EDRS wanted to respond wit
         "name": "jurisdiction defined key2",
         "valueString": "value2"
         },
-        \. \. \.
-
         { 
         "name": "mdi-document",
-        "resource": <MDI document bundle>
+        "resource": { "MDI document bundle" }
         },
         { 
         "name": "warning",
-        "resource": \<OperationOutcome resource\>
+        "resource": { "OperationOutcome resource" }
         }
         ]
     }
