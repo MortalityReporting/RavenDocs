@@ -130,7 +130,7 @@ Please see the examples of search Parameters resource and its response.
 **Request**
 
 .. code-block:: json
-   :caption: POST [FHIR base URL]/Composition/$mdi-documents
+   :caption: POST FHIRbaseURL/Composition/$mdi-documents
     
    {
    "resourceType": "Parameters",
