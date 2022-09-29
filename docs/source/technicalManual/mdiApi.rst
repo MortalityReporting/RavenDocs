@@ -15,13 +15,13 @@ API operations. Thus, the basic rules of FHIR API are also applied to MDI API. F
 * application/x-www-form-urlencoded can be used for POST search requests if HTTP Form is used. 
  
 In FHIR, FHIR resources, interactions, and operations are published using CompatibilityStatement 
-(GET [base]/metadata). Detail information about the CompatibilityStatement is available 
+(GET [base]/metadata). Detailed information about the CompatibilityStatement is available 
 in https://hl7.org/FHIR/capabilitystatement.html. It is recommended that EDRS FHIR servers publish 
 their capability statement as defined in this link. 
 
 Security
 --------
-It’s recommended to use OAuth2 with OpenID. EDRS should provide authorization server to authenticate and 
+It’s recommended to use OAuth2 with OpenID. EDRS should provide an authorization server to authenticate and 
 authorize the CMS to access the EDRS FHIR server. Please refer to http://www.hl7.org/fhir/smart-app-launch/ 
 if EDRS wishes to implement SMART on FHIR framework. However, SMART on FHIR is not required.  
 
@@ -37,13 +37,13 @@ We will assume that the case has already been created at the EDRS with a deceden
 SEARCH API
 ----------
 FHIR has search API. However, the FHIR search parameters are specific to a resource. The extended
-search queries are complicated. So, MAPI extended FHIR document generation operation ($document) and 
+search queries are complicated. So, MAPI extended the FHIR document generation operation ($document) and 
 defined search parameters that represent MDI data elements. Let's first review how MAPI extended the 
 'document generation' operation. 
 
 Extended Operation for MDI Document generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This is a resource instance type extended operation. It means that the MDI document is generated from 
+This is a resource instance type extended operation. It means that the MDI document is generated from the 
 Composition resource. And the extension is made to the extended search parameters.
 
 This is an idempotent operation. Both POST and GET can be used with the following endpoint URL pattern.
@@ -189,7 +189,7 @@ transactions are successfully processed. 4xx or 5xx are error codes. 3xx are not
 need to be supported at the client side if redirections are required by the server. More details can 
 be found from https://en.wikipedia.org/wiki/List_of_HTTP_status_codes. 
 
-CMS must check if correct endpoint and search parameters are used if such errors are returned. Server
+CMS must check if the correct endpoint and search parameters are used if such errors are returned. Server
 also returns error code when there are document level errors. In this case *OperationOutcome* could be
 included in the payload. CMS would want to parse the payload as it contains the source of errors. For
 more information about the *OperationOutcome*, see the following section.
@@ -318,7 +318,7 @@ identifier extension(s) in the Composistion resource located in the MDI document
 tracking numbers in the extended identifiers. Thus, this can be used for searching.
 
 The response for a successful UPDATE API should be 200 OK. The payload is not required. If 
-EDRS or CMS needs some data with the response, Parameters resource can be used. Jurisdiction and 
+EDRS or CMS needs some data with the response, the Parameters resource can be used. Jurisdiction and 
 C/ME office can use the same parameters as *In Parameters* parameters. If the submitted MDI document will 
 be included in the response body, then “mdi-document” parameter key should be used. If the API operation was 
 successful, but there were some warnings that EDRS wants to send back to CMS, then parameter name 
