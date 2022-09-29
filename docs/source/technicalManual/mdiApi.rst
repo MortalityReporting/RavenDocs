@@ -115,7 +115,7 @@ See the example below.
     }
 
 
-If [id] is provided within URL path (e.g., /Composition/[id]/$mdi-documents), then the output response 
+If ``id`` is provided within URL path (e.g., /Composition/``id``/$mdi-documents), then the output response 
 should be an MDI document bundle as there will be only one or zero result.
 
 If *id* or *search paraemters* is provided in the URL parameter (e.g. [base]/Composition?name=value) 
@@ -233,8 +233,9 @@ contact EDRS for the error. Below shows an example of *OperationOutcome*.
     }
 
 
-READ API::
+READ API
 --------
+READ API URL is::
 
 GET [base]/Composition/``id``/$document
 
