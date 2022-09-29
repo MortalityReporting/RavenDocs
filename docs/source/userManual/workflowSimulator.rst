@@ -52,14 +52,3 @@ CMS to EDRS
   Step 3 - Configure Endpoint
 
   Step 4 - API Interaction (Submit)
-
-Future Work
------------
-Parts of the Workflow Simulator have already been built such as the BlueJay Testing Tool used to simulate 
-EDRS communications from an MDI system based on the MDI IG Standard. Toxicology Lab Simulation was partially 
-built with the use of a tool called Postman (an API platform) which will provide a foundation to be added to 
-the Workflow Simulator. Raven has the ability to be “Smart-on-FHIR” enabled, so that it could also simulate 
-communications that could come from an EHR system. 
-
-A Case Status feature could be added which would provide metrics based on the requirements needed to build a 
-US Death Certificate. It could be added to the Case Summary Dashboard or the Workflow Simulator.

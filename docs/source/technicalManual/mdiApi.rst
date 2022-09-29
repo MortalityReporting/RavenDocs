@@ -326,7 +326,7 @@ should be “warning”. And, “resource” should be used to include Operation
 operations were failed, then the response should be OperationOutcome resource with a HTTP error code. 
 Please see the example of response below. 
 
-Ex. **Response** (if the operation was successful, and EDRS wants to respond with data) 
+Ex. **Response** if the operation was successful, and EDRS wanted to respond with updated data.
 
 .. code-block:: json
     {
@@ -353,7 +353,7 @@ Ex. **Response** (if the operation was successful, and EDRS wants to respond wit
         ]
     }
 
-Response Body (If error occurs)
+**Response** if error occured.
 
 .. code-block:: json
     {
@@ -374,22 +374,3 @@ Response Body (If error occurs)
     ]
     }
 
-AMEND Certified API (after death report certification)
------------------------------------------------------------
-Future work - AMENDing certified death report needs MDI community discussions as amending processes are 
-somewhat different from state to state.
-
-CERTIFY API
------------
-This API is to certify the death report. This is a future work as MDI community discussions are needed. 
-
-CREATE API
-----------
-This API is to create a case in EDRS. This API is to be used when a case needs to be created in EDRS by
-C/MEs.
-
-DELETE API
-----------
-It won't be allowed to delete entire case. However, since there are cases where modifications are needed
-within a case, the DELETE API should be used to delete the elements, not the actual cases. 
-This is future work.

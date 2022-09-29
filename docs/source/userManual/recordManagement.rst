@@ -61,7 +61,7 @@ support JSON and XML formats, as well as a human readable “narrative view”.
 
 .. note::
     **Use Case**: Human readable display of MDI FHIR IG data with a FHIR explorer. Any cases loaded in 
-    the Raven should be retrievable by Case Viewer. Users can use FHIR APIs to load
+    the Raven FHIR server should be retrievable by Case Viewer. Users can use FHIR APIs to load the data.
 
 Value
 ^^^^^

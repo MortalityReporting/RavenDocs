@@ -1,3 +1,5 @@
+.. _componentOverview:
+
 Component Overview
 ==================
 Raven / Bluejay FHiR Server
