@@ -177,7 +177,7 @@ Please see the examples of search Parameters resource and its response.
             "resource": {
                 "resourceType": "Composition",
                 "id": "965a0688-e6f4-4bff-a96d-639cbd7ea295",
-                . . .
+                \. \. \.
             }
         ]
         }
@@ -296,11 +296,11 @@ Ex. **Request** in the payload
         "name": "jurisdiction defined key2",
         "valueString": "value2"
         },
-        . . .
+        \. \. \.
 
         { 
         "name": "mdi-document",
-        "resource": <MDI document bundle here>
+        "resource": \<MDI document bundle here\>
         }
         ]
     } 
@@ -348,7 +348,7 @@ Ex. **Response** if the operation was successful, and EDRS wanted to respond wit
         "name": "jurisdiction defined key2",
         "valueString": "value2"
         },
-        . . .
+        \. \. \.
 
         { 
         "name": "mdi-document",
@@ -356,7 +356,7 @@ Ex. **Response** if the operation was successful, and EDRS wanted to respond wit
         },
         { 
         "name": "warning",
-        "resource": <OperationOutcome resource>
+        "resource": \<OperationOutcome resource\>
         }
         ]
     }
