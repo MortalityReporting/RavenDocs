@@ -46,71 +46,76 @@ Extended Operation for MDI Document generation
 This is a resource instance type extended operation. It means that the MDI document is generated from the 
 Composition resource. And the extension is made to the extended search parameters.
 
-This is an idempotent operation. Both POST and GET can be used with the following endpoint URL pattern.
+This is an idempotent operation. Both POST and GET can be used with the following endpoint URL pattern::
 
- | POST [base FHIR Url]/Composition/$mdi-documents
- | GET  [base FHIR Url]/Composition/$mdi-documents?name1=value1&name2=value2
+  POST [base FHIR Url]/Composition/$mdi-documents
+  GET  [base FHIR Url]/Composition/$mdi-documents?name1=value1&name2=value2
 
 
 **Search Parameters for the MDI Document Generation**
 
-+------------------------+-------------+----------+---------------+-----------------------------------+
-| Name                   | Cardinality | Type     | Documentation                                     |
-+========================+=============+==========+===============+===================================+
-| In Parameters                                                                                       |
-+========================+=============+==========+===============+===================================+
-| id                     | 0..1        | uri      | Resource ID of Composition - MDI to EDRS          |
-+------------------------+-------------+----------+---------------------------------------------------+
-| patient                | 0..*        |          | One or more decedent related search parameters    |
-+------------------------+-------------+----------+---------------------------------------------------+
-| patient.birthdate      | 0..1        | date     | Decedent's date of birth                          |
-+------------------------+-------------+----------+---------------------------------------------------+
-| patient.family         | 0..1        | string   | Decedent's last name                              |
-+------------------------+-------------+----------+---------------------------------------------------+
-| patient.given          | 0..1        | string   | Decedent's first name                             |
-+------------------------+-------------+----------+---------------------------------------------------+
-| patient.gender         | 0..1        | token    | Decedent's gender                                 |
-+------------------------+-------------+----------+---------------------------------------------------+
-| tracking-number        | 0..1        | token    | Search by identifier in Composition - MDI to EDRS |
-+------------------------+-------------+----------+---------------------------------------------------+
-| death-location         | 0..1        | string   | District of death location                        |
-+------------------------+-------------+----------+---------------------------------------------------+
-| death-date.actual      | 0..1        | date     | It should be either actual, pronounced, or all    |
-| death-date.pronounced  |             |          | if 'all' is used, then it means searching by both |
-| death-date.all         |             |          | 'actual' and 'pronounced' date of death           |
-+------------------------+-------------+----------+---------------------------------------------------+
-| Out Parameters                                                                                      |
-+========================+=============+==========+===============+===================================+
-| return                 | 0..1        | resource | Searchset Bundle that includes MDI document       |
-|                        |             |          | bundles. If [id] is supplied, then this should be |
-|                        |             |          | Bundle - Document MDI to EDRS                     |
-+------------------------+-------------+----------+---------------------------------------------------+
+.. table:: Search Parameters for the MDI Document Generation Operation
+   :widths: auto
+   
++--------------------------+-------------+----------+---------------------------------------------------+
+|Name                      |Cardinality  |Type      |Documentation                                      |
++==========================+=============+==========+===================================================+
+|In Parameters                                                                                          |
++--------------------------+-------------+----------+---------------------------------------------------+
+|id                        |0..1         |uri       |Resource ID of Composition - MDI to EDRS           |
++--------------------------+-------------+----------+---------------------------------------------------+
+|patient                   |0..*         |          |One or more decedent related search parameters     |
++--------------------------+-------------+----------+---------------------------------------------------+
+|patient.birthdate         |0..1         |date      |Decedent's date of birth                           |
++--------------------------+-------------+----------+---------------------------------------------------+
+|patient.family            |0..1         |string    |Decedent's last name                               |
++--------------------------+-------------+----------+---------------------------------------------------+
+|patient.given             |0..1         |string    |Decedent's first name                              |
++--------------------------+-------------+----------+---------------------------------------------------+
+|patient.gender            |0..1         |token     |Decedent's gender                                  |
++--------------------------+-------------+----------+---------------------------------------------------+
+|tracking-number           |0..1         |token     |Search by identifier in Composition - MDI to EDRS  |
++--------------------------+-------------+----------+---------------------------------------------------+
+|death-location            |0..1         |string    |District of death location                         |
++--------------------------+-------------+----------+---------------------------------------------------+
+|| death-date.actual       |0..1         |date      |It should be either actual, pronounced, or all     |
+|| death-date.pronounced   |             |          |if 'all' is used, then it means searching by both  |
+|| death-date.all          |             |          |'actual' and 'pronounced' date of death            |
++--------------------------+-------------+----------+---------------------------------------------------+
+|Out Parameters                                                                                         |
++--------------------------+-------------+----------+---------------------------------------------------+
+|return                    |0..1         |resource  |Searchset Bundle that includes MDI document        |
+|                          |             |          |bundles. If [id] is supplied, then this should be  |
+|                          |             |          |Bundle - Document MDI to EDRS                      |
++--------------------------+-------------+----------+---------------------------------------------------+
 
 Please note that the Search parameters related to patient are formatted with “.” (dot). In FHIR, this means 
 that the search parameters after “.” are *part* of patient parameter in Parameters resource. 
 See the example below.
 
-.. code-block:: json
+.. code-block:: json-object
+
     {
-    "resourceType": "Parameters",
-    "parameter": [
-        {
-        "name": "patient",
-        "part": [
-            { 
-            "name": "family",
-            "valueString": "Hans"
-            },
-            { 
-            "name": "given",
-            "valueString": "Kennoby"
-            }
-        ]
-        }
-    ]
+       "resourceType":"Parameters",
+       "parameter":[
+          {
+             "name":"patient",
+             "part":[
+                {
+                   "name":"family",
+                   "valueString":"Hans"
+                },
+                {
+                   "name":"given",
+                   "valueString":"Kennoby"
+                }
+             ]
+          }
+       ]
     }
 
-If [id] is provided within URL path (e.g., /Composition/[id]/$mdi-documents), then the output response 
+
+If ``id`` is provided within URL path (e.g., /Composition/``id``/$mdi-documents), then the output response 
 should be an MDI document bundle as there will be only one or zero result.
 
 If *id* or *search paraemters* is provided in the URL parameter (e.g. [base]/Composition?name=value) 
@@ -119,67 +124,70 @@ with matching MDI document Bundle resources even if there is only one result. If
 is needed in the searching parameters, then as specified in the FHIR specification 
 (https://hl7.org/fhir/R4/search.html#escaping), “,” should be used. For example, if we want to search 
 records that has death-location equals to either a, b, or c, then its search parameter in Parameters
-resource will be like below.
+resource will be like below::
 
-| “name”: "death-location",
-| “valueString”: “a,b,c”
+ “name”: "death-location",
+ “valueString”: “a,b,c”
 
 Please see the examples of search Parameters resource and its response.
 
 **Request**
 
 .. code-block:: json
-    POST [base]/Composition/$mdi-documents
+   :caption: POST [FHIRbaseURL]/Composition/$mdi-documents
+    
     {
-    "resourceType": "Parameters",
-    "parameter": [
-        {
-        "name": "patient",
-        "part": [
-            { 
-            "name": "family",
-            "valueString": "Hans"
-            },
-            { 
-            "name": "given",
-            "valueString": "Kennoby"
-            }
-        ]
-        }
-    ]
+       "resourceType":"Parameters",
+       "parameter":[
+          {
+             "name":"patient",
+             "part":[
+                {
+                   "name":"family",
+                   "valueString":"Hans"
+                },
+                {
+                   "name":"given",
+                   "valueString":"Kennoby"
+                }
+             ]
+          }
+       ]
     }
 
 
 **Response**
 
 .. code-block:: json
+
     {
-    "resourceType": "Bundle",
-    "id": "13ab1ecf-38ce-4f47-aebb-a38396a80775",
-    "type": "searchset",
-    "total": 1,
-    "entry": [
-        {
-        "resourceType": "Bundle",
-        "id": "fd240814-5911-49bb-bb20-72066add4a18",
-        "meta": {
-            "profile": [
-            "http://hl7.org/fhir/us/mdi/StructureDefinition/Bundle-document-mdi-to-edrs"
-            ]
-        },
-        "type": "document",
-        "entry": [
-            {
-            "fullUrl": "Composition/965a0688-e6f4-4bff-a96d-639cbd7ea295",
-            "resource": {
-                "resourceType": "Composition",
-                "id": "965a0688-e6f4-4bff-a96d-639cbd7ea295",
-                . . .
-            }
-        ]
-        }
-    ]
+       "resourceType":"Bundle",
+       "id":"13ab1ecf-38ce-4f47-aebb-a38396a80775",
+       "type":"searchset",
+       "total":1,
+       "entry":[
+          {
+             "resourceType":"Bundle",
+             "id":"fd240814-5911-49bb-bb20-72066add4a18",
+             "meta":{
+                "profile":[
+                   "http://hl7.org/fhir/us/mdi/StructureDefinition/Bundle-document-mdi-to-edrs"
+                ]
+             },
+             "type":"document",
+             "entry":[
+                {
+                   "fullUrl":"Composition/965a0688-e6f4-4bff-a96d-639cbd7ea295",
+                   "resource":{
+                      "resourceType":"Composition",
+                      "id":"965a0688-e6f4-4bff-a96d-639cbd7ea295"
+                   }
+                }
+             ]
+          }
+       ]
     }
+    
 
 Error Handling
 ^^^^^^^^^^^^^^
@@ -202,34 +210,37 @@ fixed by CMS. If it’s the EDRS that needs to fix the error, it must be indicat
 contact EDRS for the error. Below shows an example of *OperationOutcome*.
 
 .. code-block:: json
-    HTTP/1.1 500 Internal Server Error
-    {
-    "resourceType": "OperationOutcome",
-    "id": "searchfail",
-    "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      
-        <p>The &quot;name&quot; parameter has the modifier &quot;exact&quot; which is not supported by 
-        this server</p>\n</div>"
-    },
-    "issue": [
-        {
-        "severity": "fatal",
-        "code": "code-invalid",
-        "details": {
-            "text": "The \"name\" parameter has the modifier \"exact\" which is not supported by this server"
-        }
-        }
-    ]
-    }
+    :caption: HTTP/1.1 500 Internal Server Error
 
+    {
+       "resourceType":"OperationOutcome",
+       "id":"searchfail",
+       "text":{
+          "status":"generated",
+          "div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      
+            <p>The &quot;name&quot; parameter has the modifier &quot;exact&quot; which is not supported by 
+            this server</p>\n</div>"
+       },
+       "issue":[
+          {
+             "severity":"fatal",
+             "code":"code-invalid",
+             "details":{
+                "text":"The \"name\" parameter has the modifier \"exact\" which is not supported by this server"
+             }
+          }
+       ]
+    }
 
 READ API
 --------
-| GET [base]/Composition/[id]/$document
 
-[id] is a Composition resource Id, which is assigned by a systems such as CMS and EDRS. If a server maintains
-the [id] for all generated FHIR Document Bundles, then this [id] can be used get the document. In this case,
+READ API URL pattern is::
+
+  GET [base FHIR URL]/Composition/``id``/$document
+
+``id`` is a Composition resource Id, which is assigned by a systems such as CMS and EDRS. If a server maintains
+the ``id`` for all generated FHIR Document Bundles, then this [id] can be used get the document. In this case,
 the response is a MDI document Bundle (not a *searchset* Bundle).
 
 If additional information is needed about the base FHIR operation that MAPI operation is extended from, 
@@ -245,20 +256,21 @@ the MDI document that C/MEs want to update. Since this API presumes that the cas
 EDRS, the case management system must either make sure identifier(s) is included in the MDI document or 
 provide a parameter that EDRS can use to find the case to update.
 
-UPDATE API operations and requirement are as follows.
+UPDATE API operations and requirement are as follows.::
 
-| PUT [base url]/Composition/$update-mdi
-| Payload = Parameters resource
+PUT [base url]/Composition/$update-mdi
+Payload = Parameters resource
 
 
 Input/Output Parameters
+
 +------------------------+-------------+----------------------------+---------------------------------+
 | Name                   | Cardinality | Type                       | Documentation                   |
 +========================+=============+============================+=================================+
 | In Parameters                                                                                       |
-+========================+=============+============================+=================================+
-| Jurisdiction defined   | 0..*        | string                     | Any required parameters for a   |
-| parameters             |             |                            | jurisdiction                    |
++------------------------+-------------+----------------------------+---------------------------------+
+| ``Jurisdiction defined | 0..*        | string                     | Any required parameters for a   |
+| parameters``           |             |                            | jurisdiction                    |
 +------------------------+-------------+----------------------------+---------------------------------+
 | edrs-track-number      | 0..1        | string                     | EDRS case number if available   |
 +------------------------+-------------+----------------------------+---------------------------------+
@@ -269,40 +281,41 @@ Input/Output Parameters
 |                        |             |                            | profile bundle document.        |
 +------------------------+-------------+----------------------------+---------------------------------+
 | Out Parameters                                                                                      |
-+========================+=============+============================+=================================+
++------------------------+-------------+----------------------------+---------------------------------+
 | return                 | 0..1        | OperationOutcomeParameters | If an error occurs, OO resource |
 |                        |             |                            | is returned. If response data   |
 |                        |             |                            | need to be sent back,           |
 |                        |             |                            | Parameters resource can be used.|
-+------------------------+-------------+----------+---------------------------------------------------+
++------------------------+-------------+----------------------------+---------------------------------+
 
 Ex. **Request** in the payload
+
 .. code-block:: json
-    {    
-    "resourceType": "Parameters",    
-    "parameter": [
-        { 
-        "name": edrs-track-number",
-        "valueString": "1234"
-        },        
-        { 
-        "name": "jurisdiction defined key2",
-        "valueString": "value2"
-        },
-        . . .
 
-        { 
-        "name": "mdi-document",
-        "resource": <MDI document bundle here>
-        }
-        ]
-    } 
-
+    {
+       "resourceType":"Parameters",
+       "parameter":[
+          {
+             "name":"edrs-track-number",
+             "valueString":"1234"
+          },
+          {
+             "name":"jurisdiction defined key2",
+             "valueString":"value2"
+          },
+          {
+             "name":"mdi-document",
+             "resource":{
+                "MDI document bundle here "
+             }
+          }
+       ]
+    }
 
 *In Parameters* include parameters that can be used for search and MDI document that has updated information. 
 UPDATE API allows custom local search parameters. If there are local search parameters that are required
 for the case search, the local search parameters can be defined in the Parameters resource. In the table 
-above, this is labeled as "*Jurisdiction defined parameters*". It can be any name and type. However, any 
+above, this is labeled as ``Jurisdiction defined parameters``. It can be any name and type. However, any 
 parameter created by this method would only be supported by systems that can understand the parameter. If 
 *Jurisdiction defined parameters* exist but cannot be understood, they should be ignored and NOT cause 
 an error.
@@ -329,48 +342,53 @@ Please see the example of response below.
 Ex. **Response** if the operation was successful, and EDRS wanted to respond with updated data.
 
 .. code-block:: json
-    {
-        "resourceType": "Parameters",    
-        "parameter": [
-        { 
-        "name": "jurisdiction defined key1",
-        "valueString": "value1"
-        },        
-        { 
-        "name": "jurisdiction defined key2",
-        "valueString": "value2"
-        },
-        . . .
 
-        { 
-        "name": "mdi-document",
-        "resource": <MDI document bundle>
-        },
-        { 
-        "name": "warning",
-        "resource": <OperationOutcome resource>
-        }
-        ]
-    }
+   {
+      "resourceType":"Parameters",
+      "parameter":[
+         {
+            "name":"jurisdiction defined key1",
+            "valueString":"value1"
+         },
+         {
+            "name":"jurisdiction defined key2",
+            "valueString":"value2"
+         },
+         {
+            "name":"mdi-document",
+            "resource":{
+               "MDI document bundle"
+            }
+         },
+         {
+            "name":"warning",
+            "resource":{
+               "OperationOutcome resource"
+            }
+         }
+      ]
+   }
+
 
 **Response** if error occured.
 
 .. code-block:: json
+
     {
-    "resourceType": "OperationOutcome",
-    "id": "searchfail",
-    "text": {
-        "status": "generated",
-        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>The &quot;case number&quot; 1234 does not exist</p>\n    </div>"
-    },
-    "issue": [
-        {
-        "severity": "fatal",
-        "code": "case-invalid",
-        "details": {
-            "text": "The \"case number\" 1234 does not exist."
-            }
-        }
-    ]
+       "resourceType":"OperationOutcome",
+       "id":"searchfail",
+       "text":{
+          "status":"generated",
+          "div":"<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>The &quot;case number&quot; 1234 does not exist</p>\n    </div>"
+       },
+       "issue":[
+          {
+             "severity":"fatal",
+             "code":"case-invalid",
+             "details":{
+                "text":"The \"case number\" 1234 does not exist."
+             }
+          }
+       ]
     }
 

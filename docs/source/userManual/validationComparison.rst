@@ -2,6 +2,8 @@
 
 Validation And Comparison
 =========================
+The Validation & ComparisonRaven feature set includes the MDI Validator and the Comparison Tool. The purpose of Validation & Comparison is to confirm MDI record conformance and validity as it is important to connectathon testing and support.
+
 The MDI (Medicolegal Death Investigation) Validator is a web application that allows users to upload or 
 copy-paste their MDI FHIR IG data for validation. The MDI Validator uses the HL7 FHIR validator as a core 
 validation engine and provides a user interface (UI) wrapper that is tailored to the MDI IG.  
@@ -19,7 +21,7 @@ Connectathon participants can enter their FHIR documents into the MDI FHIR IG va
 The validator confirms the users’ confidence in their external mapping as well as provides a learning 
 experience for review and conforming to the IG. 
 
-Validation
+Archtecture
 ----------
 These would be modules within the Raven Platform or could be used independent of Raven for testing. 
 They rely on the Raven FHIR server to serve the data.
@@ -36,7 +38,3 @@ Validation & Comparison features were built as a way to address those challenges
 proper record generation. The Comparison Tool allows users to hone in on individual content issues and have 
 confidence in their process. Overall, the features and components included in Validation & Comparison improve 
 the level of interoperability and work towards the goal of standardization.
-
-Comparison
-----------
-Coming Soon...
