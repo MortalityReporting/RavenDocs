@@ -46,7 +46,7 @@ Extended Operation for MDI Document generation
 This is a resource instance type extended operation. It means that the MDI document is generated from the 
 Composition resource. And the extension is made to the extended search parameters.
 
-This is an idempotent operation. Both POST and GET can be used with the following endpoint URL pattern::
+This is an idempotent operation. Both POST and GET can be used with the following endpoint URL pattern. ::
 
   POST [base FHIR Url]/Composition/$mdi-documents
   GET  [base FHIR Url]/Composition/$mdi-documents?name1=value1&name2=value2
@@ -124,7 +124,7 @@ with matching MDI document Bundle resources even if there is only one result. If
 is needed in the searching parameters, then as specified in the FHIR specification 
 (https://hl7.org/fhir/R4/search.html#escaping), “,” should be used. For example, if we want to search 
 records that has death-location equals to either a, b, or c, then its search parameter in Parameters
-resource will be like below::
+resource will be like below. ::
 
  “name”: "death-location",
  “valueString”: “a,b,c”
@@ -235,7 +235,7 @@ contact EDRS for the error. Below shows an example of *OperationOutcome*.
 READ API
 --------
 
-READ API URL pattern is::
+READ API URL pattern is. ::
 
   GET [base FHIR URL]/Composition/``id``/$document
 
@@ -256,10 +256,10 @@ the MDI document that C/MEs want to update. Since this API presumes that the cas
 EDRS, the case management system must either make sure identifier(s) is included in the MDI document or 
 provide a parameter that EDRS can use to find the case to update.
 
-UPDATE API operations and requirement are as follows.::
+UPDATE API operations and requirement are as follows. ::
 
-PUT [base url]/Composition/$update-mdi
-Payload = Parameters resource
+  PUT [base url]/Composition/$update-mdi
+  Payload = Parameters resource
 
 
 Input/Output Parameters
