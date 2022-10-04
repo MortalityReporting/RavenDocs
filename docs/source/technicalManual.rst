@@ -5,4 +5,3 @@ Technical Manual
     technicalManual/mdiApi
     technicalManual/componentOverview
     technicalManual/libraries
-    technicalManual/deployment
