@@ -34,9 +34,6 @@ data are done as follows.
     - When connectathon participants’ validated data are loaded to Raven, Comparison Tool compares the 
       loaded data with the reference data. See ":ref:`validation-comparison`" page for more information.
 
-MDI FHIR Document Bundle
-^^^^^^^^^^^^^^^^^^^^^^^^
-Coming Soon ...
 
 Spreadsheet Schema
 ^^^^^^^^^^^^^^^^^^
