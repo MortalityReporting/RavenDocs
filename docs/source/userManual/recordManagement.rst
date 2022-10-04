@@ -63,22 +63,3 @@ support JSON and XML formats, as well as a human readable “narrative view”.
     **Use Case**: Human readable display of MDI FHIR IG data with a FHIR explorer. Any cases loaded in 
     the Raven FHIR server should be retrievable by Case Viewer. Users can use FHIR APIs to load the data.
 
-Value
-^^^^^
-Due to recency in development, users may have limited familiarity with the implementation guide standard, 
-but are familiar with the standard death reporting information. These features were built in an effort to 
-better educate users on the IG standard. Also, the FHIR data model is complicated and structured with 
-multi-levels and logical references. In order to help transitioning from non-FHIR data to MDI IG compliant 
-format, the MDI CSV format was designed. The Case Import feature maps the pre-defined MDI CSV format to 
-the MDI FHIR IG format and saves them to the MDI FHIR server.
-
-Case View provides a user-friendly option for viewing the data present on the FHIR Server. Also, the layout 
-of the Case View is structured from the perspective of the MDI Implementation Guide (IG) to serve as an 
-educational tool for users to better understand the data structure and fields which make up the MDI CMS to 
-EDRS and Toxicology documents.
-
-These features overall improve the level of interoperability and work towards the goals of standardization.
-
-Toxicology Report Viewer
-^^^^^^^^^^^^^^^^^^^^^^^^
-Coming Soon ...
