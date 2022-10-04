@@ -38,6 +38,7 @@ html_theme = 'sphinx_rtd_theme'
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
 
+
 def setup(app):
     '''Custom CSS for Width of RTD'''
     app.add_css_file('my_theme.css')

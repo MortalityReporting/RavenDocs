@@ -20,28 +20,10 @@ layout of components, connection to external end points, and the users’ scope.
 The workflow simulator is an end-to-end framework that manages the project workstreams. Individual components 
 under the Project Workstreams are modularly composed in the workflow simulator.
 
-Value
------
-The Workflow Simulator would play a big part in providing a mechanism for testing the different data flows 
-coming into MDI systems. During testing events, we usually have representation from 
-State/Jurisdictional/Local Partners but we can lack in vendor participation given the nature of the event. 
-For example, it is not likely to have NMS Labs (a lab vendor) or EPIC Systems (an EHR vendor) participate 
-in testing data coming from their systems (which could differ based on location) during an HL7 FHIR 
-Connectathon. By providing the Workflow Simulator, we can easily simulate these systems for quality testing 
-during testing events or independently. It’s important to have quality testing as feedback and support of the 
-MDI FHIR IG development but also in support of implementation of the standard itself by the community. 
-
-The simulator would also provide a feature that will allow users to see their progress towards adoption of the 
-MDI Standard, the completion of US Death Certificate Data and the progress towards modernization within 
-their environment. Having the ability to measure, capture and track this information would be quite valuable 
-to our user(s) and the CDC for Mortality Reporting. Additionally, it will help to provide traceable metrics 
-that would identify gaps in dataflows, tracking of standard adoption, and provide support for funding. This 
-will empower CDC and users by providing clear measures of success and progress within the MDI Dataflow, 
-which could also be leveraged for VRDR.
 
 Use Cases/Workflows
 -------------------
-Coming Soon ...
+Documentation under development
 
 CMS to EDRS
 ^^^^^^^^^^^

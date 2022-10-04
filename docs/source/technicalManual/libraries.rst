@@ -8,9 +8,9 @@ MDI JavaLib
 ------------
 This Java Library is for the following FHIR Implemtation Guides (IG)
 
-Medicolegal Death Investigation (MDI) FHIR IG | https://build.fhir.org/ig/HL7/fhir-mdi-ig/
-Occupational Data for Health (ODH) FHIR IG | http://hl7.org/fhir/us/odh/STU1.1/
-US Core FHIR IG | https://www.hl7.org/fhir/us/core/
+  - Medicolegal Death Investigation (MDI) FHIR IG | https://build.fhir.org/ig/HL7/fhir-mdi-ig/
+  - Occupational Data for Health (ODH) FHIR IG | http://hl7.org/fhir/us/odh/STU1.1/
+  - US Core FHIR IG | https://www.hl7.org/fhir/us/core/
 
 The model profiles are built with the annotation package and base model definitions from HAPI-FHIR (https://hapifhir.io/)
 
@@ -19,19 +19,19 @@ MDI Javalib is available as a buildable source package in the MortalityReporting
 The library is built as a maven project and can be added as a dependency to existing projects (https://maven.apache.org/)
 
 User can use the MDI Javalib to
-- Deserialize JSON or XML into java objects
-- Create new resources from an internal data source
-- Serialize java objects into JSON or XML for transmission
+  - Deserialize JSON or XML into java objects
+  - Create new resources from an internal data source
+  - Serialize java objects into JSON or XML for transmission
 
 MDI .NET
 --------
 This .NET Library is for the following FHIR Implementation Guides (IG)
 
-Case Based Surveillance (CBS) FHIR IG | https://cbsig.chai.gatech.edu/
-Medicolegal Death Investigation (MDI) FHIR IG | https://build.fhir.org/ig/HL7/fhir-mdi-ig/
-Occupational Data for Health (ODH) FHIR IG | http://hl7.org/fhir/us/odh/STU1.1/
-US Public Health (US PH) FHIR IG | https://build.fhir.org/ig/HL7/fhir-us-ph-common-library-ig/
-US Core FHIR IG | https://www.hl7.org/fhir/us/core/
+  - Case Based Surveillance (CBS) FHIR IG | https://cbsig.chai.gatech.edu/
+  - Medicolegal Death Investigation (MDI) FHIR IG | https://build.fhir.org/ig/HL7/fhir-mdi-ig/
+  - Occupational Data for Health (ODH) FHIR IG | http://hl7.org/fhir/us/odh/STU1.1/
+  - US Public Health (US PH) FHIR IG | https://build.fhir.org/ig/HL7/fhir-us-ph-common-library-ig/
+  - US Core FHIR IG | https://www.hl7.org/fhir/us/core/
 
 All profiles are built on top of standard .NET FHIR classes (https://github.com/FirelyTeam/firely-net-sdk). 
 
