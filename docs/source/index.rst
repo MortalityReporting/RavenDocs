@@ -22,6 +22,7 @@ Table of Contents
 
 .. toctree::
    :numbered:
+   :hidden:
    
    developmentTeam
    endUserManual
