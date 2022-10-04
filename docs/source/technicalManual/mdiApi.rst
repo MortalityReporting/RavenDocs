@@ -2,6 +2,12 @@
 
 Standard MDI API
 ================
+
+.. note::
+    Standard MDI API will be documented as a best practice in the MDI IG site in the future. 
+    Until then, the Raven documentation will temporarily house the Standard MDI API specification.
+    
+    
 Operation APIs for MDI
 ----------------------
 MDI Implementation Guide (IG) is available in https://build.fhir.org/ig/HL7/fhir-mdi-ig/index.html. This 
