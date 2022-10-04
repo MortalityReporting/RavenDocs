@@ -16,9 +16,6 @@ FHIR MDI standard please see the corresponding
 sections in this wiki, accessible through the table of contents below or
 the sidebar navigation menu.
 
-Table of Contents
-=================
-
 
 .. toctree::
    :numbered:
