@@ -29,12 +29,3 @@ They rely on the Raven FHIR server to serve the data.
 .. image:: 
    ../images/validator_arch.png
    :alt: Raven Validator Architecture
-
-Value
-^^^^^
-Common challenges for users can include not being sure if their mapped data conforms to the MDI Implementation 
-Guide (IG) or not, and knowing if they have accurately generated a valid test record from their system. The 
-Validation & Comparison features were built as a way to address those challenges. The MDI Validator ensures 
-proper record generation. The Comparison Tool allows users to hone in on individual content issues and have 
-confidence in their process. Overall, the features and components included in Validation & Comparison improve 
-the level of interoperability and work towards the goal of standardization.
