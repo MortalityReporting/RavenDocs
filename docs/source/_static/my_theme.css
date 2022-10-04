@@ -14,6 +14,9 @@
     background: #79589F;
 }
 
+.toctree-wrapper ul li {
+    list-style-type: none;
+}
 
 /* Sidebar */
 
