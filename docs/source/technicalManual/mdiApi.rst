@@ -245,7 +245,7 @@ READ API
 
 READ API URL pattern is. ::
 
-  GET [base FHIR URL]/Composition/``id``/$document
+  GET [base FHIR URL]/Composition/id/$document
 
 ``id`` is a Composition resource Id, which is assigned by a systems such as CMS and EDRS. If a server maintains
 the ``id`` for all generated FHIR Document Bundles, then this [id] can be used get the document. In this case,
