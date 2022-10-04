@@ -12,6 +12,7 @@ Medicolegal Death Investigation (MDI) workflows
 
 .. toctree::
     :numbered:
+    :hidden:
     
     userManual/mdiStandard
     userManual/recordManagement
