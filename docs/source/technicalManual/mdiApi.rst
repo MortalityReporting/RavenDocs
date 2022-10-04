@@ -1,3 +1,5 @@
+.. _mdiAPI:
+
 Standard MDI API
 ================
 Operation APIs for MDI
