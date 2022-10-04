@@ -291,9 +291,9 @@ Input/Output Parameters
 | Out Parameters                                                                                        |
 +------------------------+-------------+----------------------------+-----------------------------------+
 || return                || 0..1       || OperationOutcomeParameters|| If an error occurs, OO resource  |
-|                        |             ||                           || is returned. If response data    |
-|                        |             ||                           || need to be sent back,            |
-|                        |             ||                           || Parameters resource can be used. |
+||                       ||            ||                           || is returned. If response data    |
+||                       ||            ||                           || need to be sent back,            |
+||                       ||            ||                           || Parameters resource can be used. |
 +------------------------+-------------+----------------------------+-----------------------------------+
 
 Ex. **Request** in the payload
