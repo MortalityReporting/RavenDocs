@@ -35,12 +35,6 @@ html_static_path = ['_static']
 
 html_theme = 'sphinx_rtd_theme'
 
-html_theme_options = {
-    # Toc options
-    'collapse_navigation': False,
-    'navigation_depth': 4
-}
-
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
 
