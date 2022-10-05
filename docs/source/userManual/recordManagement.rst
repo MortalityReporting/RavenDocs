@@ -40,7 +40,8 @@ If the user cannot construct the FHIR records necessary, or are unfamiliar with 
 Raven provides an excel spreadsheet XLSX template for easy of use. Users can fill in individual case data as
 plaintext values, and use the import case view on the RAVEN platform. RAVEN will transform the XLSX data into
 individual FHIR case records that adhere to the FHIR-MDI-IG standard. The template is hosted on the RAVEN
-base site; and a `copy can be directly downloaded from the public internet <https://gtvault-my.sharepoint.com/:x:/g/personal/mriley7_gatech_edu/EW6MPoLovyROhAxtk4tjqkkBNzn0SstRhs_g4OOwBhcPIA?e=oL0Ci5>`.
+base site; and a `copy can be directly downloaded from the public internet <https://gtvault-my.sharepoint.com/:x:/g/personal/mriley7_gatech_edu/EW6MPoLovyROhAxtk4tjqkkBNzn0SstRhs_g4OOwBhcPIA?e=oL0Ci5>`_.
+
 .. image:: 
    ../images/RavenXLSXFileHeader.png
    :alt: Use the XLSX file to construct case data and then import to transform to FHIR
@@ -54,6 +55,9 @@ The XLSX spreadhseet is broken out into 9 sections
 * Exam-Autopsy
 * Chief Medical Examiner/Coroner
 * Certifier
+s
+.. table:: RAVEN Import XLSX Spreadsheet Definitions
+    :class: tight-table
 +---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Sections                        | Elements                                                              | Description                                                                                                                                                                                                       |
 +=================================+=======================================================================+===================================================================================================================================================================================================================+
