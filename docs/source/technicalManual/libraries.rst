@@ -47,4 +47,4 @@ all four of libraries,
    :alt: MDI IG Libraries in Nuget.org
 
 
-Source code is also available for developers who are willing to contribute to the IG library developement in .net - https://github.com/MortalityReporting/fhir-ig-dotnet 
+Source codes are also available for developers who are willing to contribute to the IG library developement in .net - https://github.com/MortalityReporting/fhir-ig-dotnet 
