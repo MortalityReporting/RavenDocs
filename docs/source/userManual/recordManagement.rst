@@ -46,16 +46,6 @@ base site; and a `copy can be directly downloaded from the public internet <http
    ../images/RavenXLSXFileHeader.png
    :alt: Use the XLSX file to construct case data and then import to transform to FHIR
 
-The XLSX spreadhseet is broken out into 9 sections
-* Tracking Numbers
-* Decedent
-* Cause and Manner of Death
-* Death Circumstances
-* Jurisdiction
-* Exam-Autopsy
-* Chief Medical Examiner/Coroner
-* Certifier
-s
 .. table:: RAVEN Import XLSX Spreadsheet Definitions
     :class: tight-table
 +---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
