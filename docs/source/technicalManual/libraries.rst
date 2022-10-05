@@ -27,7 +27,6 @@ MDI .NET
 --------
 This .NET Library is for the following FHIR Implementation Guides (IG)
 
-  - Case Based Surveillance (CBS) FHIR IG | https://cbsig.chai.gatech.edu/
   - Medicolegal Death Investigation (MDI) FHIR IG | https://build.fhir.org/ig/HL7/fhir-mdi-ig/
   - Occupational Data for Health (ODH) FHIR IG | http://hl7.org/fhir/us/odh/STU1.1/
   - US Public Health (US PH) FHIR IG | https://build.fhir.org/ig/HL7/fhir-us-ph-common-library-ig/
@@ -48,4 +47,4 @@ all four of libraries,
    :alt: MDI IG Libraries in Nuget.org
 
 
-Source code is also available in https://github.com/MortalityReporting/fhir-ig-dotnet 
+Source code is also available for developers who are willing to contribute to the IG library developement in .net - https://github.com/MortalityReporting/fhir-ig-dotnet 
