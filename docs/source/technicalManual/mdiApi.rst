@@ -63,7 +63,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 **Search Parameters for the MDI Document Generation**
 
 .. table:: Search Parameters for the MDI Document Generation Operation
-   :widths: auto
+    :class: tight-table
    
 +--------------------------+-------------+----------+---------------------------------------------------+
 |Name                      |Cardinality  |Type      |Documentation                                      |
