@@ -1,4 +1,4 @@
-.. _mdiStqandard:
+.. _mdiStandard:
 
 The MDI Standard
 ================
