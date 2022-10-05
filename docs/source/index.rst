@@ -16,18 +16,21 @@ FHIR MDI standard please see the corresponding
 sections in this wiki, accessible through the table of contents below or
 the sidebar navigation menu.
 
-Table of Contents
-=================
-
 
 .. toctree::
-
+   :numbered:
+   :hidden:
+   
    developmentTeam
    endUserManual
    technicalManual
 
 Raven is released under the `Apache License
 2.0 <https://github.com/MortalityReporting/raven-platform/blob/main/LICENSE>`__.
+
+| Public Raven URL: https://apps.hdap.gatech.edu/raven/
+| Source repositories for Raven can be found in the `GitHub Mortality Reporting Organization <https://github.com/MortalityReporting/>`_.
+| 
 
 .. note::
 

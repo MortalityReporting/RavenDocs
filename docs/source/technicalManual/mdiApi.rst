@@ -2,6 +2,12 @@
 
 Standard MDI API
 ================
+
+.. note::
+    Standard MDI API will be documented as a best practice in the MDI IG site in the future. 
+    Until then, the Raven documentation will temporarily house the Standard MDI API specification.
+    
+    
 Operation APIs for MDI
 ----------------------
 MDI Implementation Guide (IG) is available in https://build.fhir.org/ig/HL7/fhir-mdi-ig/index.html. This 
@@ -57,7 +63,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 **Search Parameters for the MDI Document Generation**
 
 .. table:: Search Parameters for the MDI Document Generation Operation
-   :widths: auto
+    :class: tight-table
    
 +--------------------------+-------------+----------+---------------------------------------------------+
 |Name                      |Cardinality  |Type      |Documentation                                      |
@@ -80,15 +86,15 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +--------------------------+-------------+----------+---------------------------------------------------+
 |death-location            |0..1         |string    |District of death location                         |
 +--------------------------+-------------+----------+---------------------------------------------------+
-|| death-date.actual       |0..1         |date      |It should be either actual, pronounced, or all     |
-|| death-date.pronounced   |             |          |if 'all' is used, then it means searching by both  |
-|| death-date.all          |             |          |'actual' and 'pronounced' date of death            |
+|| death-date.actual       || 0..1       || date    || It should be either actual, pronounced, or all.  |
+|| death-date.pronounced   ||            ||         || if 'all' is used, then it means searching by both|
+|| death-date.all          ||            ||         || 'actual' or 'pronounced' date of death           |
 +--------------------------+-------------+----------+---------------------------------------------------+
 |Out Parameters                                                                                         |
 +--------------------------+-------------+----------+---------------------------------------------------+
-|return                    |0..1         |resource  |Searchset Bundle that includes MDI document        |
-|                          |             |          |bundles. If [id] is supplied, then this should be  |
-|                          |             |          |Bundle - Document MDI to EDRS                      |
+|| return                  || 0..1       || resource|| Searchset Bundle that includes MDI document      |
+||                         ||            ||         || bundles. If [id] is supplied, then this should be|
+||                         ||            ||         || Bundle - Document MDI to EDRS                    |
 +--------------------------+-------------+----------+---------------------------------------------------+
 
 Please note that the Search parameters related to patient are formatted with “.” (dot). In FHIR, this means 
@@ -239,7 +245,7 @@ READ API
 
 READ API URL pattern is. ::
 
-  GET [base FHIR URL]/Composition/``id``/$document
+  GET [base FHIR URL]/Composition/id/$document
 
 ``id`` is a Composition resource Id, which is assigned by a systems such as CMS and EDRS. If a server maintains
 the ``id`` for all generated FHIR Document Bundles, then this [id] can be used get the document. In this case,
@@ -266,29 +272,29 @@ UPDATE API operations and requirement are as follows. ::
 
 Input/Output Parameters
 
-+------------------------+-------------+----------------------------+---------------------------------+
-| Name                   | Cardinality | Type                       | Documentation                   |
-+========================+=============+============================+=================================+
-| In Parameters                                                                                       |
-+------------------------+-------------+----------------------------+---------------------------------+
-| ``Jurisdiction defined | 0..*        | string                     | Any required parameters for a   |
-| parameters``           |             |                            | jurisdiction                    |
-+------------------------+-------------+----------------------------+---------------------------------+
-| edrs-track-number      | 0..1        | string                     | EDRS case number if available   |
-+------------------------+-------------+----------------------------+---------------------------------+
-| mdi-document           | 0..1        | Bundle                     | MDI document bundle. The        |
-|                        |             |                            | “mdi-document” is a reserved    |
-|                        |             |                            | keyword. This should only be    |
-|                        |             |                            | used for the MDI to EDRS        |
-|                        |             |                            | profile bundle document.        |
-+------------------------+-------------+----------------------------+---------------------------------+
-| Out Parameters                                                                                      |
-+------------------------+-------------+----------------------------+---------------------------------+
-| return                 | 0..1        | OperationOutcomeParameters | If an error occurs, OO resource |
-|                        |             |                            | is returned. If response data   |
-|                        |             |                            | need to be sent back,           |
-|                        |             |                            | Parameters resource can be used.|
-+------------------------+-------------+----------------------------+---------------------------------+
++------------------------+-------------+----------------------------+-----------------------------------+
+| Name                   | Cardinality | Type                       | Documentation                     |
++========================+=============+============================+===================================+
+| In Parameters                                                                                         |
++------------------------+-------------+----------------------------+-----------------------------------+
+| ``Jurisdiction defined | 0..*        | string                     | Any required parameters for a     |
+| parameters``           |             |                            | jurisdiction                      |
++------------------------+-------------+----------------------------+-----------------------------------+
+| edrs-track-number      | 0..1        | string                     | EDRS case number if available     |
++------------------------+-------------+----------------------------+-----------------------------------+
+|| mdi-document          || 0..1       || Bundle                    || MDI document bundle. The         |
+||                       ||            ||                           || “mdi-document” is a reserved     |
+||                       ||            ||                           || keyword. This should only be     |
+||                       ||            ||                           || used for the MDI to EDRS         |
+||                       ||            ||                           || profile bundle document.         |
++------------------------+-------------+----------------------------+-----------------------------------+
+| Out Parameters                                                                                        |
++------------------------+-------------+----------------------------+-----------------------------------+
+|| return                || 0..1       || OperationOutcomeParameters|| If an error occurs, OO resource  |
+||                       ||            ||                           || is returned. If response data    |
+||                       ||            ||                           || need to be sent back,            |
+||                       ||            ||                           || Parameters resource can be used. |
++------------------------+-------------+----------------------------+-----------------------------------+
 
 Ex. **Request** in the payload
 

@@ -1,4 +1,4 @@
-.. _mdiStqandard:
+.. _mdiStandard:
 
 The MDI Standard
 ================
@@ -69,7 +69,7 @@ Toxicology-to-CMS
 ^^^^^^^^^^^^^^^^^
 Toxicology-to-CMS workflow represents the interoperability between forensic toxicology laboratory information 
 management system (LIMS) to an MDI case management system (CMS). In MDI IG, this workflow is supported by
-Toxicology-to-MDI profiels. This workflow is bidirectional. There is an inital lab order sent from CMS 
+Toxicology-to-MDI profiles. This workflow is bidirectional. There is an inital lab order sent from CMS 
 with samples. After lab work is performed, the lab report is sent back to CMS from LIMS. Currently, the 
 MDI IG specifies the lab reporting direction only and uses FHIR messaging for the data exchanges.
 
