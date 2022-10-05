@@ -38,7 +38,7 @@ html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
     # Toc options
     'collapse_navigation': False,
-    'navigation_depth': 4,
+    'navigation_depth': 4
 }
 
 # -- Options for EPUB output
