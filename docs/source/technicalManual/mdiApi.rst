@@ -86,9 +86,9 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +--------------------------+-------------+----------+---------------------------------------------------+
 |death-location            |0..1         |string    |District of death location                         |
 +--------------------------+-------------+----------+---------------------------------------------------+
-|| death-date.actual       || 0..1       || date    |It should be either actual, pronounced, or all     |
-|| death-date.pronounced   ||            ||         |if 'all' is used, then it means searching by both  |
-|| death-date.all          ||            ||         |'actual' and 'pronounced' date of death            |
+|| death-date.actual       || 0..1       || date    || It should be either actual, pronounced, or all.  |
+|| death-date.pronounced   ||            ||         || if 'all' is used, then it means searching by both|
+|| death-date.all          ||            ||         || 'actual' or 'pronounced' date of death           |
 +--------------------------+-------------+----------+---------------------------------------------------+
 |Out Parameters                                                                                         |
 +--------------------------+-------------+----------+---------------------------------------------------+
