@@ -28,6 +28,8 @@ the sidebar navigation menu.
 Raven is released under the `Apache License
 2.0 <https://github.com/MortalityReporting/raven-platform/blob/main/LICENSE>`__.
 
+Source repositories for Raven can be found in the `GitHub Mortality Reporting Organization <https://github.com/MortalityReporting/>`_.
+
 .. note::
 
    -  All data shown is synthetic for demonstration purposes only and does
