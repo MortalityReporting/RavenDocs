@@ -24,7 +24,7 @@ level of FHIR APIs are implemented such as, ::
 In addition to the basic FHIR API, FHIR operation APIs are also implemented for transaction, batch, $document, 
 $process-message operations. 
 
-To support MDI-API, FHIR extended operations are implemented as defined in the ":ref:'_mdiStqandard'"
+To support MDI-API, FHIR extended operations are implemented as defined in the ":ref:'_mdiStandard'"
 page. More pieces of information about the Raven FHIR server APIs are available in the ":ref:`_ravenAPI`".
 
 Raven Dashboard
