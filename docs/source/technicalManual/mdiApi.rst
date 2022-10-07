@@ -10,7 +10,7 @@ Standard MDI API
     
 Operation APIs for MDI
 ----------------------
-MDI Implementation Guide (IG) is available in https://build.fhir.org/ig/HL7/fhir-mdi-ig/index.html. This 
+MDI Implementation Guide (IG) is available in http://hl7.org/fhir/us/mdi/  This 
 guide should be used for the payload content format.
  
 FHIR has also defined the Restful API for operations. The FHIR Restful API document is available from 
