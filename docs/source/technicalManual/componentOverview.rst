@@ -31,7 +31,7 @@ Thus, the Bluejay FHIR server also provides the basic instance level of the FHIR
 
 MDI-API that the Bluejay FHIR server currently supports is search API. Case Management Systems can
 test their MDI-API's search API feature with the Bluejay FHIR server. Please contact 
-:ref:`our team <mdiAPI>` to arrange the testing.
+:ref:`our team <members>` to arrange the testing.
 
 Raven Dashboard
 -----------------
