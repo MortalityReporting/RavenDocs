@@ -1,7 +1,7 @@
 .. _members:
 
-Development Team Members
-========================
+About Raven Team
+================
 
 .. list-table::
    :widths: 25 75
