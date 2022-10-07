@@ -26,12 +26,12 @@ Toxicology-to-CMS workflow is using.
 Bluejay FHIR Server
 -------------------
 The Bluejay FHIR server is an instance that is configured to simulate EDRS that supports 
-:ref:`mdiAPI` As the Bluejay FHIR server is also based on the same code stack as Raven FHIR Server, 
-Bluejay FHIR server also provides the basic instance level of the FHIR APIs. 
+:ref:`mdiAPI` (MDI-API). The Bluejay FHIR server is also based on the same code stack as Raven FHIR Server. 
+Thus, the Bluejay FHIR server also provides the basic instance level of the FHIR APIs. 
 
 MDI-API that the Bluejay FHIR server currently supports is search API. Case Management Systems can
 test their MDI-API's search API feature with the Bluejay FHIR server. Please contact 
-:ref:`our team <mdiAPI>`` to arrange the testing.
+:ref:`our team <mdiAPI>` to arrange the testing.
 
 Raven Dashboard
 -----------------
