@@ -8,24 +8,30 @@ Component Overview
    :alt: Raven Component Architecture
 
 
-Raven / Bluejay FHIR Server
----------------------------
-The Raven platform stores MDI case data in the Raven FHIR server and  EDRS case data in the 
-Bluejay FHIR server. Both the Raven and Bluejay FHIR servers share the same code stack. Thus, functionally,
-they have same capability.
-
-The FHIR server is developed using HAPI FHIR Java library with fhirbase as the backend database. Basic instance 
-level of the FHIR APIs are implemented such as, ::
+Raven FHIR Server
+-----------------
+The Raven platform stores MDI case data in the Raven FHIR server. The Raven FHIR server is developed 
+using `HAPI FHIR Java library <https://hapifhir.io/hapi-fhir/>`_ with 
+`fhirbase <https://www.health-samurai.io/fhirbase>`_ as the backend database. Basic instance 
+level of the FHIR APIs are implemented and available as, ::
 
     GET  [base FHIR Url]/Patient/[id] or [search parameters for SEARCH]
     POST [base FHIR Url]/Patient with Patient Resource in the payload
     DELETE [base FHIR Url]/Patient/[id]
 
-In addition to the basic FHIR API, FHIR operation APIs are also implemented for transaction, batch, $document, 
-and $process-message operations. 
+In addition to the basic FHIR API, FHIR operation APIs are also implemented for transaction, 
+batch, $document, and $process-message operations. $process-message is the operation that
+Toxicology-to-CMS workflow is using.
 
-To support MDI-API, FHIR extended operations are implemented as defined in the ":ref:`mdiAPI`"
-page. More pieces of information about the Raven FHIR server APIs are available in the ":ref:`ravenAPI`".
+Bluejay FHIR Server
+-------------------
+The Bluejay FHIR server is an instance that is configured to simulate EDRS that supports 
+:ref:`mdiAPI` As the Bluejay FHIR server is also based on the same code stack as Raven FHIR Server, 
+Bluejay FHIR server also provides the basic instance level of the FHIR APIs. 
+
+MDI-API that the Bluejay FHIR server currently supports is search API. Case Management Systems can
+test their MDI-API's search API feature with the Bluejay FHIR server. Please contact 
+:ref:`our team <mdiAPI>`` to arrange the testing.
 
 Raven Dashboard
 -----------------
