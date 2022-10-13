@@ -40,7 +40,7 @@ profiles in US PH, US Core, and ODH are implemented. The rest of the profiles wi
 MDI .NET libraries are available for download from nuget.org. Simply search by "MDI FHIR" at the nuget manager
 in Visual Studio. If you want to download from nuget.org, then the link will be 
 https://www.nuget.org/packages?q=MDI+FHIR. The result will show up as follow, and C# developers need to install
-all four of libraries, 
+all three of libraries, 
 
 .. image:: 
    ../images/mdi_in_nuget.png
