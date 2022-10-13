@@ -28,7 +28,6 @@ MDI .NET
 This .NET Library is for the following FHIR Implementation Guides (IG)
 
   - Medicolegal Death Investigation (MDI) FHIR IG | http://hl7.org/fhir/us/mdi/
-  - Occupational Data for Health (ODH) FHIR IG | http://hl7.org/fhir/us/odh/STU1.1/
   - US Public Health (US PH) FHIR IG | https://build.fhir.org/ig/HL7/fhir-us-ph-common-library-ig/
   - US Core FHIR IG | https://www.hl7.org/fhir/us/core/
 
