@@ -82,7 +82,14 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +--------------------------+-------------+----------+---------------------------------------------------+
 |patient.gender            |0..1         |token     |Decedent's gender                                  |
 +--------------------------+-------------+----------+---------------------------------------------------+
-|tracking-number           |0..1         |token     |Search by identifier in Composition - MDI to EDRS  |
+|| edrs-file-number        || 0..1       || token   || Search by extension-tracking-numbers in          |
+||                         ||            ||         || Composition - MDI to EDRS                        |
++--------------------------+-------------+----------+---------------------------------------------------+
+|| mdi-case-number         || 0..1       || token   || Search by extension-tracking-numbers in          |
+||                         ||            ||         || Composition - MDI to EDRS                        |
++--------------------------+-------------+----------+---------------------------------------------------+
+|| tox-lab-case-number     || 0..1       || token   || Search by extension-tracking-numbers in          |
+||                         ||            ||         || Composition - MDI to EDRS                        |
 +--------------------------+-------------+----------+---------------------------------------------------+
 |death-location            |0..1         |string    |District of death location                         |
 +--------------------------+-------------+----------+---------------------------------------------------+
