@@ -79,7 +79,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 |patient.family        |0..1         |string    |Decedent's last name                                                         |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |patient.given         |0..1         |string    |Decedent's first name                                                        |
-+----------- ----------+-------------+----------+-----------------------------------------------------------------------------+
++----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |patient.gender        |0..1         |token     |Decedent's gender                                                            |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 || edrs-file-number    || 0..1       || token   || Search by extension-tracking-numbers in                                    |
@@ -104,7 +104,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 || return              || 0..1       || resource|| Searchset Bundle that includes MDI document                                |
 ||                     ||            ||         || bundles. If [id] is supplied, then this should be                          |
 ||                     ||            ||         || Bundle - Document MDI to EDRS                                              |
-+---------------- -----+-------------+----------+-----------------------------------------------------------------------------+
++----------------------+-------------+----------+-----------------------------------------------------------------------------+
 
 Please note that the Search parameters related to patient are formatted with “.” (dot). In FHIR, this means 
 that the search parameters after “.” are *part* of patient parameter in Parameters resource. 
