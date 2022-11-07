@@ -8,8 +8,8 @@ Standard MDI API
     Until then, the Raven documentation will temporarily house the Standard MDI API specification.
     
     
-Operation APIs for MDI
-----------------------
+Operation APIs for MDI-EDRS Workflow
+------------------------------------
 MDI Implementation Guide (IG) is available in http://hl7.org/fhir/us/mdi/  This 
 guide should be used for the payload content format.
  
@@ -49,8 +49,8 @@ search queries are complicated. So, MAPI extended the FHIR document generation o
 defined search parameters that represent MDI data elements. Let's first review how MAPI extended the 
 'document generation' operation. 
 
-Extended Operation for MDI Document generation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Extended Operation for MDI-to-EDRS Document generation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This is a resource instance type extended operation. It means that the MDI document is generated from the 
 Composition resource. And the extension is made to the extended search parameters.
 
@@ -86,9 +86,6 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 ||                     ||            ||         || Composition - MDI to EDRS                                                  |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 || mdi-case-number     || 0..1       || token   || Search by extension-tracking-numbers in                                    |
-||                     ||            ||         || Composition - MDI to EDRS                                                  |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|| tox-lab-case-number || 0..1       || token   || Search by extension-tracking-numbers in                                    |
 ||                     ||            ||         || Composition - MDI to EDRS                                                  |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |death-location        |0..1         |string    |District of death location                                                   |
