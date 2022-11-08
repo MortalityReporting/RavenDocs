@@ -80,7 +80,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |patient.given         |0..1         |string    |Decedent's first name                                                        |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|patient.gender        |0..1         |token     |Decedent's gender                                                            |
+|patient.gender        |0..1         |string    |Decedent's gender                                                            |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 || edrs-file-number    || 0..1       || token   || Search by extension-tracking-numbers in                                    |
 ||                     ||            ||         || Composition - MDI to EDRS                                                  |
