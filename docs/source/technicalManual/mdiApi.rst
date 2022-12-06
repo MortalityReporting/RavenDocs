@@ -74,7 +74,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |patient               |0..*         |          |One or more decedent related search parameters                               |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|patient.birthdate     |0..1         |date      |Decedent's date of birth                                                     |                          
+|patient.birthdate     |0..1         |string    |Decedent's date of birth*                                                    |                          
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |patient.family        |0..1         |string    |Decedent's last name                                                         |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
@@ -90,11 +90,11 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |death-location        |0..1         |string    |District of death location                                                   |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-date-actual     |0..1         |dateTime  |observation.valueDateTime (eg: gt01/01/2022)                                 |
+|death-date-actual     |0..1         |string    |observation.valueDateTime* (eg: gt01/01/2022)                                |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-date-pronounced |0..1         |dateTime  |observation.component (eg: gt01/01/2022)                                     |
+|death-date-pronounced |0..1         |string    |observation.component* (eg: gt01/01/2022)                                    |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-date            |0..1         |dateTime  |search observation.valueDateTime of observation.component for a given date   |
+|death-date            |0..1         |string    |search observation.valueDateTime* of observation.component for a given date  |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |Out Parameters                                                                                                               |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
@@ -102,6 +102,9 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 ||                     ||            ||         || bundles. If [id] is supplied, then this should be                          |
 ||                     ||            ||         || Bundle - Document MDI to EDRS                                              |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
+
+\* Type for date or dateTime is defined as string for MDI-API. This is to support a `date parameter search in FHIR <https://hl7.org/fhir/r4/search.html#date>`_. The first two characters support date range search. 
+
 
 Please note that the Search parameters related to patient are formatted with “.” (dot). In FHIR, this means 
 that the search parameters after “.” are *part* of patient parameter in Parameters resource. 
