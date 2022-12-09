@@ -90,11 +90,11 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |death-location        |0..1         |string    |District of death location                                                   |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-date-actual     |0..1         |string    |observation.valueDateTime* (eg: gt01/01/2022)                                |
+|death-date-presumed   |0..1         |string    |observation.valueDateTime* (eg: gt01/01/2022T14:04:00)                       |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |death-date-pronounced |0..1         |string    |observation.component* (eg: gt01/01/2022)                                    |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-date            |0..1         |string    |search observation.valueDateTime* of observation.component for a given date  |
+|death-date            |0..1         |string    |search observation's valueDateTime* and component.pronounced date time.      |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |Out Parameters                                                                                                               |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
