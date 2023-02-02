@@ -257,7 +257,7 @@ READ API URL pattern is. ::
   GET [base FHIR URL]/Composition/id/$document
 
 ``id`` is a Composition resource Id, which is assigned by a systems such as CMS and EDRS. If a server maintains
-the ``id`` for all generated FHIR Document Bundles, then this [id] can be used get the document. In this case,
+the ``id`` for all generated FHIR Document Bundles, then this ``id`` can be used get the document. In this case,
 the response is a MDI document Bundle (not a *searchset* Bundle).
 
 If additional information is needed about the base FHIR operation that MAPI operation is extended from, 
@@ -275,7 +275,7 @@ provide a parameter that EDRS can use to find the case to update.
 
 UPDATE API operations and requirement are as follows. ::
 
-  PUT [base url]/Composition/$update-mdi
+  POST [base url]/Composition/$update-mdi
   Payload = Parameters resource
 
 
