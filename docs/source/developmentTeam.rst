@@ -8,7 +8,7 @@ About Raven Team
    :header-rows: 0
    
    * - Jon Duke
-     - Product Director
+     - Project Director
    * - | Alexandra Ramirez,
        | Julie Mittelstedt,
        | Marla Gorges
@@ -16,7 +16,7 @@ About Raven Team
        |
        |
    * - Myung Choi
-     - Technical Lead, MDI FHIR Server, MDI-API, MDI .NET Library
+     - Project Lead, MDI FHIR Server, MDI-API, MDI .NET Library
    * - | Michael Riley
        |
      - | MDI FHIR Import/Mapper, Validator, MDI Java Library, 
