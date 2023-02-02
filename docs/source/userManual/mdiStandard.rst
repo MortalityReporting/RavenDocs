@@ -24,10 +24,10 @@ which most development is focused. For a complete list of FHIR R4
 Resources and their respective maturities, please see the `FHIR R4
 Resource List <https://hl7.org/fhir/R4/resourcelist.html>`__.
 
-What is *MDI IG*?
+What is *MDI FHIR IG*?
 -----------------
 
-The `Medicolegal Death Investigation (MDI) Implementation Guide (IG) <http://hl7.org/fhir/us/mdi/>`__ is a FHIR
+The `Medicolegal Death Investigation (MDI) FHIR Implementation Guide (IG) <http://hl7.org/fhir/us/mdi/>`__ is a FHIR
 implementation guide detailing the proper method of using FHIR resources
 to construct a FHIR version of a Death and Toxicology Reporting. The MDI standard is
 developed to support modernization of interoperability between Coroner/Medical Examiner case management systems (CMS) 
