@@ -281,29 +281,29 @@ UPDATE API operations and requirement are as follows. ::
 
 Input/Output Parameters
 
-+------------------------+-------------+----------------------------+-----------------------------------+
-| Name                   | Cardinality | Type                       | Documentation                     |
-+========================+=============+============================+===================================+
-| In Parameters                                                                                         |
-+------------------------+-------------+----------------------------+-----------------------------------+
-| ``Jurisdiction defined | 0..*        | string                     | Any required parameters for a     |
-| parameters``           |             |                            | jurisdiction                      |
-+------------------------+-------------+----------------------------+-----------------------------------+
-| edrs-track-number      | 0..1        | string                     | EDRS case number if available     |
-+------------------------+-------------+----------------------------+-----------------------------------+
-|| mdi-document          || 0..1       || Bundle                    || MDI document bundle. The         |
-||                       ||            ||                           || “mdi-document” is a reserved     |
-||                       ||            ||                           || keyword. This should only be     |
-||                       ||            ||                           || used for the MDI to EDRS         |
-||                       ||            ||                           || profile bundle document.         |
-+------------------------+-------------+----------------------------+-----------------------------------+
-| Out Parameters                                                                                        |
-+------------------------+-------------+----------------------------+-----------------------------------+
-|| return                || 0..1       || OperationOutcomeParameters|| If an error occurs, OO resource  |
-||                       ||            ||                           || is returned. If response data    |
-||                       ||            ||                           || need to be sent back,            |
-||                       ||            ||                           || Parameters resource can be used. |
-+------------------------+-------------+----------------------------+-----------------------------------+
++------------------------+-------------+-----------------------------+-----------------------------------+
+| Name                   | Cardinality | Type                        | Documentation                     |
++========================+=============+=============================+===================================+
+| In Parameters                                                                                          |
++------------------------+-------------+-----------------------------+-----------------------------------+
+| ``Jurisdiction defined | 0..*        | string                      | Any required parameters for a     |
+| parameters``           |             |                             | jurisdiction                      |
++------------------------+-------------+-----------------------------+-----------------------------------+
+| edrs-file-number       | 1..1        | string                      | EDRS case number if available     |
++------------------------+-------------+-----------------------------+-----------------------------------+
+|| mdi-document          || 1..1       || Bundle                     || MDI document bundle. The         |
+||                       ||            ||                            || “mdi-document” is a reserved     |
+||                       ||            ||                            || keyword. This should only be     |
+||                       ||            ||                            || used for the MDI to EDRS         |
+||                       ||            ||                            || profile bundle document.         |
++------------------------+-------------+-----------------------------+-----------------------------------+
+| Out Parameters                                                                                         |
++------------------------+-------------+-----------------------------+-----------------------------------+
+|| return                || 0..1       || OperationOutcomeParameters || If an error occurs, OO resource  |
+||                       ||            ||                            || is returned. If response data    |
+||                       ||            ||                            || need to be sent back,            |
+||                       ||            ||                            || Parameters resource can be used. |
++------------------------+-------------+-----------------------------+-----------------------------------+
 
 Ex. **Request** in the payload
 
@@ -313,12 +313,12 @@ Ex. **Request** in the payload
        "resourceType":"Parameters",
        "parameter":[
           {
-             "name":"edrs-track-number",
+             "name":"edrs-file-number",
              "valueString":"1234"
           },
           {
-             "name":"jurisdiction defined key2",
-             "valueString":"value2"
+             "name":"jurisdiction defined key",
+             "valueString":"value"
           },
           {
              "name":"mdi-document",
