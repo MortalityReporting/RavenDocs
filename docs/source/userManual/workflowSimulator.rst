@@ -1,24 +1,18 @@
 Workflow Simulator
 ==================
-The Workflow Simulator is a modular component of the Raven Testing Tool that enables users to simulate 
-data flows coming into their MDI systems as it relates to FHIR adoption. The simulator also provides users 
-clear indicators and metrics to help them make decisions on where to spend their resources as they rebuild 
-for modernization and interoperability within their data ecosystems. 
+The Workflow Simulator is a module of the Raven platform that allows users to simulate data flows between Medicolegal Death Investigation (MDI)
+systems such as case management systems (CMS), electronic death registration systems (EDRS), and toxicology laboratory information systems (LIMS).
+The supported data flows are defined by interoperability use cases. There are two types of established use cases: Testing Use Cases and
+Operational Use Cases.   
 
-Architecture
-------------
-This would be a module within the Raven Platform or could be used independent of Raven for testing and metrics.
-The following diagram depicts what can be achieved with the collection of modules in staged views. Please note 
-that this is not to be considered a strictly technical architecture diagram for development purposes, and is 
-only intended to demonstrate a high level view of the functionality of the system as relates to the physical 
-layout of components, connection to external end points, and the users’ scope.
+1. Testing Use Cases: Use cases that are developed for testing events to evaluate the interoperability implementation of MDI systems  
+2. Operational Use Cases: Use cases that are defined by users in the MDI community to standardize the operations such as search, update,
+ certification, amendment, or messaging.  
 
-.. image:: 
-   ../images/Raven20Diagram.png
-   :alt: Raven Overview Diagram
-   
-The workflow simulator is an end-to-end framework that manages the project workstreams. Individual components 
-under the Project Workstreams are modularly composed in the workflow simulator.
+Some testing use cases can be supported by individual Raven modules such as the FHIR Validator and Record Comparison modules. Operational
+use cases, which are often more complex, such as the Search EDRS API workflow, can be implemented as a proof-of-concept using the Workflow
+Simulator prior to production development. Thus, users can use the Workflow Simulator as clear indicators and metrics to help making decisions
+on where to spend their resources as they rebuild for modernization and interoperability within their data ecosystems.  
 
 
 Workflows/Use Cases
