@@ -4,8 +4,8 @@ While there is a public Raven demo available, for users who wish to deploy the R
 
 Docker
 ------
-Coming Soon... (October 2022)
+Coming Soon...
 
 Non-Docker
 ----------
-Coming Soon... (4th Quarter 2022)
+Coming Soon...
