@@ -176,9 +176,9 @@ base site; and a `copy can be directly downloaded from the public internet <http
 +---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-Case Viewer (Viewing Cases)
+Record Viewer (Viewing Cases)
 ---------------------------
-The Case Viewer is a UI component which allows the browsing and viewing of Raven FHIR Server records, 
+The Record Viewer is a UI component which allows the browsing and viewing of Raven FHIR Server records, 
 encompassing both MDI Case Documents (MDI to EDRS) and Toxicology Reports (LIMS to MDI). 
 In addition to providing a user-friendly option for viewing the data present on the FHIR Server, 
 the layout is structured from the perspective of the MDI Implementation Guide to serve as an educational 
@@ -187,13 +187,13 @@ MDI documents.
 
 .. image:: 
    ../images/case_viewer.png
-   :alt: Raven Case Viewer Diagram
+   :alt: Raven Record Viewer Diagram
   
-The Case Viewer also features a FHIR Resource Explorer, which allows users to select a field and 
+The Record Viewer also features a FHIR Resource Explorer, which allows users to select a field and 
 see the underlying FHIR Resource structure containing the related data. The FHIR Resource Explorer will 
 support JSON and XML formats, as well as a human readable “narrative view”. 
 
 .. note::
     **Use Case**: Human readable display of MDI FHIR IG data with a FHIR explorer. Any cases loaded in 
-    the Raven FHIR server should be retrievable by Case Viewer. Users can use FHIR APIs to load the data.
+    the Raven FHIR server should be retrievable by Record Viewer. Users can use FHIR APIs to load the data.
 
