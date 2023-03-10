@@ -23,6 +23,11 @@ Resource List <https://hl7.org/fhir/R4/resourcelist.html>`__.
 
 FHIR MDI Implementation Guide (MDI-IG)
 ------------------
+
+FHIR MDI Resources
+------------------
+
+
 FHIR Implementation Guides (IGs) provide detailed instructions
 and guidance for implementing FHIR in specific healthcare settings
 or use cases. These guides outline how to use FHIR resources,
@@ -32,17 +37,11 @@ For the Medicolegal Death Investigation Community, NCHS has developed
 the MDI-FHIR-IG. MDI-FHIR-IG specifies actors and components in the
 MDI space, the specific workflows supported as standardized
 data exchange, and the resources and data format used for the exchange.
-You can review the guide at <https://hl7.org/fhir/us/mdi/>`__
-
-FHIR MDI Resources
-------------------
-
-The `Medicolegal Death Investigation (MDI)
-Implementation Guide <http://build.fhir.org/ig/HL7/fhir-mdi-ig/>`__ is a FHIR
-implementation guide detailing the proper method of using FHIR resources
-to construct a FHIR version of a Death and Toxicology Reporting. The MDI standard is
-developed to support modernization of interoperability between Coroner/Medical Examiner systems (CMS) 
-and other systems such as Electronic Death Registrar Systems (EDRS) and Toxicology Lab Information and Management System (LIMS).
+In specfic , the MDI standard is developed to support modernization of
+interoperability between Coroner/Medical Examiner systems (CMS) and 
+other systems such as Electronic Death Registrar Systems (EDRS) and
+Toxicology Lab Information and Management System (LIMS).
+You can review the guide at `https://hl7.org/fhir/us/mdi/ <https://hl7.org/fhir/us/mdi/>`__
 
 The Raven Platform uses the MDI IG for handling death
 records, allowing importing MDI data and exporting to FHIR resources. 
