@@ -21,9 +21,6 @@ which most development is focused. For a complete list of FHIR R4
 Resources and their respective maturities, please see the `FHIR R4
 Resource List <https://hl7.org/fhir/R4/resourcelist.html>`__.
 
-FHIR MDI Implementation Guide (MDI-IG)
-------------------
-
 FHIR MDI Resources
 ------------------
 
