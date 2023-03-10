@@ -21,6 +21,19 @@ which most development is focused. For a complete list of FHIR R4
 Resources and their respective maturities, please see the `FHIR R4
 Resource List <https://hl7.org/fhir/R4/resourcelist.html>`__.
 
+FHIR MDI Implementation Guide (MDI-IG)
+------------------
+FHIR Implementation Guides (IGs) provide detailed instructions
+and guidance for implementing FHIR in specific healthcare settings
+or use cases. These guides outline how to use FHIR resources,
+data elements, and profiles to exchange information between systems,
+as well as best practices for API operations, security, and privacy.
+For the Medicolegal Death Investigation Community, NCHS has developed
+the MDI-FHIR-IG. MDI-FHIR-IG specifies actors and components in the
+MDI space, the specific workflows supported as standardized
+data exchange, and the resources and data format used for the exchange.
+You can review the guide at <https://hl7.org/fhir/us/mdi/>`__
+
 FHIR MDI Resources
 ------------------
 
