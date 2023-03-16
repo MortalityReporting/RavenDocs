@@ -18,7 +18,6 @@ the sidebar navigation menu.
 
 
 .. toctree::
-   
    endUserManual
    technicalManual
    developmentTeam
