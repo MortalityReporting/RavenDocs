@@ -5,9 +5,6 @@ The contents of this section will be subject to change as the Raven evolves or i
 can happen often, it's highly recommended to refresh each page so that the cached pages can be refreshed with new updates.
 
 .. toctree::
-    :numbered:
-    :hidden:
-    
     technicalManual/mdiApi
     technicalManual/componentOverview
     technicalManual/libraries
