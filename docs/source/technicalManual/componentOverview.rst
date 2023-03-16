@@ -37,9 +37,9 @@ Raven Dashboard
 -----------------
 The Raven Dashboard is the user interface for the Raven Platform. It consists of multiple core modules and features.
 
-* Case Importing and Viewing
-   * Case Viewer - View MDI case records currently stored on the Raven FHIR Server, with the ability to view the underlying FHIR structures in a human readable narrative, XML, or JSON.
-   * Import Case Records - Import records to the Raven FHIR Server. Records can be submitted directly as a FHIR MDI-to-EDRS Document Bundle or from the MDI test case spreadsheet (XLSX file).
+* Record Importing and Viewing
+   * Record Viewer - View MDI case records currently stored on the Raven FHIR Server, with the ability to view the underlying FHIR structures in a human readable narrative, XML, or JSON.
+   * Import Records - Import records to the Raven FHIR Server. Records can be submitted directly as a FHIR MDI-to-EDRS Document Bundle or from the MDI test case spreadsheet (XLSX file).
 * Validate and Compare
    * FHIR Validator - UI wrapper for the official HL7 FHIR Validator command line tool.
    * Record Comparison (In Development) - Compare a user-generated FHIR MDI Document bundle created from a test case against a known valid rendering of the same test case.
