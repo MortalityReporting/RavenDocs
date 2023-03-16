@@ -1,20 +1,17 @@
 Welcome to the Raven Platform documentation! 
 ============================================
 
-This wiki exists as a guide to help users understand 
-the Raven mortality platform, providing
-both end-user manuals as well as technical documentation for items such
-as data schema.
+This document exists as a guide to help users understand the Raven mortality platform, providing both end-user manuals as well as technical documentation.
 
 What is Raven?
 --------------
 
-Raven is an open-source, proof-of-concept platform that serves as a reference implementation and provides testing tools for interoperability between case management systems (CMS) and other external actors. The external actors are those data sources with which CMS need to communicate to exchange Medicolegal Death Investigation (MDI) data, and may include, but not be limited to, electronic death registration systems (EDRS) and forensic toxicology laboratory information management systems (LIMS).
+Raven is an open-source and proof of concept platform for the Medicolegal Death Investigation (MDI) FHIR Implementation Guide (IG). It is both
 
-The current Raven tooling and tests aid developers in implementing the MDI FHIR record format by validating FHIR messages against MDI IG guidelines and FHIR-based extended API operations. For more information on each Raven tool components, Raven’s MDI CSV schema, or
-FHIR MDI standard please see the corresponding
-sections in this wiki, accessible through the table of contents below or
-the sidebar navigation menu.
+1. a **Testing Tool** for data validation, data comparison, data exchange via API, and any features on demand in the future, and
+2. an **Education Tool** for showing various examples in FHIR format and workflows in action"
+
+The current Raven tooling and tests aid developers in implementing the MDI FHIR record format by validating the data against MDI IG guidelines and FHIR-based extended API operations. For more information on each Raven tool components, Raven’s MDI CSV schema, or MDI FHIR standard please see the corresponding sections in this document, accessible through the table of contents below or the sidebar navigation menu.
 
 
 .. toctree::
