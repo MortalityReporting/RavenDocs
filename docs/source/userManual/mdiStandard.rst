@@ -47,7 +47,7 @@ MDI Implementation Guide <http://hl7.org/fhir/us/mdi/background.html>`__.
 Overview of MDI Workflows 
 -------------------------
 
-Currently, two workflows are defined in the MDI IG, CMS-to-EDRS and Toxicology-to-CMS. The MDI IG defines
+Currently, two workflows are defined in the MDI IG, MDI-to-EDRS and Toxicology-to-MDI. The MDI IG defines
 profiles to describe the required content structures for the workflows.
 
 MDI-to-EDRS
@@ -74,4 +74,3 @@ with samples. After lab work is performed, the lab report is sent back to CMS fr
 MDI IG specifies the lab reporting direction only and uses FHIR messaging for the data exchanges.
 
 Users can validate the Toxicology-to-MDI FHIR bundle messages and store the messages in Raven FHIR server. 
-Toxicology case viewer and API operations are work-in-progress. 
