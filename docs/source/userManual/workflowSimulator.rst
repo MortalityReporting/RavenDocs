@@ -6,8 +6,7 @@ The supported data flows are defined by interoperability use cases. There are tw
 Operational Use Cases.   
 
 1. Testing Use Cases: Use cases that are developed for testing events to evaluate the interoperability implementation of MDI systems  
-2. Operational Use Cases: Use cases that are defined by users in the MDI community to standardize the operations such as search, update,
- certification, amendment, or messaging.  
+2. Operational Use Cases: Use cases that are defined by users in the MDI community to standardize the operations such as search, update, certification, amendment, or messaging.  
 
 Some testing use cases can be supported by individual Raven modules such as the FHIR Validator and Record Comparison modules. Operational
 use cases, which are often more complex, such as the Search EDRS API workflow, can be implemented as a proof-of-concept using the Workflow
