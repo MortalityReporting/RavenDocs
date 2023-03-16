@@ -8,7 +8,7 @@ Standard MDI API
     Until then, the Raven documentation will temporarily house the Standard MDI API specification.
     
     
-Operation APIs for MDI-EDRS Workflow
+Operation APIs for MDI-to-EDRS Workflow
 ------------------------------------
 MDI Implementation Guide (IG) is available in http://hl7.org/fhir/us/mdi/  This 
 guide should be used for the payload content format.
