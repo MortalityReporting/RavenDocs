@@ -50,9 +50,9 @@ Overview of MDI Workflows
 Currently, two workflows are defined in the MDI IG, CMS-to-EDRS and Toxicology-to-CMS. The MDI IG defines
 profiles to describe the required content structures for the workflows.
 
-CMS-to-EDRS
+MDI-to-EDRS
 ^^^^^^^^^^^
-CMS-to-EDRS workflow represents the interoperability between MDI case management system (CMS) and 
+MDI-to-EDRS workflow represents the interoperability between MDI case management system (CMS) and 
 state's electronic death registration system (EDRS). In MDI IG, this workflow is supported by 
 MDI-to-EDRS profiles. As it happens in most states, the case is mostly created by funeral directors. 
 Thus, this workflow begins with an initial case created at the EDRS. CMS first searches EDRS for a case 
@@ -65,9 +65,9 @@ It's highly recommended for users to first validate the FHIR data before loading
 have their own dataset or are not ready to produce the dataset, Raven allows users to search the Raven FHIR Server, 
 load the case and play with the case. Users can explore the raw FHIR data along with the rendered data in forms.
 
-Toxicology-to-CMS
+Toxicology-to-MDI
 ^^^^^^^^^^^^^^^^^
-Toxicology-to-CMS workflow represents the interoperability between forensic toxicology laboratory information 
+Toxicology-to-MDI workflow represents the interoperability between forensic toxicology laboratory information 
 management system (LIMS) to an MDI case management system (CMS). In MDI IG, this workflow is supported by
 Toxicology-to-MDI profiles. This workflow is bidirectional. There is an inital lab order sent from CMS 
 with samples. After lab work is performed, the lab report is sent back to CMS from LIMS. Currently, the 
