@@ -3,9 +3,9 @@
 Record Management
 =================
 
-Case Import (Importing MDI Records)
+Record Import (Importing MDI Records)
 -----------------------------------
-Case Importing is a Raven feature that imports the Comma-separated Values (CSV) or spreadsheet 
+Record Importing is a Raven feature that imports the Comma-separated Values (CSV) or spreadsheet 
 file into the MDI FHIR server in an MDI FHIR IG compliant format.  
   
 The FHIR data model is complicated and structured with multi-levels and logical references. 
@@ -26,12 +26,12 @@ MDI FHIR IG data using connectathon testcase data so that participant-generated 
 compared with the reference MDI FHIR IG data with the comparison tool. The case importing and comparing 
 data are done as follows. 
 
-**Case Importing** 
+**Importing Procedure** 
     - Reads the testcases spreadsheet
     - Converts the data in the testcases to MDI CSV
     - Mapper maps the MDI CSV to MDI IG FHIR and stores the converted MDI FHIR IG data in the Raven FHIR Server 
       to be used as reference data
-    - When connectathon participants’ validated data are loaded to Raven, Comparison Tool compares the 
+    - When participants’ validated data are loaded to Raven, Comparison Tool compares the 
       loaded data with the reference data. See ":ref:`validation-comparison`" page for more information.
 
 Spreadsheet Schema
