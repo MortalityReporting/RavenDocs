@@ -275,7 +275,7 @@ provide a parameter that EDRS can use to find the case to update.
 
 UPDATE API operations and requirement are as follows. ::
 
-  POST [base url]/Composition/$update-mdi
+  PUT [base url]/Composition/$update-mdi
   Payload = Parameters resource
 
 
