@@ -85,7 +85,7 @@ OAuth2 Flows
 OAuth2 defines different flows based on the client (or application) types. This document only discusses 
 the flow(s) that might be applicable to the client types in MDI. Figure 1 depicts the authorization code 
 flow that can provide authentication and authorization of clients in MDI workflows. Detail transactions 
-for the authorization code flow are explained in section 4.1 of `RFC 6749 <https://www.rfc-editor.org/rfc/rfc6749>`_.
+for the authorization code flow are explained in section `4.1 <https://www.rfc-editor.org/rfc/rfc6749#section-4.1>`_ of `RFC 6749 <https://www.rfc-editor.org/rfc/rfc6749>`_.
 
 .. figure:: ../images/authorization_code_flow.png
    :alt: Authorization Code Flow in OAuth2
@@ -213,7 +213,73 @@ submit the request to resource server for data. The access token is placed in th
 
 
 Client must check the *expires_in* value. If token is expired, and refresh access token is supported, then 
-client can submit the request for renew. 
+client can submit the request to renew the access token (see sections above related to the requests). 
+
+Error Handling
+~~~~~~~~~~~~~~
+If error occurs during authorization, the server should respond as specified in `5.2 <https://www.rfc-editor.org/rfc/rfc6749#section-5.2>`_ of `RFC 6749 <https://www.rfc-editor.org/rfc/rfc6749>`_.
+In summary, the response should be 400 (Bad Request) status code (unless specified otherwise) with the 
+following parameters.
+
+**Error Parameters**\ :
+
++------------------------------------------------------------------------------------------------------------------------+
+| **Key**                                                                                                                |
++-------------------------+----------------+-----------------------------------------------------------------------------+
+| error                   |``required``    | A single ASCII error code from the following values:                        |
++-------------------------+----------------+-----------------------------------------------------------------------------+
+| **Values**                                                                                                             |
++-------------------------+----------------------------------------------------------------------------------------------+
+|| invalid_request        || The request is missing a required parameter, includes an unsupported parameter value        |
+||                        || (other than grant type), repeats a parameter, includes multiple credentials, utilizes       |
+||                        || more than one mechanism for authenticating the client, or is otherwise malformed.           |
++-------------------------+----------------------------------------------------------------------------------------------+
+|| invalid_client         || Client authentication failed (e.g., unknown client, no client authentication included,      |
+||                        || or unsupported authentication method).  The authorization server MAY return an HTTP 401     |
+||                        || (Unauthorized) status code to indicate which HTTP authentication schemes are supported.     |
+||                        || If the client attempted to authenticate via the "Authorization" request header field,       |
+||                        || the authorization server MUST respond with an HTTP 401 (Unauthorized) status code and       |
+||                        || include the "WWW-Authenticate" response header field matching the authentication scheme     |
+||                        || used by the client.                                                                         |
++-------------------------+----------------------------------------------------------------------------------------------+
+|| invalid_grant          || The provided authorization grant (e.g., authorization code, resource owner credentials)     |
+||                        || or refresh token is invalid, expired, revoked, does not match the redirection URI used      |
+||                        || in the authorization request, or was issued to another client.                              |
++-------------------------+----------------------------------------------------------------------------------------------+
+|| unauthorized_client    | The authenticated client is not authorized to use this authorization grant type.             |
++-------------------------+----------------------------------------------------------------------------------------------+
+| unsupported_grant_type  | The authorization grant type is not supported by the authorization server.                   |
++-------------------------+----------------------------------------------------------------------------------------------+
+| invalid_scope           || The requested scope is invalid, unknown, malformed, or exceeds the scope granted by the     | 
+|                         || resource owner.                                                                             |
++-------------------------+----------------------------------------------------------------------------------------------+
+| Values for the "error" parameter MUST NOT include characters outside the set %x20-21 / %x23-5B / %x5D-7E.              |
++-------------------------+----------------+-----------------------------------------------------------------------------+
+| **Key**                                                                                                                |
++-------------------------+----------------+-----------------------------------------------------------------------------+
+|| error_description      || ``optional``  || Human-readable ASCII text providing additional information, used to assist | 
+||                        ||               || the client developer in understanding the error that occurred. Values for  |
+||                        ||               || the"error_description" parameter MUST NOT include characters outside the   |
+||                        ||               || set %x20-21 / %x23-5B / %x5D-7E.                                           |
++-------------------------+----------------+-----------------------------------------------------------------------------+
+|| error_uri              || ``optional``  || A URI identifying a human-readable web page with information about the     |
+||                        ||               || error, used to provide the client developer with additional information    |
+||                        ||               || about the error. Values for the "error_uri" parameter MUST conform to the  |
+||                        ||               || URI-reference syntax and thus MUST NOT include characters outside the set  |
+||                        ||               || %x21 / %x23-5B / %x5D-7E.                                                  |
++-------------------------+----------------+-----------------------------------------------------------------------------+
+
+
+Example
+::
+   HTTP/1.1 400 Bad Request
+   Content-Type: application/json;charset=UTF-8
+   Cache-Control: no-store
+   Pragma: no-cache
+   
+   {
+      "error":"invalid_request"
+   }
 
 
 Search API
@@ -272,9 +338,9 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |death-location        |0..1         |string    |District of death location                                                   |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-date-presumed   |0..1         |string    |observation.valueDateTime* (eg: gt01/01/2022T14:04:00)                       |
+|death-date-presumed   |0..1         |string    |observation.valueDateTime* (eg: gt2022-01-01T14:04:00)                       |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-date-pronounced |0..1         |string    |observation.component* (eg: gt01/01/2022)                                    |
+|death-date-pronounced |0..1         |string    |observation.component* (eg: gt2022-01-01)                                    |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |death-date            |0..1         |string    |search observation's valueDateTime* and component.pronounced date time.      |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
