@@ -1,5 +1,6 @@
 .. _mdiAPI:
 
+================
 Standard MDI API
 ================
 
@@ -9,7 +10,7 @@ Standard MDI API
     
     
 Operation APIs for MDI-to-EDRS Workflow
-------------------------------------
+=======================================
 MDI Implementation Guide (IG) is available in http://hl7.org/fhir/us/mdi/  This 
 guide should be used for the payload content format.
  
@@ -27,30 +28,277 @@ In FHIR, FHIR resources, interactions, and operations are published using Compat
 in https://hl7.org/FHIR/capabilitystatement.html. It is recommended that EDRS FHIR servers publish 
 their capability statement as defined in this link. 
 
-Security
---------
-It’s recommended to use OAuth2 with OpenID. EDRS should provide an authorization server to authenticate and 
-authorize the CMS to access the EDRS FHIR server. Please refer to http://www.hl7.org/fhir/smart-app-launch/ 
-if EDRS wishes to implement SMART on FHIR framework. However, SMART on FHIR is not required.  
+Security Recommendations
+========================
+This section covers a minimum level of security recommended by the MDI FHIR IG. There are more data 
+exchange protocols and content models defined in the `FHIR Security document <https://www.hl7.org/fhir/security.html>`_. 
+MDI systems that require a higher level of security should refer to the FHIR Security document 
+for the interoperability.  
 
+Secure Data Transportation
+--------------------------
+In most modern systems, digital data are exchanged using web services. FHIR recommends a web service 
+called RESTful Application Programming Interface (REST API) where REST stands for **RE**\ presentational **S**\ tate 
+**T**\ ransfer. REST API uses Transport Layer Security (TLS) for the secure transportation. More accurately, 
+TLS 1.2 or higher needs to be used. This is also known as HTTPS. All data exchanges in MDI FHIR IG must 
+be done in HTTPS
+
+Standard Authorization Protocol
+-------------------------------
+A standard authorization protocol that can be used for the data access is the OAuth 2.0 (OAuth2) 
+Authorization Framework defined in `RFC 6749 <https://www.rfc-editor.org/rfc/rfc6749>`_. There are many documents provided by OAuth2 service 
+providers that are much easier and simpler to understand. Searching on Internet using “OAuth2” keyword 
+will return several related documents.
+
+Roles in OAuth2
+^^^^^^^^^^^^^^^
+OAuth2 defines several components that play different roles. Systems in MDI IG should play the roles to 
+support the OAuth2. The OAuth2 roles are changed depending on the roles in the MDI workflows. Table1 
+shows which OAuth2 roles the systems in MDI IG should play in the MDI-to-EDRS and Toxicology-to-MDI 
+workflows. As more workflows are added to the MDI IG, additional roles may be added to the system, 
+which may be ended up playing multiple roles.
+
++-----------------------+---------------------------------------------------------------------+-------------+--------------+
+|Role                   |Responsibility                                                       |MDI-to-EDRS  |Tox-to-MDI    |
++=======================+=====================================================================+=============+==============+
+|| Authorization Server || Server that authenticates the resource owner and issues access     || EDRS       || CMS         |
+||                      || tokens to the client application. The authorization server can be  ||            ||             |
+||                      || the same as the authentication server or can be a separate server. ||            ||             |
++-----------------------+---------------------------------------------------------------------+-------------+--------------+
+|| Client               || Application that wants to access the resource on behalf of the     || CMS        || LIMS        |
+||                      || resource owner. The client can be a web application, a mobile      ||            ||             |
+||                      || application, or a desktop application.                             ||            ||             |
++-----------------------+---------------------------------------------------------------------+-------------+--------------+
+|| Resource Owner       || User who owns the resource (such as a photo or a document) that    || CMS Users  || LIMS Users  |
+||                      || a client application wants to access. The resource owner grants    || EDRS Users ||             |
+||                      || permission to the client application to access the resource.       ||            ||             |
++-----------------------+---------------------------------------------------------------------+-------------+--------------+
+|| Resource             || Server that hosts the resource that the client application wants   || EDRS       || CMS         |
+|| Server (Provider)    || to access. The resource server verifies the access token and       ||            ||             |
+||                      || grants access to the resource if the token is valid.               ||            ||             |
++-----------------------+---------------------------------------------------------------------+-------------+--------------+
+**Table1**\ : Roles in OAuth2 and MDI Systems
+
+
+OAuth2 Flows
+^^^^^^^^^^^^
+OAuth2 defines different flows based on the client (or application) types. This document only discusses 
+the flow(s) that might be applicable to the client types in MDI. Figure 1 depicts the authorization code 
+flow that can provide authentication and authorization of clients in MDI workflows. Detail transactions 
+for the authorization code flow are explained in section `4.1 <https://www.rfc-editor.org/rfc/rfc6749#section-4.1>`_ of `RFC 6749 <https://www.rfc-editor.org/rfc/rfc6749>`_.
+
+.. figure:: ../images/authorization_code_flow.png
+   :alt: Authorization Code Flow in OAuth2
+   
+**Figure 1**\ : Authorization Code Flow in OAuth2
+
+
+Client Registration
+~~~~~~~~~~~~~~~~~~~
+For a client to be able to get authenticated and authorized, the client must be registered at the 
+authorization server. When a client is registered, the client should provide *redirection_uri*\ . 
+*Client_id* will then be issued to the client. The client will use the *client_id* and *redirection_uri* 
+for its authentication and authorization.
+
+
+Authorization Request
+~~~~~~~~~~~~~~~~~~~~~
+Client first needs to get an authorization code. In Figure 1, 1, 2, and 3 are the authorization request 
+steps. Client should provide client identifier with *client_id* and *redirection_uri (optional)*. *Client_id* 
+and *redirection_uri* will be matched with registered data at the authorization server (1). If the request 
+is valid, then the client will be redirected to user authentication (2) where authentication and consent 
+occur. Once client authenticated and authorized, authorization code is returned to client by being 
+redirected to the *redirection_uri* (3).
+
+Parameters for the authorization request are as follows. They are included as URL parameters with HTTPS 
+GET method. However, POST can also be used by having the parameters included in the payload with a 
+content-type set to **application/x-www-form-urlencoded**\ . 
+
+**Parameters**
+
+==================   ===============   =================================================================
+**Request**
+--------------------------------------------------------------------------------------------------------
+response_type        ``required``      Fixed value: code
+client_id            ``required``      Client identifier issued at the registration
+redirection_uri      ``optional``      Full URL that authorization server will use to respond to request
+scope                ``optional``
+state                ``recommended``
+**Response**
+--------------------------------------------------------------------------------------------------------
+code                 ``required``      Authorization Code to be used for the access token request
+state                ``required``      If client puts state in the request
+==================   ===============   =================================================================
+
+Response to the request is sent to the *redirection_uri* at the client using **application/x-www-form-urlencoded** 
+content-type. 
+
+Example:
+::
+   GET /authorize?response_type=code&client_id=s6BhdRkqt3&state=xyz&redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
+   Host: server.example.com
+
+Access Token Request
+~~~~~~~~~~~~~~~~~~~~
+After authorization code is successfully received, access token request can be sent to authorization server 
+(or token server) for an access token. Steps 4 and 5 in figure 1 are access token request flow. Parameters 
+for the access token request are as follows.
+
+**Parameters**
+
+==================   ===============   =================================================================
+**Request**
+--------------------------------------------------------------------------------------------------------
+grant_type           ``required``      Fixed value: authorization_code
+code                 ``required``      The authorization code received from the request.
+redirection_uri      ``required``      Full URL that authorization server will use to respond to request
+client_id            ``required``      If the client is not authenticating with authorization server
+**Response**
+--------------------------------------------------------------------------------------------------------
+access_token         ``required``      Access token issued by the authorization server
+token_type           ``required``      Type of the token issued
+expires_in           ``recommended``   The lifetime (in sec) of the access token
+refresh_token        ``optional``      Used to obtain a new access token
+scope                ``optional``      
+==================   ===============   =================================================================
+
+Example
+::
+   POST /token HTTP/1.1
+   Host: server.example.com
+   Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+   Content-Type: application/x-www-form-urlencoded
+   
+   grant_type=authorization_code&code=SplxlOBeZQQYbYS6WxSbIA&redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb
+
+
+Refresh Token Request
+~~~~~~~~~~~~~~~~~~~~~
+If refresh token is available, then a request can be sent to the authorization server (or token endpoint). 
+If client authentication is included, the authentication needs to be performed.
+
+**Parameters**
+
+==================   ===============   =================================================================
+**Request**
+--------------------------------------------------------------------------------------------------------
+grant_type           ``required``      Fixed value: refresh_token
+refresh_token        ``required``      Refresh token issued to a client.
+scope                ``optional``      
+**Response**
+--------------------------------------------------------------------------------------------------------
+access_token         ``required``      Access token issued by the authorization server
+token_type           ``required``      Type of the token issued
+expires_in           ``recommended``   The lifetime (in sec) of the access token
+refresh_token        ``optional``      Used to obtain a new access token
+scope                ``optional``      
+==================   ===============   =================================================================
+
+Example
+::
+   POST /token HTTP/1.1
+   Host: server.example.com
+   Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+   Content-Type: application/x-www-form-urlencoded
+   
+   grant_type=refresh_token&refresh_token=tGzv3JOkF0XG5Qx2TlKWIA
+
+
+Accessing Resource Server
+~~~~~~~~~~~~~~~~~~~~~~~~~
+After authentication/authorization is (are) completed, client can put the access token in the header and 
+submit the request to resource server for data. The access token is placed in the header as follows.
+::
+   Authorization: Bearer <access token>
+
+
+Client must check the *expires_in* value. If token is expired, and refresh access token is supported, then 
+client can submit the request to renew the access token (see sections above related to the requests). 
+
+Error Handling
+~~~~~~~~~~~~~~
+If error occurs during authorization, the server should respond as specified in `5.2 <https://www.rfc-editor.org/rfc/rfc6749#section-5.2>`_ of `RFC 6749 <https://www.rfc-editor.org/rfc/rfc6749>`_.
+In summary, the response should be 400 (Bad Request) status code (unless specified otherwise) with the 
+following parameters.
+
+**Error Parameters**\ :
+
++------------------------------------------------------------------------------------------------------------------------+
+| **Key**                                                                                                                |
++-------------------------+----------------+-----------------------------------------------------------------------------+
+| error                   |``required``    | A single ASCII error code from the following values:                        |
++-------------------------+----------------+-----------------------------------------------------------------------------+
+| **Values**                                                                                                             |
++-------------------------+----------------------------------------------------------------------------------------------+
+|| invalid_request        || The request is missing a required parameter, includes an unsupported parameter value        |
+||                        || (other than grant type), repeats a parameter, includes multiple credentials, utilizes       |
+||                        || more than one mechanism for authenticating the client, or is otherwise malformed.           |
++-------------------------+----------------------------------------------------------------------------------------------+
+|| invalid_client         || Client authentication failed (e.g., unknown client, no client authentication included,      |
+||                        || or unsupported authentication method).  The authorization server MAY return an HTTP 401     |
+||                        || (Unauthorized) status code to indicate which HTTP authentication schemes are supported.     |
+||                        || If the client attempted to authenticate via the "Authorization" request header field,       |
+||                        || the authorization server MUST respond with an HTTP 401 (Unauthorized) status code and       |
+||                        || include the "WWW-Authenticate" response header field matching the authentication scheme     |
+||                        || used by the client.                                                                         |
++-------------------------+----------------------------------------------------------------------------------------------+
+|| invalid_grant          || The provided authorization grant (e.g., authorization code, resource owner credentials)     |
+||                        || or refresh token is invalid, expired, revoked, does not match the redirection URI used      |
+||                        || in the authorization request, or was issued to another client.                              |
++-------------------------+----------------------------------------------------------------------------------------------+
+|| unauthorized_client    | The authenticated client is not authorized to use this authorization grant type.             |
++-------------------------+----------------------------------------------------------------------------------------------+
+| unsupported_grant_type  | The authorization grant type is not supported by the authorization server.                   |
++-------------------------+----------------------------------------------------------------------------------------------+
+| invalid_scope           || The requested scope is invalid, unknown, malformed, or exceeds the scope granted by the     | 
+|                         || resource owner.                                                                             |
++-------------------------+----------------------------------------------------------------------------------------------+
+| Values for the "error" parameter MUST NOT include characters outside the set %x20-21 / %x23-5B / %x5D-7E.              |
++-------------------------+----------------+-----------------------------------------------------------------------------+
+| **Key**                                                                                                                |
++-------------------------+----------------+-----------------------------------------------------------------------------+
+|| error_description      || ``optional``  || Human-readable ASCII text providing additional information, used to assist | 
+||                        ||               || the client developer in understanding the error that occurred. Values for  |
+||                        ||               || the"error_description" parameter MUST NOT include characters outside the   |
+||                        ||               || set %x20-21 / %x23-5B / %x5D-7E.                                           |
++-------------------------+----------------+-----------------------------------------------------------------------------+
+|| error_uri              || ``optional``  || A URI identifying a human-readable web page with information about the     |
+||                        ||               || error, used to provide the client developer with additional information    |
+||                        ||               || about the error. Values for the "error_uri" parameter MUST conform to the  |
+||                        ||               || URI-reference syntax and thus MUST NOT include characters outside the set  |
+||                        ||               || %x21 / %x23-5B / %x5D-7E.                                                  |
++-------------------------+----------------+-----------------------------------------------------------------------------+
+
+
+Example
+::
+   HTTP/1.1 400 Bad Request
+   Content-Type: application/json;charset=UTF-8
+   Cache-Control: no-store
+   Pragma: no-cache
+   
+   {
+      "error":"invalid_request"
+   }
+
+
+Search API
+==========
 .. image::
    ../images/mapi_cms_to_edrs_workflow.png
    :alt: MDI to EDRS Workflow
 
-
 The above diagram depicts the MDI to EDRS API workflow. And, the MAPI design will follow this workflow.
-Let's first start with the SEARCH operation. In most states, the case is created by funeral directors. 
+We will start with the SEARCH operation. In most states, the case is created by funeral directors. 
 We will assume that the case has already been created at the EDRS with a decedent's demographics.
 
-SEARCH API
-----------
-FHIR has search API. However, the FHIR search parameters are specific to a resource. The extended
+The basic FHIR has search API. However, the FHIR search parameters are specific to a resource. The extended
 search queries are complicated. So, MAPI extended the FHIR document generation operation ($document) and 
 defined search parameters that represent MDI data elements. Let's first review how MAPI extended the 
 'document generation' operation. 
 
 Extended Operation for MDI-to-EDRS Document generation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------------------
 This is a resource instance type extended operation. It means that the MDI document is generated from the 
 Composition resource. And the extension is made to the extended search parameters.
 
@@ -90,9 +338,9 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |death-location        |0..1         |string    |District of death location                                                   |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-date-presumed   |0..1         |string    |observation.valueDateTime* (eg: gt01/01/2022T14:04:00)                       |
+|death-date-presumed   |0..1         |string    |observation.valueDateTime* (eg: gt2022-01-01T14:04:00)                       |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-date-pronounced |0..1         |string    |observation.component* (eg: gt01/01/2022)                                    |
+|death-date-pronounced |0..1         |string    |observation.component* (eg: gt2022-01-01)                                    |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
 |death-date            |0..1         |string    |search observation's valueDateTime* and component.pronounced date time.      |
 +----------------------+-------------+----------+-----------------------------------------------------------------------------+
@@ -207,7 +455,7 @@ Please see the examples of search Parameters resource and its response.
     
 
 Error Handling
-^^^^^^^^^^^^^^
+--------------
 **API Level Errors**
 API itself can indicate errors. API errors are displayed in the HTTP code. 2xx are returned when API 
 transactions are successfully processed. 4xx or 5xx are error codes. 3xx are not errors. These codes 
@@ -249,8 +497,8 @@ contact EDRS for the error. Below shows an example of *OperationOutcome*.
        ]
     }
 
-READ API
---------
+Read API
+========
 
 READ API URL pattern is. ::
 
@@ -265,8 +513,8 @@ please refer to the following link.
 https://www.hl7.org/fhir/composition-operation-document.html
 
 
-UPDATE API
------------------
+Update API
+==========
 During the death investigation, C/ME may need to update the case in the EDRS. This API allows CMS to update
 the active case. PUT should be used for the HTTP action method. And, Parameters resource is used to include
 the MDI document that C/MEs want to update. Since this API presumes that the case already exists in the
