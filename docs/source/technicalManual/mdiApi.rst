@@ -1,23 +1,22 @@
 .. _mdiAPI:
 
-================
-Standard MDI API
-================
+=======================
+Standard MDI API (MAPI)
+=======================
 
 .. note::
-    Standard MDI API will be documented as a best practice in the MDI IG site in the future. 
-    Until then, the Raven documentation will temporarily house the Standard MDI API specification.
-    
+   Standard MDI API (MAPI) will be documented as a best practice in the MDI IG site in the future. 
+   Until then, the Raven documentation will temporarily house the standard MAPI specification.
     
 Operation APIs for MDI-to-EDRS Workflow
 =======================================
-MDI Implementation Guide (IG) is available in http://hl7.org/fhir/us/mdi/  This 
-guide should be used for the payload content format.
+MDI FHIR Implementation Guide (IG) is available in http://hl7.org/fhir/us/mdi/  This 
+IG should be used for the payload of MAPI.
  
-FHIR has also defined the Restful API for operations. The FHIR Restful API document is available from 
-https://hl7.org/FHIR/http.html. And, FHIR Restful API Operations are documented in 
-https://hl7.org/FHIR/operationslist.html. MDI API is extended operations of the FHIR Restful 
-API operations. Thus, the basic rules of FHIR API are also applied to MDI API. For example,
+FHIR defines base restful APIs for FHIR data transportation. Their documents are available 
+from https://hl7.org/FHIR/http.html. And, the FHIR API Operations are documented 
+in https://hl7.org/FHIR/operationslist.html. MAPI is extended the FHIR ASPI operations. 
+Therefor, the basic rules of FHIR APIs and operations are also applied to MAPI. For example,
 
 * Content-type for FHIR resources is application/fhir+xml or application/fhir+json. This needs to 
   be specified in the HTTP header. 
@@ -288,14 +287,16 @@ Search API
    ../images/mapi_cms_to_edrs_workflow.png
    :alt: MDI to EDRS Workflow
 
-The above diagram depicts the MDI to EDRS API workflow. And, the MAPI design will follow this workflow.
+The above diagram depicts the MDI to EDRS API workflow. MAPI design follows this workflow.
 We will start with the SEARCH operation. In most states, the case is created by funeral directors. 
-We will assume that the case has already been created at the EDRS with a decedent's demographics.
+For this document, we assume that the case has already been created at the EDRS with decedent's demographics.
 
-The basic FHIR has search API. However, the FHIR search parameters are specific to a resource. The extended
+The FHIR defines basic search API. However, the FHIR search parameters are specific to a resource. The extended
 search queries are complicated. So, MAPI extended the FHIR document generation operation ($document) and 
-defined search parameters that represent MDI data elements. Let's first review how MAPI extended the 
-'document generation' operation. 
+defined search parameters that represent MDI data elements. Details about the base $document operation is described
+in https://www.hl7.org/fhir/composition-operation-document.html
+
+Let's first review how MAPI extended the $document operation. 
 
 Extended Operation for MDI-to-EDRS Document generation
 ------------------------------------------------------
@@ -500,18 +501,13 @@ contact EDRS for the error. Below shows an example of *OperationOutcome*.
 Read API
 ========
 
-READ API URL pattern is. ::
+READ API uses the base FHIR operation $document. The URL pattern is. ::
 
   GET [base FHIR URL]/Composition/id/$document
 
-``id`` is a Composition resource Id, which is assigned by a systems such as CMS and EDRS. If a server maintains
-the ``id`` for all generated FHIR Document Bundles, then this ``id`` can be used get the document. In this case,
-the response is a MDI document Bundle (not a *searchset* Bundle).
-
-If additional information is needed about the base FHIR operation that MAPI operation is extended from, 
-please refer to the following link.
-https://www.hl7.org/fhir/composition-operation-document.html
-
+``id`` is a Composition resource Id, which is assigned by systems such as CMS and EDRS. If a server maintains
+the ``id`` for all generated FHIR Document Bundles, then this ``id`` should be used to get the document.
+The response for this API is a MDI document Bundle (not a *searchset* Bundle).
 
 Update API
 ==========
@@ -571,7 +567,7 @@ Ex. **Request** in the payload
           {
              "name":"mdi-document",
              "resource":{
-                "MDI document bundle here "
+                [Your MDI document bundle goes here in JSON or XML.]
              }
           }
        ]
@@ -595,14 +591,15 @@ If CMS decided to use the attached MDI document to include search parameters, it
 identifier extension(s) in the Composistion resource located in the MDI document entry. MDI IG defines 
 tracking numbers in the extended identifiers. Thus, this can be used for searching.
 
-The response for a successful UPDATE API should be 200 OK. The payload is not required. If 
-EDRS or CMS needs some data with the response, the Parameters resource can be used. Jurisdiction and 
-C/ME office can use the same parameters as *In Parameters* parameters. If the submitted MDI document will 
-be included in the response body, then “mdi-document” parameter key should be used. If the API operation was 
-successful, but there were some warnings that EDRS wants to send back to CMS, then parameter name 
-should be “warning”. And, “resource” should be used to include OperationOutcome resource. If the API 
-operations were failed, then the response should be OperationOutcome resource with a HTTP error code. 
-Please see the example of response below. 
+The response for a successful UPDATE API should be 200 OK. The payload is not required in the response. 
+If EDRS or CMS needs to respond with some data in the response, the Parameters resource can be used. 
+EDRS and CMS can use the same parameters as *In Parameters* parameters. If the submitted MDI document will 
+be included in the response body, then “mdi-document” parameter key should be used. 
+
+If the API operation was successful, but there were some warnings that EDRS wants to send back to CMS, 
+then parameter key, “warning”, should be used. And, “resource” should be used to include OperationOutcome 
+resource. If the API operations were failed, then the response should be OperationOutcome resource with a 
+HTTP error code. Please see the example of response below. 
 
 Ex. **Response** if the operation was successful, and EDRS wanted to respond with updated data.
 
