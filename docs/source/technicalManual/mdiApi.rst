@@ -76,6 +76,7 @@ which may be ended up playing multiple roles.
 || Server (Provider)    || to access. The resource server verifies the access token and       ||            ||             |
 ||                      || grants access to the resource if the token is valid.               ||            ||             |
 +-----------------------+---------------------------------------------------------------------+-------------+--------------+
+
 **Table1**\ : Roles in OAuth2 and MDI Systems
 
 
@@ -305,54 +306,48 @@ Composition resource. And the extension is made to the extended search parameter
 
 This is an idempotent operation. Both POST and GET can be used with the following endpoint URL pattern. ::
 
-  POST [base FHIR Url]/Composition/$mdi-documents
-  GET  [base FHIR Url]/Composition/$mdi-documents?name1=value1&name2=value2
+  POST [base FHIR Url]/Composition/$document with Parameters resource in the payload
+  GET  [base FHIR Url]/Composition/$document?name1=value1&name2=value2
 
 
 **Search Parameters for the MDI Document Generation**
 
 .. table:: Search Parameters for the MDI Document Generation Operation
-    :class: tight-table
+   :class: tight-table
    
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|Name                  |Cardinality  |Type      |Documentation                                                                |
-+======================+=============+==========+=============================================================================+
-|In Parameters                                                                                                                |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|id                    |0..1         |uri       |Resource ID of Composition - MDI to EDRS                                     |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|patient               |0..*         |          |One or more decedent related search parameters                               |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|patient.birthdate     |0..1         |string    |Decedent's date of birth*                                                    |                          
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|patient.family        |0..1         |string    |Decedent's last name                                                         |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|patient.given         |0..1         |string    |Decedent's first name                                                        |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|patient.gender        |0..1         |string    |Decedent's gender                                                            |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|| edrs-file-number    || 0..1       || token   || Search by extension-tracking-numbers in                                    |
-||                     ||            ||         || Composition - MDI to EDRS                                                  |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|| mdi-case-number     || 0..1       || token   || Search by extension-tracking-numbers in                                    |
-||                     ||            ||         || Composition - MDI to EDRS                                                  |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-location        |0..1         |string    |District of death location                                                   |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-date-presumed   |0..1         |string    |observation.valueDateTime* (eg: gt2022-01-01T14:04:00)                       |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-date-pronounced |0..1         |string    |observation.component* (eg: gt2022-01-01)                                    |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|death-date            |0..1         |string    |search observation's valueDateTime* and component.pronounced date time.      |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|Out Parameters                                                                                                               |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
-|| return              || 0..1       || resource|| Searchset Bundle that includes MDI document                                |
-||                     ||            ||         || bundles. If [id] is supplied, then this should be                          |
-||                     ||            ||         || Bundle - Document MDI to EDRS                                              |
-+----------------------+-------------+----------+-----------------------------------------------------------------------------+
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|Name                  |Cardinality  |Type          |Documentation                                                                                      |
++======================+=============+==============+===================================================================================================+
+|In Parameters                                                                                                                                          |
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|id                    |0..1         |uri           |Composition.id of Composition - MDI to EDRS                                                        |
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|tracking-number       |0..1         |token         |Composition.extension:extension-tracking-number of Composition - MDI and EDRS                      |
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|patient               |0..*         |              |One or more decedent related search parameters                                                     |
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|patient.birthdate     |0..1         |date\ :sup:`*`|Decedent's date of birth                                                                           |                          
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|patient.family        |0..1         |string        |Decedent's last name                                                                               |
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|patient.given         |0..1         |string        |Decedent's first name                                                                              |
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|patient.gender        |0..1         |token         |Decedent's gender                                                                                  |
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|death-location        |0..1         |string        |Location address in Location-death                                                                 |
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|death-date-pronounced |0..1         |date\ :sup:`*`|Observation.component:datetimePronouncedDead in Observation - Death Date (either time or dateTime) |
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|death-date            |0..1         |date\ :sup:`*`|Value[x] (actual or presumed date of death) in Observation - Death Date (either dateTime or Period)|
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|Out Parameters                                                                                                                                         |
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|| return              || 0..1       || resource    || Bundle - Searchset or Bundle - Document MDI and EDRS. If [id] is supplied,                       |
+||                     ||            ||             || then this should be Bundle - Document MDI and EDRS                                               |
++----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
 
-\* Type for date or dateTime is defined as string for MDI-API. This is to support a `date parameter search in FHIR <https://hl7.org/fhir/r4/search.html#date>`_. The first two characters support date range search. 
+\* `date parameter search in FHIR <https://hl7.org/fhir/r4/search.html#date>`_ uses first two characters for date range search (eg. "lt" for less than). 
+To use the date range search, the type needs to be string.
 
 
 Please note that the Search parameters related to patient are formatted with “.” (dot). In FHIR, this means 
