@@ -58,23 +58,23 @@ workflows. As more workflows are added to the MDI IG, additional roles may be ad
 which may be ended up playing multiple roles.
 
 +-----------------------+---------------------------------------------------------------------+-------------+--------------+
-|Role                   |Responsibility                                                       |MDI-to-EDRS  |Tox-to-MDI    |
+|Role                   |Responsibility                                                       | MDI-and-EDRS | Tox-and-MDI |
 +=======================+=====================================================================+=============+==============+
-|| Authorization Server || Server that authenticates the resource owner and issues access     || EDRS       || CMS         |
-||                      || tokens to the client application. The authorization server can be  ||            ||             |
-||                      || the same as the authentication server or can be a separate server. ||            ||             |
+| Authorization Server  | Server that authenticates the resource owner and issues access      | EDRS        | CMS          |
+|                       | tokens to the client application. The authorization server can be   |             |              |
+|                       | the same as the authentication server or can be a separate server.  |             |              |
 +-----------------------+---------------------------------------------------------------------+-------------+--------------+
-|| Client               || Application that wants to access the resource on behalf of the     || CMS        || LIMS        |
-||                      || resource owner. The client can be a web application, a mobile      ||            ||             |
-||                      || application, or a desktop application.                             ||            ||             |
+| Client                | Application that wants to access the resource on behalf of the      | CMS         | LIMS         |
+|                       | resource owner. The client can be a web application, a mobile       |             |              |
+|                       | application, or a desktop application.                              |             |              |
 +-----------------------+---------------------------------------------------------------------+-------------+--------------+
-|| Resource Owner       || User who owns the resource (such as a photo or a document) that    || CMS Users  || LIMS Users  |
-||                      || a client application wants to access. The resource owner grants    || EDRS Users ||             |
-||                      || permission to the client application to access the resource.       ||            ||             |
+| Resource Owner        | User who owns the resource (such as a photo or a document) that     | CMS Users   | LIMS Users   |
+|                       | a client application wants to access. The resource owner grants     | EDRS Users  |              |
+|                       | permission to the client application to access the resource.        |             |              |
 +-----------------------+---------------------------------------------------------------------+-------------+--------------+
-|| Resource             || Server that hosts the resource that the client application wants   || EDRS       || CMS         |
-|| Server (Provider)    || to access. The resource server verifies the access token and       ||            ||             |
-||                      || grants access to the resource if the token is valid.               ||            ||             |
+| Resource              | Server that hosts the resource that the client application wants    | EDRS        | CMS          |
+| Server (Provider)     | to access. The resource server verifies the access token and        |             |              |
+|                       | grants access to the resource if the token is valid.                |             |              |
 +-----------------------+---------------------------------------------------------------------+-------------+--------------+
 
 **Table1**\ : Roles in OAuth2 and MDI Systems
