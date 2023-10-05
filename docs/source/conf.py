@@ -3,9 +3,11 @@
 # -- Project information
 
 project = 'Raven Docs'
+copyright = '2023, GTRI'
+author = 'GTRI'
 
-release = '0.1'
-version = '0.1.0'
+release = '1.1.1'
+version = '1.1.1'
 
 # -- General configuration
 
