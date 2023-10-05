@@ -22,7 +22,7 @@ The validator confirms the users’ confidence in their external mapping as well
 experience for review and conforming to the IG. 
 
 Archtecture
-----------
+-----------
 These would be modules within the Raven Platform or could be used independent of Raven for testing. 
 They rely on the Raven FHIR server to serve the data.
 

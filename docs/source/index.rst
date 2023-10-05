@@ -15,6 +15,7 @@ The current Raven tooling and tests aid developers in implementing the MDI FHIR 
 
 
 .. toctree::
+   fhir
    endUserManual
    technicalManual
    developmentTeam

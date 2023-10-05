@@ -135,6 +135,7 @@ content-type.
 
 Example:
 ::
+
    GET /authorize?response_type=code&client_id=s6BhdRkqt3&state=xyz&redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
    Host: server.example.com
 
@@ -164,6 +165,7 @@ scope                ``optional``
 
 Example
 ::
+
    POST /token HTTP/1.1
    Host: server.example.com
    Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
@@ -196,6 +198,7 @@ scope                ``optional``
 
 Example
 ::
+
    POST /token HTTP/1.1
    Host: server.example.com
    Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
@@ -209,6 +212,7 @@ Accessing Resource Server
 After authentication/authorization is (are) completed, client can put the access token in the header and 
 submit the request to resource server for data. The access token is placed in the header as follows.
 ::
+
    Authorization: Bearer <access token>
 
 
@@ -272,6 +276,7 @@ following parameters.
 
 Example
 ::
+
    HTTP/1.1 400 Bad Request
    Content-Type: application/json;charset=UTF-8
    Cache-Control: no-store
@@ -311,9 +316,6 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 
 
 **Search Parameters for the MDI Document Generation**
-
-.. table:: Search Parameters for the MDI Document Generation Operation
-   :class: tight-table
    
 +----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
 |Name                  |Cardinality  |Type          |Documentation                                                                                      |
@@ -376,7 +378,7 @@ See the example below.
     }
 
 
-If ``id`` is provided within URL path (e.g., /Composition/``id``/$mdi-documents), then the output response 
+If ``id`` is provided within URL path (e.g., /Composition/``id``/$document), then the output response 
 should be an MDI document bundle as there will be only one or zero result.
 
 If *id* or *search paraemters* is provided in the URL parameter (e.g. [base]/Composition?name=value) 
@@ -387,15 +389,15 @@ is needed in the searching parameters, then as specified in the FHIR specificati
 records that has death-location equals to either a, b, or c, then its search parameter in Parameters
 resource will be like below. ::
 
- “name”: "death-location",
- “valueString”: “a,b,c”
+ "name”: "death-location",
+ "valueString": "a,b,c"
 
 Please see the examples of search Parameters resource and its response.
 
 **Request**
 
 .. code-block:: json
-   :caption: POST [FHIRbaseURL]/Composition/$mdi-documents
+   :caption: POST [FHIRbaseURL]/Composition/$document
     
     {
        "resourceType":"Parameters",

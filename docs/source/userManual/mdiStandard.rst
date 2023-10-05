@@ -25,7 +25,7 @@ Resources and their respective maturities, please see the `FHIR R4
 Resource List <https://hl7.org/fhir/R4/resourcelist.html>`__.
 
 What is *MDI FHIR IG*?
------------------
+----------------------
 
 The `Medicolegal Death Investigation (MDI) FHIR Implementation Guide (IG) <http://hl7.org/fhir/us/mdi/>`__ is a FHIR
 implementation guide detailing the proper method of using FHIR resources

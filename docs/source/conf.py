@@ -2,12 +2,9 @@
 
 # -- Project information
 
-project = 'Raven Docs'
+project = 'Raven'
 copyright = '2023, GTRI'
 author = 'GTRI'
-
-release = '1.1.1'
-version = '1.1.1'
 
 # -- General configuration
 
@@ -17,8 +14,11 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
-    'sphinx_immaterial'
+    'myst_parser',
+    'sphinx_design'
 ]
+
+myst_enable_extensions = ["colon_fence"]
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
@@ -28,41 +28,19 @@ intersphinx_disabled_domains = ['std']
 
 templates_path = ['_templates']
 
-# -- Options for HTML output
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static files,
+# so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-html_theme = 'sphinx_immaterial'
-html_title = 'Raven Platform'
-html_logo = "_static/site-logo.svg"
 
-html_theme_options = {
-    "icon": {
-        "repo": "fontawesome/brands/github",
-        "edit": "material/file-edit-outline",
-    },
-    "site_url": "https://ravendocs.readthedocs.io/",
-    "repo_url": "https://github.com/MortalityReporting/RavenDocs/",
-    "repo_name": "RavenDocs",
-    "palette": [
-        {
-            "media": "(prefers-color-scheme: light)",
-            "scheme": "default",
-            "primary": "indigo",
-            "toggle": {
-                "icon": "material/lightbulb-outline",
-                "name": "Switch to dark mode",
-            },
-        },
-        {
-            "media": "(prefers-color-scheme: dark)",
-            "scheme": "slate",
-            "primary": "blue",
-            "toggle": {
-                "icon": "material/lightbulb",
-                "name": "Switch to light mode",
-            },
-        },
-    ]
-}
+# -- Options for HTML output
+#html_theme = "sphinx_book_theme"
+#html_theme = "pydata_sphinx_theme"
+html_theme = "furo"
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
+def setup(app):
+    '''Custom CSS for Width of RTD'''
+    app.add_css_file('my_theme.css')
