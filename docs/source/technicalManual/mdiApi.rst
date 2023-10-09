@@ -58,7 +58,7 @@ workflows. As more workflows are added to the MDI IG, additional roles may be ad
 which may be ended up playing multiple roles.
 
 +-----------------------+---------------------------------------------------------------------+-------------+--------------+
-|Role                   |Responsibility                                                       | MDI-and-EDRS | Tox-and-MDI |
+|Role                   |Responsibility                                                       | MDI-and-EDRS|  Tox-and-MDI |
 +=======================+=====================================================================+=============+==============+
 | Authorization Server  | Server that authenticates the resource owner and issues access      | EDRS        | CMS          |
 |                       | tokens to the client application. The authorization server can be   |             |              |
