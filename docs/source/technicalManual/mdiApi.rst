@@ -510,15 +510,15 @@ Update API
 ==========
 During the death investigation, C/ME may need to update the case in the EDRS. This API allows CMS to update
 the active case. PUT should be used for the HTTP action method. And, Parameters resource is used to include
-the MDI document that C/MEs want to update. Since this API presumes that the case already exists in the
-EDRS, the case management system must either make sure identifier(s) is included in the MDI document or 
+the MDI document or profile(s) that C/MEs want to update. Since this API presumes that the case already exists 
+in the EDRS, the case management system must either make sure identifier(s) is included in the MDI document or 
 provide a parameter that EDRS can use to find the case to update.
 
-UPDATE API operations and requirement are as follows. ::
+FHIR endpoint for UPDATE API operations is as follow. ::
 
   PUT [base url]/Composition/$update-mdi
-  Payload = Parameters resource
 
+The payload is Parameters resource as defined below.
 
 Input/Output Parameters
 
@@ -530,20 +530,23 @@ Input/Output Parameters
 | ``Jurisdiction defined | 0..*        | string                      | Any required parameters for a     |
 | parameters``           |             |                             | jurisdiction                      |
 +------------------------+-------------+-----------------------------+-----------------------------------+
-| edrs-file-number       | 1..1        | string                      | EDRS case number if available     |
+| tracking-number        | 1..1        | token                       | EDRS case number if available     |
 +------------------------+-------------+-----------------------------+-----------------------------------+
-|| mdi-document          || 1..1       || Bundle                     || MDI document bundle. The         |
-||                       ||            ||                            || “mdi-document” is a reserved     |
-||                       ||            ||                            || keyword. This should only be     |
-||                       ||            ||                            || used for the MDI to EDRS         |
-||                       ||            ||                            || profile bundle document.         |
+| mdi-document           | 1..1        | Bundle                      | MDI document bundle. The          |
+|                        |             |                             | “mdi-document” is a reserved      |
+|                        |             |                             | keyword. This should only be used |
+|                        |             |                             | for the MDI-and-EDRS profile      |
+|                        |             |                             | bundle document.                  |
++------------------------+-------------+-----------------------------+-----------------------------------+
+| warning                | 1..1        | OperationOutcome            | Informational OperationOutcome    |
+|                        |             |                             | (For response ONLY)               |
 +------------------------+-------------+-----------------------------+-----------------------------------+
 | Out Parameters                                                                                         |
 +------------------------+-------------+-----------------------------+-----------------------------------+
-|| return                || 0..1       || OperationOutcomeParameters || If an error occurs, OO resource  |
-||                       ||            ||                            || is returned. If response data    |
-||                       ||            ||                            || need to be sent back,            |
-||                       ||            ||                            || Parameters resource can be used. |
+| return                 | 0..1        | OperationOutcome            | If an error occurs, OO resource   |
+|                        |             |                             | is returned. If response data     |
+|                        |             |                             | need to be sent back,             |
+|                        |             |                             | Parameters resource can be used.  |
 +------------------------+-------------+-----------------------------+-----------------------------------+
 
 Ex. **Request** in the payload
@@ -570,33 +573,28 @@ Ex. **Request** in the payload
        ]
     }
 
-*In Parameters* include parameters that can be used for search and MDI document that has updated information. 
-UPDATE API allows custom local search parameters. If there are local search parameters that are required
-for the case search, the local search parameters can be defined in the Parameters resource. In the table 
-above, this is labeled as ``Jurisdiction defined parameters``. It can be any name and type. However, any 
-parameter created by this method would only be supported by systems that can understand the parameter. If 
-*Jurisdiction defined parameters* exist but cannot be understood, they should be ignored and NOT cause 
-an error.
+*In Parameters* includes parameters that can be used for the update operation. 
 
-The MDI document in the search parameter, *mdi-document*, needs to conform to MDI IG profiles.  It is 
-not required to include all the data elements in the MDI docvument. Only data elements that need to be 
-updated can be included. At the EDRS, empty data elements or missing elments should not be understood as 
-DELETE. They should be understood as '*Not Applicable*/. Deleting cases or data elements wihtin a case 
-should be handled in a separate API (i.e. DELETE API).
+UPDATE API allows custom parameters (labeled as ``Jurisdiction defined parameters``). They are locally
+defined parameters. It can be used in any ways by the systems that defined the parameters. 
+If *Jurisdiction defined parameters* exist but cannot be understood, they should be ignored and 
+should NOT cause any error.
 
-If CMS decided to use the attached MDI document to include search parameters, it is recommended to use
-identifier extension(s) in the Composistion resource located in the MDI document entry. MDI IG defines 
-tracking numbers in the extended identifiers. Thus, this can be used for searching.
+The *mdi-document*, is a death certificate document in MDI FHIR IG. If CMS is updating the complete death 
+certificate, then all the required data elements should exist in the docvument. 
+
+Partial document is allowed if CMS needs to update only portion of death certificate document. However, 
+to conform to MDI FHIR IG, any empty required fields must be extended to include data-absent-reason extension.
 
 The response for a successful UPDATE API should be 200 OK. The payload is not required in the response. 
 If EDRS or CMS needs to respond with some data in the response, the Parameters resource can be used. 
-EDRS and CMS can use the same parameters as *In Parameters* parameters. If the submitted MDI document will 
+EDRS and CMS can use the same parameters as *In Parameters* parameters. If the submitted document will 
 be included in the response body, then “mdi-document” parameter key should be used. 
 
 If the API operation was successful, but there were some warnings that EDRS wants to send back to CMS, 
 then parameter key, “warning”, should be used. And, “resource” should be used to include OperationOutcome 
 resource. If the API operations were failed, then the response should be OperationOutcome resource with a 
-HTTP error code. Please see the example of response below. 
+HTTP error status code. Please see the example of response below. 
 
 Ex. **Response** if the operation was successful, and EDRS wanted to respond with updated data.
 
@@ -651,3 +649,13 @@ Ex. **Response** if the operation was successful, and EDRS wanted to respond wit
        ]
     }
 
+Update using FHIR Messaging
+---------------------------
+If a messaging infrastructure is already in place, or if the content needs to be forwarded to another endpoint, 
+it may be necessary to handle the target endpoint differently, given that the FHIR receiving endpoint is not the 
+actual target. If this direction is deemed appropriate, the FHIR `process-message` operation 
+(https://hl7.org/fhir/R4/messageheader-operation-process-message.html) can be employed.
+
+If the decision is to utilize the `process-message` operation, the payload should take the form of a bundle, 
+with the initial entry being a `MessageHeader` resource. Subsequent to this entry, parameters must be present, 
+adhering to the specifications outlined in the Update API.
