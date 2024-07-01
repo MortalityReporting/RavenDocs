@@ -326,21 +326,21 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
 |tracking-number       |0..1         |token         |Composition.extension:extension-tracking-number of Composition - MDI and EDRS                      |
 +----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
-|patient               |0..1         |              |One or more decedent related search parameters                                                     |
-+----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
-|patient.birthdate     |0..*         |date\ :sup:`*`|Decedent's date of birth                                                                           |                          
-+----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
-|patient.family        |0..*         |string        |Decedent's last name                                                                               |
-+----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
-|patient.given         |0..*         |string        |Decedent's first name                                                                              |
-+----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
-|patient.gender        |0..*         |token         |Decedent's gender                                                                                  |
-+----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|patient\ :sup:`1`     |0..1         |              |One or more decedent related search parameters                                                     |
++--+-------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|  | patient.birthdate |0..*         |date\ :sup:`2`|Decedent's date of birth                                                                           |                          
++--+-------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|  | patient.family    |0..*         |string        |Decedent's last name                                                                               |
++--+-------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|  | patient.given     |0..*         |string        |Decedent's first name                                                                              |
++--+-------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
+|  | patient.gender    |0..*         |token         |Decedent's gender                                                                                  |
++--+-------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
 |death-location        |0..1         |string        |Location address in Location-death                                                                 |
 +----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
-|death-date-pronounced |0..1         |date\ :sup:`*`|Observation.component:datetimePronouncedDead in Observation - Death Date (either time or dateTime) |
+|death-date-pronounced |0..1         |date\ :sup:`2`|Observation.component:datetimePronouncedDead in Observation - Death Date (either time or dateTime) |
 +----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
-|death-date            |0..1         |date\ :sup:`*`|Value[x] (actual or presumed date of death) in Observation - Death Date (either dateTime or Period)|
+|death-date            |0..1         |date\ :sup:`2`|Value[x] (actual or presumed date of death) in Observation - Death Date (either dateTime or Period)|
 +----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
 |Out Parameters                                                                                                                                         |
 +----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
@@ -348,13 +348,15 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 ||                     ||            ||             || then this should be Bundle - Document MDI and EDRS                                               |
 +----------------------+-------------+--------------+---------------------------------------------------------------------------------------------------+
 
-\* `date parameter search in FHIR <https://hl7.org/fhir/r4/search.html#date>`_ uses first two characters for date range search (eg. "lt" for less than). 
-To use the date range search, the type needs to be string.
+.. note::
+   \1 The *search parameters* for **patient** are formatted with “.” (dot). In FHIR, this means that the search parameters 
+   after “.” are ``part`` of patient parameter in Parameters resource. See the example below.
+
+   \2 `date parameter search in FHIR <https://hl7.org/fhir/r4/search.html#date>`_ uses first two characters for date range search 
+   (eg. "lt" for less than). To use the *date range search*, the ``Type`` needs to be string.   
 
 
-Please note that the Search parameters related to patient are formatted with “.” (dot). In FHIR, this means 
-that the search parameters after “.” are *part* of patient parameter in Parameters resource. 
-See the example below.
+Example.
 
 .. code-block:: json-object
 
