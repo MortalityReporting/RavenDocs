@@ -304,7 +304,7 @@ in https://www.hl7.org/fhir/composition-operation-document.html
 
 Let's first review how MAPI extended the $document operation. 
 
-Extended Operation for MDI-to-EDRS Document generation
+Extended Operation for MDI-to-EDRS Document Generation
 ------------------------------------------------------
 This is a resource instance type extended operation. It means that the MDI document is generated from the 
 Composition resource. And the extension is made to the extended search parameters.
