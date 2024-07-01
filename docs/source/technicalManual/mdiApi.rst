@@ -356,7 +356,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
    (eg. "lt" for less than). To use the *date range search*, the ``Type`` needs to be string.   
 
 
-Example.
+Example of a patient parameter
 
 .. code-block:: json-object
 

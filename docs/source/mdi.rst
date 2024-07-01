@@ -26,8 +26,7 @@ Using MDI CSV
 
 This section discusses general concerns regarding mapping to MDI CSV
 from your own data. For a complete tutorial on using the Raven Dashboard
-to assist in the mapping of your external data to the MDI CSV format,
-please see the :ref:`import-data` section.
+to assist in the mapping of your external data to the MDI CSV format.
 
 Non-mappable Fields
 ~~~~~~~~~~~~~~~~~~~
