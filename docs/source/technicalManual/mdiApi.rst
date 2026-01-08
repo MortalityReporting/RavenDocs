@@ -342,7 +342,13 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +----------------------+-------------+----------------+---------------------------------------------------------------------------------------------------+
 |death-date            |0..1         |date\ :sup:`2`  |Value[x] (actual or presumed date of death) in Observation - Death Date (either dateTime or Period)|
 +----------------------+-------------+----------------+---------------------------------------------------------------------------------------------------+
-|manner-of-death       |0..1         |string\ :sup:`3`|manner of death code                                                                               |
+||manner-of-death      ||0..1        ||string         || manner of death code. code must be from the specified valueset\ :sup:`3` as described below.     |
+||                     ||            ||               || 38605008, Natural death                                                                          |
+||                     ||            ||               || 7878000, Accidental death                                                                        |
+||                     ||            ||               || 44301001 Suicide                                                                                 |
+||                     ||            ||               || 27935005, Homicide                                                                               |
+||                     ||            ||               || 185973002, Patient awaiting investigation                                                        |
+||                     ||            ||               || 65037004, Undetermined manner of death                                                           |
 +----------------------+-------------+----------------+---------------------------------------------------------------------------------------------------+
 |Out Parameters                                                                                                                                           |
 +----------------------+-------------+----------------+---------------------------------------------------------------------------------------------------+
@@ -357,14 +363,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
    \2 `date parameter search in FHIR <https://hl7.org/fhir/r4/search.html#date>`_ uses first two characters for date range search 
    (eg. "lt" for less than). To use the *date range search*, the ``Type`` needs to be string.   
 
-   \3 `manner of death code in FHIR <https://hl7.org/fhir/us/vrdr/ValueSet-vrdr-manner-of-death-vs.html>`_ should be used as a search parameter. See below
-   for the available codes.
-    38605008, Natural death<br>
-    7878000, Accidental death<br>
-    44301001 Suicide<br>
-    27935005, Homicide<br>
-    185973002, Patient awaiting investigation<br>
-    65037004, Undetermined manner of death<br>
+   \3 Manner of death code in FHIR: https://hl7.org/fhir/us/vrdr/ValueSet-vrdr-manner-of-death-vs.html
 
 Example of a patient parameter
 
