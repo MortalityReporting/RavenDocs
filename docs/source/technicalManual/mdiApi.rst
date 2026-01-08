@@ -365,29 +365,42 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 
    \3 Manner of death code in FHIR: https://hl7.org/fhir/us/vrdr/ValueSet-vrdr-manner-of-death-vs.html
 
-Example of a patient parameter
+Example of patient parameter
 
 .. code-block:: json-object
 
-    {
-       "resourceType":"Parameters",
-       "parameter":[
-          {
-             "name":"patient",
-             "part":[
-                {
-                   "name":"family",
-                   "valueString":"Hans"
-                },
-                {
-                   "name":"given",
-                   "valueString":"Kennoby"
-                }
-             ]
-          }
-       ]
-    }
+   {
+      "resourceType":"Parameters",
+      "parameter":[
+         {
+            "name":"patient",
+            "part":[
+               {
+                  "name":"family",
+                  "valueString":"Hans"
+               },
+               {
+                  "name":"given",
+                  "valueString":"Kennoby"
+               }
+            ]
+         }
+      ]
+   }
 
+Example of manner-of-death parameter
+
+.. code-block:: json-object
+
+   {
+      "resourceType":"Parameters",
+      "parameter":[
+         {
+            "name":"manner-of-death",
+            "valueString":"7878000"
+         }
+      ]
+   }
 
 If ``id`` is provided within URL path (e.g., /Composition/``id``/$document), then the output response 
 should be an MDI document bundle as there will be only one or zero result.
