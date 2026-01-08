@@ -358,22 +358,13 @@ This is an idempotent operation. Both POST and GET can be used with the followin
    (eg. "lt" for less than). To use the *date range search*, the ``Type`` needs to be string.   
 
    \3 `manner of death code in FHIR <https://hl7.org/fhir/us/vrdr/ValueSet-vrdr-manner-of-death-vs.html>`_ should be used as a search parameter. See below
-   for the available codes.
-   +---------+------------------------+---------------------------------+
-   |Code	    |System	                 |Display                          |
-   +=========+========================+=================================+
-   |38605008 |http://snomed.info/sct  |Natural death                    |
-   +---------+------------------------+---------------------------------+
-   |7878000	 |http://snomed.info/sct  |Accidental death                 |
-   +---------+------------------------+---------------------------------+
-   |44301001 |http://snomed.info/sct  |Suicide                          |
-   +---------+------------------------+---------------------------------+
-   |27935005 |http://snomed.info/sct  |Homicide                         |
-   +---------+------------------------+---------------------------------+
-   |185973002|http://snomed.info/sct  |Patient awaiting investigation   |
-   +---------+------------------------+---------------------------------+
-   |65037004 |http://snomed.info/sct  |Undetermined manner of death     |
-   +---------+------------------------+---------------------------------+
+   for the available codes.<br/>
+    38605008, Natural death<br/>
+    7878000, Accidental death<br/>
+    44301001 Suicide<br/>
+    27935005, Homicide<br/>
+    185973002, Patient awaiting investigation<br/>
+    65037004, Undetermined manner of death<br/>
 
 Example of a patient parameter
 
