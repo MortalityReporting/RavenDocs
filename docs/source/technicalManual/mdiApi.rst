@@ -359,12 +359,12 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 
    \3 `manner of death code in FHIR <https://hl7.org/fhir/us/vrdr/ValueSet-vrdr-manner-of-death-vs.html>`_ should be used as a search parameter. See below
    for the available codes.
-    38605008, Natural death  \
-    7878000, Accidental death  \
-    44301001 Suicide  \
-    27935005, Homicide  \
-    185973002, Patient awaiting investigation  \
-    65037004, Undetermined manner of death  \
+    38605008, Natural death<br>
+    7878000, Accidental death<br>
+    44301001 Suicide<br>
+    27935005, Homicide<br>
+    185973002, Patient awaiting investigation<br>
+    65037004, Undetermined manner of death<br>
 
 Example of a patient parameter
 
