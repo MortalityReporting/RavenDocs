@@ -342,7 +342,7 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +----------------------+-------------+----------------+---------------------------------------------------------------------------------------------------+
 |death-date            |0..1         |date\ :sup:`2`  |Value[x] (actual or presumed date of death) in Observation - Death Date (either dateTime or Period)|
 +----------------------+-------------+----------------+---------------------------------------------------------------------------------------------------+
-|manner-of-death       |0..1         |string\ :sup:`3`|Value[x] (actual or presumed date of death) in Observation - Death Date (either dateTime or Period)|
+|manner-of-death       |0..1         |string\ :sup:`3`|manner of death code                                                                               |
 +----------------------+-------------+----------------+---------------------------------------------------------------------------------------------------+
 |Out Parameters                                                                                                                                           |
 +----------------------+-------------+----------------+---------------------------------------------------------------------------------------------------+
@@ -357,6 +357,23 @@ This is an idempotent operation. Both POST and GET can be used with the followin
    \2 `date parameter search in FHIR <https://hl7.org/fhir/r4/search.html#date>`_ uses first two characters for date range search 
    (eg. "lt" for less than). To use the *date range search*, the ``Type`` needs to be string.   
 
+   \3 `manner of death code in FHIR <https://hl7.org/fhir/us/vrdr/ValueSet-vrdr-manner-of-death-vs.html>`_ should be used as a search parameter. See below
+   for the available codes.
+   +---------+------------------------+---------------------------------+
+   |Code	    |System	                 |Display                          |
+   +=========+========================+=================================+
+   |38605008 |http://snomed.info/sct  |Natural death                    |
+   +---------+------------------------+---------------------------------+
+   |7878000	 |http://snomed.info/sct  |Accidental death                 |
+   +---------+------------------------+---------------------------------+
+   |44301001 |http://snomed.info/sct  |Suicide                          |
+   +---------+------------------------+---------------------------------+
+   |27935005 |http://snomed.info/sct  |Homicide                         |
+   +---------+------------------------+---------------------------------+
+   |185973002|http://snomed.info/sct  |Patient awaiting investigation   |
+   +---------+------------------------+---------------------------------+
+   |65037004 |http://snomed.info/sct  |Undetermined manner of death     |
+   +---------+------------------------+---------------------------------+
 
 Example of a patient parameter
 
