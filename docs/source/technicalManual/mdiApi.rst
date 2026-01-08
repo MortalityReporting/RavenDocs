@@ -342,10 +342,10 @@ This is an idempotent operation. Both POST and GET can be used with the followin
 +----------------------+-------------+----------------+---------------------------------------------------------------------------------------------------+
 |death-date            |0..1         |date\ :sup:`2`  |Value[x] (actual or presumed date of death) in Observation - Death Date (either dateTime or Period)|
 +----------------------+-------------+----------------+---------------------------------------------------------------------------------------------------+
-|| manner-of-death     || 0..1       || string        || Manner of death code. code must be from the specified valueset\ :sup:`3` as described below.     |
+|| manner-of-death     || 0..1       || string        || Manner of death code. Code must be from the specified valueset\ :sup:`3` as described below.     |
 ||                     ||            ||               ||   38605008, Natural death                                                                        |
 ||                     ||            ||               ||   7878000, Accidental death                                                                      |
-||                     ||            ||               ||   44301001 Suicide                                                                               |
+||                     ||            ||               ||   44301001, Suicide                                                                               |
 ||                     ||            ||               ||   27935005, Homicide                                                                             |
 ||                     ||            ||               ||   185973002, Patient awaiting investigation                                                      |
 ||                     ||            ||               ||   65037004, Undetermined manner of death                                                         |
