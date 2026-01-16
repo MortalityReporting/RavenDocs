@@ -554,7 +554,7 @@ Input/Output Parameters
 | ``Jurisdiction defined | 0..*        | string                      | Any required parameters for a        |
 | parameters``           |             |                             | jurisdiction                         |
 +------------------------+-------------+-----------------------------+--------------------------------------+
-| tracking-number        | 1..1        | token                       | EDRS file number                     |
+| tracking-number        | 1..1        | token                       | EDRS file number (system|value)      |
 +------------------------+-------------+-----------------------------+--------------------------------------+
 | mdi-document           | 1..1        | Bundle                      | MDI document bundle. The             |
 |                        |             |                             | “mdi-document” is a reserved         |
@@ -576,20 +576,28 @@ Ex. **Request** in the payload
 .. code-block:: json
 
     {
-       "resourceType":"Parameters",
-       "parameter":[
+       "resourceType": "Parameters",
+       "parameter": [
           {
-             "name":"edrs-file-number",
-             "valueString":"1234"
+             "name": "edrs-file-number",
+             "valueString": "urn:edrs:georgia|1234"
           },
           {
-             "name":"jurisdiction defined key",
-             "valueString":"value"
+             "name": "jurisdiction defined key",
+             "valueString": "value"
           },
           {
-             "name":"mdi-document",
-             "resource":{
-                [Your MDI document bundle goes here in JSON or XML.]
+             "name": "mdi-document",
+             "resource": {
+                "resourceType": "Bundle",
+                "id": "965a0688-e6f4-4bff-a96d-639cbd7ea295",
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/us/mdi/StructureDefinition/Bundle-document-mdi-and-edrs"
+                    ]
+                },
+                "type": "document",
+                "rest of resource": "is skipped..."
              }
           }
        ]
@@ -623,26 +631,26 @@ Ex. **Response** if the operation was successful, and EDRS wanted to respond wit
 .. code-block:: json
 
    {
-      "resourceType":"Parameters",
-      "parameter":[
+      "resourceType": "Parameters",
+      "parameter": [
          {
-            "name":"jurisdiction defined key1",
-            "valueString":"value1"
+            "name": "jurisdiction defined key1",
+            "valueString": "value1"
          },
          {
-            "name":"jurisdiction defined key2",
-            "valueString":"value2"
+            "name": "jurisdiction defined key2",
+            "valueString": "value2"
          },
          {
-            "name":"mdi-document",
-            "resource":{
-               "MDI document bundle"
+            "name": "mdi-document",
+            "resource": {
+               "MDI document bundle": "is placed here"
             }
          },
          {
-            "name":"warning",
-            "resource":{
-               "OperationOutcome resource"
+            "name": "warning",
+            "resource": {
+               "OperationOutcome resource": "is placed here"
             }
          }
       ]
