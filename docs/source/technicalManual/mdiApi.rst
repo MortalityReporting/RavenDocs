@@ -546,32 +546,30 @@ The payload is Parameters resource as defined below.
 
 Input/Output Parameters
 
-+------------------------+-------------+-----------------------------+-----------------------------------+
-| Name                   | Cardinality | Type                        | Documentation                     |
-+========================+=============+=============================+===================================+
-| In Parameters                                                                                          |
-+------------------------+-------------+-----------------------------+-----------------------------------+
-| ``Jurisdiction defined | 0..*        | string                      | Any required parameters for a     |
-| parameters``           |             |                             | jurisdiction                      |
-+------------------------+-------------+-----------------------------+-----------------------------------+
-| tracking-number        | 1..1        | token                       | EDRS case number if available     |
-+------------------------+-------------+-----------------------------+-----------------------------------+
-| mdi-document           | 1..1        | Bundle                      | MDI document bundle. The          |
-|                        |             |                             | “mdi-document” is a reserved      |
-|                        |             |                             | keyword. This should only be used |
-|                        |             |                             | for the MDI-and-EDRS profile      |
-|                        |             |                             | bundle document.                  |
-+------------------------+-------------+-----------------------------+-----------------------------------+
-| warning                | 1..1        | OperationOutcome            | Informational OperationOutcome    |
-|                        |             |                             | (For response ONLY)               |
-+------------------------+-------------+-----------------------------+-----------------------------------+
-| Out Parameters                                                                                         |
-+------------------------+-------------+-----------------------------+-----------------------------------+
-| return                 | 0..1        | OperationOutcome            | If an error occurs, OO resource   |
-|                        |             |                             | is returned. If response data     |
-|                        |             |                             | need to be sent back,             |
-|                        |             |                             | Parameters resource can be used.  |
-+------------------------+-------------+-----------------------------+-----------------------------------+
++------------------------+-------------+-----------------------------+--------------------------------------+
+| Name                   | Cardinality | Type                        | Documentation                        |
++========================+=============+=============================+======================================+
+| In Parameters                                                                                             |
++------------------------+-------------+-----------------------------+--------------------------------------+
+| ``Jurisdiction defined | 0..*        | string                      | Any required parameters for a        |
+| parameters``           |             |                             | jurisdiction                         |
++------------------------+-------------+-----------------------------+--------------------------------------+
+| tracking-number        | 1..1        | token                       | EDRS file number                     |
++------------------------+-------------+-----------------------------+--------------------------------------+
+| mdi-document           | 1..1        | Bundle                      | MDI document bundle. The             |
+|                        |             |                             | “mdi-document” is a reserved         |
+|                        |             |                             | keyword. This should only be used    |
+|                        |             |                             | for the MDI-and-EDRS profile         |
+|                        |             |                             | bundle document.                     |
++------------------------+-------------+-----------------------------+--------------------------------------+
+| warning                | 0..1        | OperationOutcome            | Informational OperationOutcome       |
+|                        |             |                             | (For response ONLY)                  |
++------------------------+-------------+-----------------------------+--------------------------------------+
+| Out Parameters                                                                                            |
++------------------------+-------------+-----------------------------+--------------------------------------+
+| return                 | 0..1        | OperationOutcome            | If an error occurs, OperationOutcome |
+|                        |             |                             | resource is returned.                |
++------------------------+-------------+-----------------------------+--------------------------------------+
 
 Ex. **Request** in the payload
 
