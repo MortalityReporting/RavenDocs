@@ -184,8 +184,7 @@ the layout is structured from the perspective of the MDI Implementation Guide to
 tool to better understand the data structure and fields which make up the MDI to EDRS and Toxicology to 
 MDI documents. 
 
-.. image:: 
-   ../images/case_viewer.png
+.. image:: ../images/case_viewer_11_26.png
    :alt: Raven Record Viewer Diagram
   
 The Record Viewer also features a FHIR Resource Explorer, which allows users to select a field and 
@@ -195,4 +194,3 @@ support JSON and XML formats, as well as a human readable “narrative view”.
 .. note::
     **Use Case**: Human readable display of MDI FHIR IG data with a FHIR explorer. Any cases loaded in 
     the Raven FHIR server should be retrievable by Record Viewer. Users can use FHIR APIs to load the data.
-

@@ -20,7 +20,7 @@ When opening the Workflow Simulator module, the user will be given a list of cur
 to select from. Once selected, the workflow will be loaded, presented as a step by step process in Raven.
 
 .. image:: 
-   ../images/workflow-simulator/workflow-list.png
+   ../images/workflow-simulator/workflow-list_11_26.png
    :alt: Raven Overview Diagram
 
 Search EDRS (CMS to EDRS)
@@ -33,11 +33,11 @@ Bundle in the FHIR JSON format. This step is entirely optional, and if a user wi
 manually input all search parameters required.
 
 .. image:: 
-   ../images/workflow-simulator/search-edrs-step1a.png
+   ../images/workflow-simulator/search-edrs-step1a_11_26.png
    :alt: Select MDI to EDRS Document
 
 .. image:: 
-   ../images/workflow-simulator/search-edrs-step1b.png
+   ../images/workflow-simulator/search-edrs-step1b_11_26.png
    :alt: Import MDI to EDRS Document Bundle JSON
 
 
@@ -54,7 +54,7 @@ browser recording sensitive information separate from the Raven platform. (This 
 organization's internal IT policies.)
 
 .. image:: 
-   ../images/workflow-simulator/search-edrs-step2.png
+   ../images/workflow-simulator/search-edrs-step2_11_26.png
    :alt: Configure Endpoint
 
 
@@ -69,7 +69,7 @@ implementations a model to which they can refer in their own development, tying 
 will produce. Once satisified with their search parameters, users may connect to the EDRS and attempt to find matching records.
 
 .. image:: 
-   ../images/workflow-simulator/search-edrs-step3a.png
+   ../images/workflow-simulator/search-edrs-step3a_11_26.png
    :alt: Search EDRS Parameters
 
 If records are identified on the EDRS, the results are shown below the parameters. The results can be viewed either as a human readable table
@@ -78,7 +78,7 @@ be able to identify the headers involved in the HTTP call to the EDRS. In the su
 selected to load further information.
 
 .. image:: 
-   ../images/workflow-simulator/search-edrs-step3b.png
+   ../images/workflow-simulator/search-edrs-step3b_11_26.png
    :alt: Search Results
 
 
@@ -86,7 +86,7 @@ Once selected in the Results table, the record is displayed below the table. As 
 human readable summary and as the underyling FHIR MDI to EDRS Document Bundle
 
 .. image:: 
-   ../images/workflow-simulator/search-edrs-step3b.png
+   ../images/workflow-simulator/search-edrs-step3b_11_26.png
    :alt: Result Record Summary
 
 
