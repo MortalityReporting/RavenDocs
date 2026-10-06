@@ -184,7 +184,7 @@ the layout is structured from the perspective of the MDI Implementation Guide to
 tool to better understand the data structure and fields which make up the MDI to EDRS and Toxicology to 
 MDI documents. 
 
-.. image:: ../images/case_viewer_11_26.png
+.. image:: ../images/case_viewer.png
    :alt: Raven Record Viewer Diagram
   
 The Record Viewer also features a FHIR Resource Explorer, which allows users to select a field and 
