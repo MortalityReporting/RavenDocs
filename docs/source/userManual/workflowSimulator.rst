@@ -89,4 +89,3 @@ human readable summary and as the underyling FHIR MDI to EDRS Document Bundle
    ../images/workflow-simulator/search-edrs-step3b.png
    :alt: Result Record Summary
 
-

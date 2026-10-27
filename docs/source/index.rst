@@ -1,4 +1,4 @@
-Welcome to the Raven Platform documentation! 
+Welcome to the Raven Platform documentation!
 ============================================
 
 This document exists as a guide to help users understand the Raven mortality platform, providing both end-user manuals as well as technical documentation.

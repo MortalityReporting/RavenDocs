@@ -5,12 +5,17 @@ Record Management
 
 Record Import (Importing MDI Records)
 -------------------------------------
-Record Importing is a Raven feature that imports the Comma-separated Values (CSV) or spreadsheet 
-file into the MDI FHIR server in an MDI FHIR IG compliant format.  
-  
-The FHIR data model is complicated and structured with multi-levels and logical references. 
-In order to help transitioning from non-FHIR data to MDI IG compliant format, the MDI CSV format 
-was designed. The Case Importing feature maps the pre-defined MDI CSV format to the MDI FHIR IG format 
+Record Importing is a Raven feature that allows for importing several data formats into the Raven FHIR Server.
+
+* FHIR Bundles (Note: Must be valid.)
+* XLSX Spreadsheets
+* Comma-separated Values (CSV)
+
+Importing XLSX or CSV files requires the templates provided in the Record Import.
+
+Due to the complexity of MDI FHIR Records, the templates provide a stepping stone for testing when
+transitioning from non-FHIR compliant systems to FHIR and the MDI FHIR IG. The Record Import feature
+maps the pre-defined MDI templates to the appropriate MDI FHIR profiles.
 and persists them in the MDI FHIR server. 
 
 .. note::
@@ -184,8 +189,7 @@ the layout is structured from the perspective of the MDI Implementation Guide to
 tool to better understand the data structure and fields which make up the MDI to EDRS and Toxicology to 
 MDI documents. 
 
-.. image:: 
-   ../images/case_viewer.png
+.. image:: ../images/case_viewer.png
    :alt: Raven Record Viewer Diagram
   
 The Record Viewer also features a FHIR Resource Explorer, which allows users to select a field and 
@@ -195,4 +199,3 @@ support JSON and XML formats, as well as a human readable “narrative view”.
 .. note::
     **Use Case**: Human readable display of MDI FHIR IG data with a FHIR explorer. Any cases loaded in 
     the Raven FHIR server should be retrievable by Record Viewer. Users can use FHIR APIs to load the data.
-
