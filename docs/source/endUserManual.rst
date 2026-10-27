@@ -15,3 +15,4 @@ Medicolegal Death Investigation (MDI) workflows
     userManual/recordManagement
     userManual/validationComparison
     userManual/workflowSimulator
+    userManual/eventManagement
