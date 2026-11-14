@@ -1,17 +1,13 @@
 .. _mdiStandard:
 
-The MDI Standard
-================
+Introduction to the MDI Standard
+================================
 
 What is *FHIR*?
 ---------------
 
 `HL7 Fast Healthcare Interoperability Resources
-(FHIR) <http://hl7.org/fhir/>`__ is a successor to HL7’s earlier
-industry standards for healthcare messaging, including HL7v2.x and HL7v3.x.
-It builds upon previous standards to produce a modern interoperability
-standard designed around RESTful APIs, providing more advanced exchange
-of healthcare records across systems.
+(FHIR) <http://hl7.org/fhir/>`__ is a successor to HL7's earlier industry standards for healthcare messaging and data exchange, including HL7v2.x and HL7v3.x. It builds upon previous standards to produce a modern interoperability standard designed around RESTful APIs, providing more advanced exchange of healthcare records across systems.
 
 FHIR is built around the concept of “Resources”, logically distinct
 entities that typically serve as the minimum level of data granularity
@@ -26,18 +22,21 @@ For a complete list of FHIR R4 Resources and their respective maturities,
 please see the `FHIR R4
 Resource List <https://hl7.org/fhir/R4/resourcelist.html>`__.
 
+What are *FHIR Implementation Guides*?
+--------------------------------------
+
+FHIR Implementation Guides (IGs) provide detailed instructions
+and guidance for implementing FHIR in specific healthcare settings
+or use cases. These guides outline how to use FHIR resources,
+data elements, and profiles to exchange information between systems,
+as well as best practices for API operations, security, and privacy.
+
 What is the *MDI FHIR IG*?
 --------------------------
 
-The `Medicolegal Death Investigation (MDI) FHIR Implementation Guide (IG) <http://hl7.org/fhir/us/mdi/>`__ is a FHIR
-implementation guide detailing the proper method of using FHIR Resources
-to construct a FHIR version of a Death and Toxicology Reporting. The MDI standard is
-developed to support modernization of interoperability between Coroner/Medical Examiner case management systems (CMS) 
-and other systems such as Electronic Death Registrar Systems (EDRS) and Toxicology Lab Information and Management System (LIMS).
+The `Medicolegal Death Investigation (MDI) FHIR Implementation Guide (IG) <http://hl7.org/fhir/us/mdi/>`__ is a FHIR implementation guide detailing the standardized method of using FHIR Resources to construct Medicolegal Death Investigation records, such as death certificates, investigation reports, and toxicology results. The MDI standard is developed to support modernization of interoperability between Coroner/Medical Examiner case management systems (CMS) and other systems such as Electronic Death Registrar Systems (EDRS) and Toxicology Lab Information and Management System (LIMS).
 
-The Raven MDI Platform is an MDI FHIR IG reference implementation, which demonstrates the MDI FHIR IG for handling death
-records. The Raven Platform allows users to import their own data into MDI FHIR IG resources and store them on the Raven
-MDI FHIR Server. Users may then browse their imported records as FHIR Resources, use it in workflow simulations, and more.
+The Raven MDI Platform is an MDI FHIR IG reference implementation, which demonstrates the MDI FHIR IG for handling death records. The Raven Platform allows users to import their own data into MDI FHIR IG resources and store them on the Raven MDI FHIR Server. Users may then browse their imported records as FHIR Resources, use it in workflow simulations, and more.
 
 The MDI FHIR IG is currently in Trial Use (version 2.0.0-STU2). Further updates will be made as additional needs are identified.
 
@@ -106,4 +105,4 @@ The Death Certificate Review records can be browsed in the Record Viewer, includ
 for each data element. The Workflow Simulator Death Certificate Review module also allows for testing submissions.
 
 For more information on the Death Certificate Review use case, please see:
-`Death Certificate Review <https://build.fhir.org/ig/HL7/fhir-mdi-ig/mdi_use_cases.html#transmission-of-a-death-certificate-for-review>`__
+`Transmission of a Death Certificate for Review <https://build.fhir.org/ig/HL7/fhir-mdi-ig/mdi_use_cases.html#transmission-of-a-death-certificate-for-review>`__
