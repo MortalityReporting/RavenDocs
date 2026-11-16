@@ -13,18 +13,18 @@ Record Importing is a Raven feature that allows for importing several data forma
 
 XLSX and CSV Templates
 ^^^^^^^^^^^^^^^^^^^^^^
-Templates are provided for XLSX/CSV import for each MDI FHIR IG use case: MDI-and-EDRS data exchange, Toxicology-to-MDI reports, and Death Certificate Review. Due to the complexity of MDI FHIR Records, the templates provide a stepping stone for testing when transitioning from non-FHIR compliant systems to FHIR and the MDI FHIR IG. The importer maps the MDI templates to the appropriate MDI FHIR profiles and uploads them to the MDI FHIR server. 
+Due to the complexity of MDI FHIR Records, import templates are provided in XLSX and CSV formats for each MDI FHIR IG use case: MDI-and-EDRS data exchange, Toxicology-to-MDI reports, and Death Certificate Review. These templates provide a stepping stone for testing when transitioning from non-FHIR compliant systems to FHIR and/or the MDI FHIR IG.
 
-For users who are implementing MDI FHIR IG support, the Record Import feature allows generation of MDI FHIR IG compliant data from user provided cases to provide a FHIR JSON example to use as an implementation reference. It also allows users to use their own data with other features of the application such as the Record Viewer or Workflow Simulator, even prior to implementation of FHIR and the MDI FHIR IG in their own systems.
+This allows users to leverage their own data with other features of the application such as the Record Viewer or Workflow Simulator, even prior to implementation of FHIR and the MDI FHIR IG in their own systems. The generated MDI FHIR IG records may also be used for reference examples of data known to users.
 
-JSON FHIR Bundle Import
-^^^^^^^^^^^^^^^^^^^^^^^
-Users may also import previously generated FHIR JSON Bundles through the Record Import feature. For users who have already begun implementation in their own systems, this may be used to leverage their data in other featuers of the application as well.
+JSON MDI FHIR Bundles
+^^^^^^^^^^^^^^^^^^^^^
+Users may also import previously generated FHIR JSON Bundles through the Record Import feature. For users who have already begun implementation in their own systems, this may be used to leverage their data in other featuers of the application.
 
 For HL7 Connectathon or other testing event support, test case data may be provided with the intent of having participants to generate a curated record that after being loaded through the Record Import feature may be used in the Record Comparison tool against a known valid example of the same record. For more information, please see ":ref:`validation-comparison`".
 
-How to Use the Record Import Feature
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Instructions
+^^^^^^^^^^^^
 
 Start by selecting "Import" on the left nav menu. When on the Record Import screen, select import type as shown below.
 
@@ -44,28 +44,43 @@ Once the validation is complete, the results will be provided below the JSON inp
 
 Template (XLSX/CSV) Import
 ++++++++++++++++++++++++++
+When importing via spreadsheet template, users should first download the provided sheets in their preferred format. The download list can be found in the right side column of the Recort Import feature as shown below.
 
-Spreadsheet Schema
-^^^^^^^^^^^^^^^^^^
-If the user cannot construct the FHIR records necessary, or are unfamiliar with the FHIR standard in general;
-Raven provides an excel spreadsheet XLSX template for easy of use. Users can fill in individual case data as
-plaintext values, and use the import case view on the RAVEN platform. RAVEN will transform the XLSX data into
-individual FHIR case records that adhere to the FHIR-MDI-IG standard. The template is hosted on the RAVEN
-base site; and a `copy can be directly downloaded from the public internet <https://gtvault-my.sharepoint.com/:x:/g/personal/mriley7_gatech_edu/EW6MPoLovyROhAxtk4tjqkkBNzn0SstRhs_g4OOwBhcPIA?e=oL0Ci5>`_.
+.. image::
+   ../images/record-import/import_2026_3.png
+   :alt: Raven Record Import Download Template List
+
+For users who cannot generate FHIR JSON for testing, or are unfamiliar with the FHIR standard in general, these templates provide an easy method of converting records to FHIR for use within Raven and as an educational reference. Users can fill in individual case data as plaintext values, and using the importer generate the appropriate MDI FHIR IG record.
+
+An example of the spreadsheet is shown below. You can view the import template schemas in full at :doc:`Raven Import XLSX/CSV Spreadsheet Definitions <template-schemas>`.
 
 .. image:: 
-   ../images/RavenXLSXFileHeader.png
-   :alt: Use the XLSX file to construct case data and then import to transform to FHIR
+   ../images/record-import/RavenXLSXFileHeader.png
+   :alt: A screenshot of the MDI-and-EDRS XLSX template.
 
-**RAVEN Import XLSX Spreadsheet Definitions**
+.. toctree::
+   :maxdepth: 1
+   :hidden:
 
-.. dropdown:: MDI-and-EDRS Document Bundle Import Template
-   :open:
+   template-schemas
 
-   .. include:: ./template-tables/mdi-and-edrs-template.rst
+Multiple records may be imported at once. For the XLSX versions of the import template, a single decedent record or toxicology report is a column. In the CSV version, a single record is a row.
 
-Record Viewer (Viewing Cases)
------------------------------
+Once you have completed filling out your template, select the "Browse for Import Spreadsheet" button to open the file select dialogue, and select your file. Then hit the submit button.
+
+.. image:: 
+   ../images/record-import/import_2026_4.png
+   :alt: The submission step for Import Templates showing the browse and submit buttons.
+
+Once your file is submitted successfully, a report is displayed documenting what values were mapped to which fields. One record is displayed at a time, and records may be selected in the left column by decdent name. Users may also select to view the generated FHIR Bundle by selecting "MDI FHIR Bundle" in the right hand mapping column.
+
+.. image:: 
+   ../images/record-import/import_2026_5.png
+   :alt: The submission step for Import Templates showing the browse and submit buttons.
+
+
+Record Viewer
+-------------
 The Record Viewer is a UI component which allows the browsing and viewing of Raven FHIR Server records, 
 encompassing both MDI Case Documents (MDI to EDRS) and Toxicology Reports (LIMS to MDI). 
 In addition to providing a user-friendly option for viewing the data present on the FHIR Server, 
