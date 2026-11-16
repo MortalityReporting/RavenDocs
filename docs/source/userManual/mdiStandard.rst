@@ -64,7 +64,7 @@ workflow is supported by the MDI-and-EDRS set of profiles.
 In most states, cases are created by funeral directors who begin this workflow with an initial case created
 in the state EDRS. The case management system searches the EDRS for a case and retrieves the case with limited
 decedent demographic information. The CMS may then update the case during the course of a death investigation.
-When the investigation is completed, the case is certified and the completed record is submitted to the state EDRS. 
+When the investigation is completed, the completed record is submitted to the state EDRS and the case is certified. 
 
 To support this workflow, Raven users can import, validate, and review MDI-and-EDRS FHIR Document Bundles, as
 well as submit their FHIR Document Bundles to a simulated EDRS server.
@@ -84,7 +84,7 @@ For more information on the MDI and EDRS exchange use case, please see:
 Toxicology-to-MDI
 ^^^^^^^^^^^^^^^^^
 The Toxicology-to-MDI workflow covers data exchange between a forensic toxicology laboratory information 
-management system (LIMS) to an MDI case management system (CMS). In the MDI FHIR IG, this workflow is supported by
+management system (LIMS) and an MDI case management system (CMS). In the MDI FHIR IG, this workflow is supported by
 Toxicology-to-MDI profiles. The MDI FHIR IG only defines the delivery of a toxicology lab report from a LIMS to a CMS,
 and does not cover the initial order request. Unlike the other use cases, this workflow relies on a FHIR message Bundle,
 matching traditional HL7v2 style messaging workflows more closely.
@@ -98,8 +98,11 @@ For more information on the Toxicology use case, please see:
 Death Certificate Review
 ^^^^^^^^^^^^^^^^^^^^^^^^
 The Death Certificate Review profiles cover data quality improvement and cremation clearance requests.
-As with the MDI-and-EDRS case creation and update use case, the Death Certificate Review data exchange occurs between a CMS and a state
-EDRS. The Death Certificate Review is a bidirectional workflow which also supports a response, such as updated information from the coroner/medical examiner
+As with the MDI-and-EDRS case creation and update use case, the request for data quality improvement occurs between a CMS and a state
+EDRS. The cremation clearance requests (CCR), on the other hand, are submitted by the funeral director to the state EDRS. 
+Then, the state EDRS send the CCR with the death certificate to the CMS for review. The CMS then sends the cremation clearance authorization to the state EDRS.
+
+The Death Certificate Review is a bidirectional workflow which also supports a response, such as updated information from the coroner/medical examiner
 system when improving data quality.
 
 The Death Certificate Review records can be browsed in the Record Viewer, including viewing the underlying FHIR resources with the FHIR Explorer
