@@ -3,199 +3,92 @@
 Record Management
 =================
 
-Record Import (Importing MDI Records)
--------------------------------------
+Record Import
+-------------
 Record Importing is a Raven feature that allows for importing several data formats into the Raven FHIR Server.
 
-* FHIR Bundles (Note: Must be valid.)
-* XLSX Spreadsheets
-* Comma-separated Values (CSV)
+* FHIR Bundles (Note: Must be validated.)
+* XLSX Spreadsheets (.xlsx)
+* Comma-separated Values (.csv)
 
-Importing XLSX or CSV files requires the templates provided in the Record Import.
+XLSX and CSV Templates
+^^^^^^^^^^^^^^^^^^^^^^
+Due to the complexity of MDI FHIR Records, import templates are provided in XLSX and CSV formats for each MDI FHIR IG use case: MDI-and-EDRS data exchange, Toxicology-to-MDI reports, and Death Certificate Review. These templates provide a stepping stone for testing when transitioning from non-FHIR compliant systems to FHIR and/or the MDI FHIR IG.
 
-Due to the complexity of MDI FHIR Records, the templates provide a stepping stone for testing when
-transitioning from non-FHIR compliant systems to FHIR and the MDI FHIR IG. The Record Import feature
-maps the pre-defined MDI templates to the appropriate MDI FHIR profiles.
-and persists them in the MDI FHIR server. 
+This allows users to leverage their own data with other features of the application such as the Record Viewer or Workflow Simulator, even prior to implementation of FHIR and the MDI FHIR IG in their own systems. The generated MDI FHIR IG records may also be used for reference examples of data known to users.
 
-.. note::
-    **Use Case**: Mapping of any case management system data (in CSV/spreadsheet format) to MDI FHIR and 
-    importing them to the Raven FHIR server
+JSON MDI FHIR Bundles
+^^^^^^^^^^^^^^^^^^^^^
+Users may also import previously generated FHIR JSON Bundles through the Record Import feature. For users who have already begun implementation in their own systems, this may be used to leverage their data in other featuers of the application.
 
-For the case importing, a predefined XLSX or spreadsheet template is provided to users. Users populate their 
-data to the provided template. The user-data will be converted to the MDI FHIR IG data and imported to 
-Raven FHIR server.
+For HL7 Connectathon or other testing event support, test case data may be provided with the intent of having participants to generate a curated record that after being loaded through the Record Import feature may be used in the Record Comparison tool against a known valid example of the same record. For more information, please see ":ref:`validation-comparison`".
 
-For connectathon support, the Case Importing feature in Raven will generate reference 
-MDI FHIR IG data using connectathon testcase data so that participant-generated MDI FHIR IG data can be 
-compared with the reference MDI FHIR IG data with the comparison tool. The case importing and comparing 
-data are done as follows. 
+Instructions
+^^^^^^^^^^^^
 
-**Importing Procedure** 
-    - Reads the testcases spreadsheet
-    - Converts the data in the testcases to MDI CSV
-    - Mapper maps the MDI CSV to MDI IG FHIR and stores the converted MDI FHIR IG data in the Raven FHIR Server 
-      to be used as reference data
-    - When participants’ validated data are loaded to Raven, Comparison Tool compares the 
-      loaded data with the reference data. See ":ref:`validation-comparison`" page for more information.
+Start by selecting "Import" on the left nav menu. When on the Record Import screen, select import type as shown below.
 
-Spreadsheet Schema
-^^^^^^^^^^^^^^^^^^
-If the user cannot construct the FHIR records necessary, or are unfamiliar with the FHIR standard in general;
-Raven provides an excel spreadsheet XLSX template for easy of use. Users can fill in individual case data as
-plaintext values, and use the import case view on the RAVEN platform. RAVEN will transform the XLSX data into
-individual FHIR case records that adhere to the FHIR-MDI-IG standard. The template is hosted on the RAVEN
-base site; and a `copy can be directly downloaded from the public internet <https://gtvault-my.sharepoint.com/:x:/g/personal/mriley7_gatech_edu/EW6MPoLovyROhAxtk4tjqkkBNzn0SstRhs_g4OOwBhcPIA?e=oL0Ci5>`_.
+.. image::
+   ../images/record-import/import_2026_1.png
+   :alt: Raven Record Import Type Selection
+
+JSON Import
++++++++++++
+For the JSON import option, you must provide an MDI FHIR IG Document or Message Bundle for one of the supported MDI FHIR IG use cases/workflows. You may select a local file to load (with an extension of .json) or paste your JSON directly in to the provided input area. User provided JSON must complete validation before it will be loaded into the Raven FHIR Server. Once you have provided your FHIR Bundle, you may select "Validate Record" to start the validation process.
+
+.. image::
+   ../images/record-import/import_2026_2.png
+   :alt: Raven Record Import JSON Input and Validation
+
+Once the validation is complete, the results will be provided below the JSON input area. If there are errors, you must resolve them before submission is enabled. Note that warnings or other levels of validation reported do not block submission.
+
+Template (XLSX/CSV) Import
+++++++++++++++++++++++++++
+When importing via spreadsheet template, users should first download the provided sheets in their preferred format. The download list can be found in the right side column of the Recort Import feature as shown below.
+
+.. image::
+   ../images/record-import/import_2026_3.png
+   :alt: Raven Record Import Download Template List
+
+For users who cannot generate FHIR JSON for testing, or are unfamiliar with the FHIR standard in general, these templates provide an easy method of converting records to FHIR for use within Raven and as an educational reference. Users can fill in individual case data as plaintext values, and using the importer generate the appropriate MDI FHIR IG record.
+
+An example of the spreadsheet is shown below. You can view the import template schemas in full at :doc:`Raven Import XLSX/CSV Spreadsheet Definitions <template-schemas>`.
 
 .. image:: 
-   ../images/RavenXLSXFileHeader.png
-   :alt: Use the XLSX file to construct case data and then import to transform to FHIR
+   ../images/record-import/RavenXLSXFileHeader.png
+   :alt: A screenshot of the MDI-and-EDRS XLSX template.
 
-**RAVEN Import XLSX Spreadsheet Definitions**
-    
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Sections                        | Elements                                                              | Description                                                                                                                                                                                                       |
-+=================================+=======================================================================+===================================================================================================================================================================================================================+
-| Tracking Numbers                |                                                                       | This section is for tracking separate identifiers, an identifier for the local mdi system, and the state registrar(EDRS) file number                                                                              |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Tracking Numbers                | Tracking Number: Mdi Case Number                                      | A locally unique case number from the case management system. Optional                                                                                                                                            |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Tracking Numbers                | Tracking Number: EDRS File Number                                     | A locally unique case number from the state registrar(EDRS). Usually assigned once the case has been registered or submitted to the state registrar.Optional                                                      |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        |                                                                       | This section is for decedent demographic information, all information resides in the us-core-patient resource within the document                                                                                 |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent Name                                                         | Primary name of the Decedent.Accepted Formats:<First Name> <Last Name><First Name> <Middle Initial> <Last Name><First Name> <Middle Name> <Last Name>                                                             |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent Race                                                         | Race of DecedentAccepted values are shown in the dropdownIf the decedent has multiple race entries, use a comma-seperated format to enter multiple races                                                          |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent Ethnicity                                                    | Ethnicity of DecedentAccepted values are shown in the dropdown                                                                                                                                                    |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent SexAtDeath                                                   | Decedent's gender, as determined at the time of death.Accepted values are shown in the dropdown                                                                                                                   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent SSN                                                          | Social Security Number of decedentAccepted Formats:###-##-#############                                                                                                                                           |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent Age                                                          | The age of the decedent. In case of infant or fetal death, an age denomination may be used.Accepted formats:<Age Value><Age Value> <Age Unit>                                                                     |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent DOB                                                          | The date in which the Decedent was bornAccepted Formats:mm/dd/yyyymm-dd-yyyy                                                                                                                                      |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent Marital status                                               |                                                                                                                                                                                                                   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent Residence: Street                                            | Primary Address of Decedent's residence address. Multiple lines are supported.                                                                                                                                    |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent Residence: city                                              |                                                                                                                                                                                                                   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent Residence: county                                            |                                                                                                                                                                                                                   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent Residence: State, U.S. Territory or Canadian Province        |                                                                                                                                                                                                                   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent Residence: Postal Code                                       |                                                                                                                                                                                                                   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Decedent                        | Decedent Residence: Country                                           |                                                                                                                                                                                                                   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       |                                                                       | This section is for the information collected in the Cause-and-Manner section of the MDI case document. Data includes* Cause of Death pathway* Manner of Death* Death Date* Injury description and cirumstances   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Cause of Death Part I Line a                                          | First line of the cause of death                                                                                                                                                                                  |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Cause of Death Part I Line b                                          | Second line of the cause of death                                                                                                                                                                                 |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Cause of Death Part I Line c                                          | Third line of the cause of death                                                                                                                                                                                  |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Cause of Death Part I Line d                                          | Fourth line of the cause of death                                                                                                                                                                                 |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Cause of Death Part I Interval, Line a                                | Approximate interval of the first cause of death. A unit of age must be providedAccepted Formats:<Age> <Age Units>                                                                                                |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Cause of Death Part I Interval, Line b                                | Approximate interval of the second cause of death. A unit of age must be providedAccepted Formats:<Age> <Age Units>                                                                                               |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Cause of Death Part I Interval, Line c                                | Approximate interval of the third cause of death. A unit of age must be providedAccepted Formats:<Age> <Age Units>                                                                                                |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Cause of Death Part I Interval, Line d                                | Approximate interval of the fourth cause of death. A unit of age must be providedAccepted Formats:<Age> <Age Units>                                                                                               |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Cause of Death Part II                                                | Other conributing conditions to the cause of death.If multiple contributing conditions apply, use a comma seperated list.                                                                                         |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Manner of Death                                                       | Manner of deathAccepted values are shown in the dropdown                                                                                                                                                          |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Date of Injury                                                        | If an injury occurred leading to death, the date of the injuryAccepted Formats:mm/dd/yyyymm-dd-yyyy                                                                                                               |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Time of Injury                                                        | If an injury occurred leading to death, the time of the injury. Date of Injury must be completed for time of injury to be accepted.Accepted Formats:hh:mm:sshh:mmhh:mm AM/PM                                      |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | How Injury Occurred                                                   | A text description of the injury.                                                                                                                                                                                 |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Did Injury Occur at Work?                                             | In the case of an injury, was the injury a part of the decedent's work.Accepted values are shown in the dropdown                                                                                                  |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Cause And Manner of Death       | Decedent's Transportation Role During Injury                          | If an injury occurred with a vechicle, was the decedent a driver, passenger, or pedestrian?Accepted values are shown in the dropdown                                                                              |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Death Circumstances             |                                                                       | This section describes specific findings and circumstances related to the decedent's death* Death Location* Injury Location* Death Date* Decedent Pregnancy Status* Tobacco Use Contribute to Death               |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Death Circumstances             | Location of death                                                     | Full or partial address describing the location of death                                                                                                                                                          |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Death Circumstances             | Location of Injury                                                    | If an injury occurred, description of location, full, or partial address of the location of injury                                                                                                                |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Death Circumstances             | Pregnancy status                                                      | Was the decedent pregenant, and how close to term was the decedent?Accepted values are shown in the dropdown                                                                                                      |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Death Circumstances             | Did Tobacco Use Contribute to Death?                                  | If the decedent used tobacco, did their tobacco use contribute to their cause of death?Accepted values are shown in the dropdown                                                                                  |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Jurisdiction                    |                                                                       | This section describes jurisdictional findings for the case* Death Date* Pronounced date* Place of death established                                                                                              |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Jurisdiction                    | Decedent Date of death                                                | The date of death of the decedentAccepted Formats:mm/dd/yyyymm-dd-yyyy                                                                                                                                            |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Jurisdiction                    | Decedent Time of death                                                | The time of death of the decedent. Decedent date of death must be completed for Decedent Time of death to be acceptedAccepted Formats:hh:mm:sshh:mmhh:mm AM/PM                                                    |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Jurisdiction                    | Date establishment method                                             | The circumstances of how the date of death was established.Accepted values are shown in the dropdown                                                                                                              |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Jurisdiction                    | Date pronounced dead                                                  | The date in which the decedent was formally pronounced deadAccepted Formats:mm/dd/yyyymm-dd-yyyy                                                                                                                  |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Jurisdiction                    | Time pronounced dead                                                  | The time in which the decedent was formally pronounced dead. Date pronounced dead must be completed for Time pronounced dead to be acceptedAccepted Formats:hh:mm:sshh:mmhh:mm AM/PM                              |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Jurisdiction                    | Place of death                                                        | The type of place the decedent died in (home, hospital, hospice, etc.)Accepted values are shown in the dropdown                                                                                                   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Exam-Autopsy                    |                                                                       | This section describes the autopsy findings, if an autopsy occurred.                                                                                                                                              |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Exam-Autopsy                    | Autopsy Performed?                                                    | Was an autopsy performed on the body?                                                                                                                                                                             |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Exam-Autopsy                    | Autopsy Results Available?                                            | If an autopsy was performed, are the results available and used to determine the cause of death?                                                                                                                  |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Chief Medical Examiner/Coroner  |                                                                       | This section describes the primary Chief Medical Examiner or Coroner associated to the case.                                                                                                                      |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Chief Medical Examiner/Coroner  | Medical Examiner Name                                                 | Name of the Medical Examiner.Accepted Formats:<First Name> <Last Name><First Name> <Middle Initial> <Last Name><First Name> <Middle Name> <Last Name>                                                             |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Chief Medical Examiner/Coroner  | Medical Examiner Phone Number                                         | Phone number of the office of the Medical Examiner, or primary contact numberAccepted Formats:###-###-####                                                                                                        |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Chief Medical Examiner/Coroner  | Medical Examiner License Number                                       | Medical Examiner License Number associated to the juridiction in which the case is owned.                                                                                                                         |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Chief Medical Examiner/Coroner  | Medical Examiner Office: Street                                       | Primary Address of the medical examiner's office or primary address. Multiple lines are supported.                                                                                                                |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Chief Medical Examiner/Coroner  | Medical Examiner Office: City                                         |                                                                                                                                                                                                                   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Chief Medical Examiner/Coroner  | Medical Examiner Office: County                                       |                                                                                                                                                                                                                   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Chief Medical Examiner/Coroner  | Medical Examiner Office: State, U.S. Territory or Canadian Province   |                                                                                                                                                                                                                   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Chief Medical Examiner/Coroner  | Medical Examiner Office: Postal Code                                  |                                                                                                                                                                                                                   |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Certifier                       |                                                                       | This section describes the certifier of the case, if the case has been certified. Oftentimes, the Chief Medical Examiner and the Certifier can be the same party. If the case is not certified, leave blank       |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Certifier                       | Certifier Name                                                        | Name of the Certifier.Accepted Formats:<First Name> <Last Name><First Name> <Middle Initial> <Last Name><First Name> <Middle Name> <Last Name>                                                                    |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Certifier                       | Certifier Type                                                        | Is the Certifer a Physician, a pronouncer, or other?                                                                                                                                                              |
-+---------------------------------+-----------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   template-schemas
+
+Multiple records may be imported at once. For the XLSX versions of the import template, a single decedent record or toxicology report is a column. In the CSV version, a single record is a row.
+
+Once you have completed filling out your template, select the "Browse for Import Spreadsheet" button to open the file select dialogue, and select your file. Then hit the submit button.
+
+.. image:: 
+   ../images/record-import/import_2026_4.png
+   :alt: The submission step for Import Templates showing the browse and submit buttons.
+
+Once your file is submitted successfully, a report is displayed documenting what values were mapped to which fields. One record is displayed at a time, and records may be selected in the left column by decdent name. Users may also select to view the generated FHIR Bundle by selecting "MDI FHIR Bundle" in the right hand mapping column.
+
+.. image:: 
+   ../images/record-import/import_2026_5.png
+   :alt: The submission step for Import Templates showing the browse and submit buttons.
 
 
-Record Viewer (Viewing Cases)
------------------------------
-The Record Viewer is a UI component which allows the browsing and viewing of Raven FHIR Server records, 
-encompassing both MDI Case Documents (MDI to EDRS) and Toxicology Reports (LIMS to MDI). 
-In addition to providing a user-friendly option for viewing the data present on the FHIR Server, 
-the layout is structured from the perspective of the MDI Implementation Guide to serve as an educational 
-tool to better understand the data structure and fields which make up the MDI to EDRS and Toxicology to 
-MDI documents. 
+Record Viewer
+-------------
+The Record Viewer allows the browsing and viewing of Raven FHIR Server records for the three supported MDI FHIR IG use cases. The Record Viewer provides a user-friendly form view to review data loaded on the Raven FHIR Server.
 
-.. image:: ../images/case_viewer.png
+The sections of the Record Viewer are organized in accordance with the design of the MDI FHIR IG to serve as an educational 
+tool to better understand the data structures.
+
+.. image:: ../images/record-viewer/case_viewer.png
    :alt: Raven Record Viewer Diagram
   
-The Record Viewer also features a FHIR Resource Explorer, which allows users to select a field and 
-see the underlying FHIR Resource structure containing the related data. The FHIR Resource Explorer will 
-support JSON and XML formats, as well as a human readable “narrative view”. 
+The Record Viewer also features a FHIR Resource Explorer, which allows users to select a field and see the underlying FHIR Resource structure containing the related data. The FHIR Resource Explorer can be toggled between JSON and XML formats, as well as a human readable “narrative view” when the narrative field is provided in the FHIR Resource.
 
-.. note::
-    **Use Case**: Human readable display of MDI FHIR IG data with a FHIR explorer. Any cases loaded in 
-    the Raven FHIR server should be retrievable by Record Viewer. Users can use FHIR APIs to load the data.
+The FHIR Explorer will default to showing the entire FHIR Document or Message bundle. When an individual field is selected, users may return to the Bundle by clicking on the case header at the top of the viewer.
