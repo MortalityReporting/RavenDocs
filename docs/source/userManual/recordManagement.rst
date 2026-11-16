@@ -81,20 +81,14 @@ Once your file is submitted successfully, a report is displayed documenting what
 
 Record Viewer
 -------------
-The Record Viewer is a UI component which allows the browsing and viewing of Raven FHIR Server records, 
-encompassing both MDI Case Documents (MDI to EDRS) and Toxicology Reports (LIMS to MDI). 
-In addition to providing a user-friendly option for viewing the data present on the FHIR Server, 
-the layout is structured from the perspective of the MDI Implementation Guide to serve as an educational 
-tool to better understand the data structure and fields which make up the MDI to EDRS and Toxicology to 
-MDI documents. 
+The Record Viewer allows the browsing and viewing of Raven FHIR Server records for the three supported MDI FHIR IG use cases. The Record Viewer provides a user-friendly form view to review data loaded on the Raven FHIR Server.
 
-.. image:: ../images/case_viewer.png
+The sections of the Record Viewer are organized in accordance with the design of the MDI FHIR IG to serve as an educational 
+tool to better understand the data structures.
+
+.. image:: ../images/record-viewer/case_viewer.png
    :alt: Raven Record Viewer Diagram
   
-The Record Viewer also features a FHIR Resource Explorer, which allows users to select a field and 
-see the underlying FHIR Resource structure containing the related data. The FHIR Resource Explorer will 
-support JSON and XML formats, as well as a human readable “narrative view”. 
+The Record Viewer also features a FHIR Resource Explorer, which allows users to select a field and see the underlying FHIR Resource structure containing the related data. The FHIR Resource Explorer can be toggled between JSON and XML formats, as well as a human readable “narrative view” when the narrative field is provided in the FHIR Resource.
 
-.. note::
-    **Use Case**: Human readable display of MDI FHIR IG data with a FHIR explorer. Any cases loaded in 
-    the Raven FHIR server should be retrievable by Record Viewer. Users can use FHIR APIs to load the data.
+The FHIR Explorer will default to showing the entire FHIR Document or Message bundle. When an individual field is selected, users may return to the Bundle by clicking on the case header at the top of the viewer.
