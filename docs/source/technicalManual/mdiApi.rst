@@ -489,7 +489,7 @@ also returns error code when there are document level errors. In this case *Oper
 included in the payload. CMS would want to parse the payload as it contains the source of errors. For
 more information about the *OperationOutcome*, see the following section.
 
-**MDI Document Level Errors with 2xx HTTP response**
+**MDI Document Level Errors with non-2xx HTTP response**
 For all non 2xx status code, error(s) must be indicated in the response with a *OperationOutcome* resource. 
 
 In *OperationOutcome*, EDRS must be include information what caused the error if the error needs to be 

@@ -13,7 +13,7 @@ Record Importing is a Raven feature that allows for importing several data forma
 
 XLSX and CSV Templates
 ^^^^^^^^^^^^^^^^^^^^^^
-Due to the complexity of MDI FHIR Records, import templates are provided in XLSX and CSV formats for each MDI FHIR IG use case: MDI-and-EDRS data exchange, Toxicology-to-MDI reports, and Death Certificate Review. These templates provide a stepping stone for testing when transitioning from non-FHIR compliant systems to FHIR and/or the MDI FHIR IG.
+Due to the complexity of MDI FHIR Records, import templates are provided in XLSX and CSV (MDI-and-EDRS use case only) formats for each MDI FHIR IG use case: MDI-and-EDRS data exchange, Toxicology-to-MDI reports, and Death Certificate Review. These templates provide a stepping stone for testing when transitioning from non-FHIR compliant systems to FHIR and/or the MDI FHIR IG.
 
 This allows users to leverage their own data with other features of the application such as the Record Viewer or Workflow Simulator, even prior to implementation of FHIR and the MDI FHIR IG in their own systems. The generated MDI FHIR IG records may also be used for reference examples of data known to users.
 

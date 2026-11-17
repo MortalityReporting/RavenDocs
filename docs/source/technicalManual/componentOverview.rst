@@ -49,8 +49,8 @@ The Raven Dashboard is a frontend TypeScript project develped using the Angular 
 
 Raven Import API
 ----------------
-The Raven Import API provides a backend service to import test cases from XLSX spreadsheets into the Raven FHIR Server as a FHIR MDI-to-EDRS Document Bundle. The API returns the results of the process to the Dashboard for rendering to users.
-
+The Raven Import API provides a backend service to import test cases from XLSX spreadsheets or CSV into the Raven FHIR Server as a FHIR MDI-to-EDRS Document Bundle, Toxicology-to-MDI Message Bundle, or Death Certificate Review Document Bundle. The API returns the results of the process to the Dashboard for rendering to users.
+   
 Validation Service
 ------------------
 The Validation Service is a web API which wraps the HL7 command line FHIR validation tool. The Raven Dashboard allows users to post a FHIR resource to the validation service, which returns to the results of the validation.
