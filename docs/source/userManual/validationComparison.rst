@@ -40,11 +40,15 @@ The Raven Validator API wraps the official HL7 Validator JAR file. The API Servi
 
 Record Comparison
 -----------------
-The Record Comparison Tool is a feature to compare user generated test records with pre-validated MDI FHIR IG MDI-and-EDRS Document Bundle provided in the Raven FHIR Server.
+The Record Comparison Tool is a feature to compare user generated test records with pre-validated MDI FHIR IG MDI-and-EDRS Document Bundle provided in the Raven FHIR Server. (Toxicology-to-MDI and Death Certificate Review are not currently supported.)
+
+.. image:: ../images/comparison/comparison_2026_1.png
+   :alt: Raven Record Comparison.
 
 Users participating in Test Events may be provided with a set of test cases for which they can attempt to generate MDI FHIR IG MDI-and-EDRS Bundles, and then use the comparison tool to be provided a side by side comparison of the known-valid versions.
 
-<!-- SCREENSHOT HERE -->
+.. image:: ../images/comparison/comparison_2026_2.png
+   :alt: Raven Record Comparison Results.
 
 By reviewing the user generated and known valid cases this way, implementors can quickly spot issues in FHIR Resource structures or value assignment and ensure their FHIR data contents are correctly populated.
 
