@@ -11,6 +11,7 @@ If you are a non-technical end user, then we recommend you to go to ":ref:`mdiSt
 Medicolegal Death Investigation (MDI) workflows
 
 .. toctree::
+    userManual/versionsEditions
     userManual/mdiStandard
     userManual/recordManagement
     userManual/validationComparison
