@@ -1,5 +1,4 @@
-
-
+.. _versions-editions:
 
 Versions and Editions
 =====================
